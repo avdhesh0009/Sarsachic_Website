@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+.App {
+  position: relative;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.leftPartition {
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  height: 200%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-text {
+  position: absolute;
+  top: 65%;
+  left: 20%;
+}
+
+.rightPartition {
+  position: relative;
+  overflow: hidden;
+  background-color: #d0d1ca;
+  width: 100%;
+  height: 200%;
+  margin-right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.model-img {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  top: 56%;
+  left: 50%;
+
+}
+
+.model-img img {
+  width: 360px;
+  height: 615px;
+}
+
+.description-2 {
+  font-size: 23px;
+  color: rgb(147, 143, 143);
+  margin-bottom: 30px;
+}
+
+.actionButton {
+  background-color: #d0d1ca;
+  /* Tomato color */
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 1.5rem 3rem;
+  font-weight: bolder;
+  font-size: 20px;
+  cursor: pointer;
+
+  box-shadow: 20px 20px 0px rgba(0, 0, 0, 1);
+  transition: background-color 0.3s ease;
+}
+
+.actionButton:hover {
+  background-color: #e5533d;
+  /* Darker shade of tomato */
+}
+
+.logoText {
+  color: rgb(0, 0, 0);
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  font-size: 200px;
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 1068px) {
+  .logoText {
+    font-size: 120px;
+  }
+
+  .model-img img {
+    width: 287px;
+    height: 490px;
+  }
+
+  .actionButton {
+    padding: 0.5rem 0.5rem;
+    font-size: 12px;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 1);
+  }
+
+  .description {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 668px) {
+  .logoText {
+    font-size: 70px;
+  }
+}

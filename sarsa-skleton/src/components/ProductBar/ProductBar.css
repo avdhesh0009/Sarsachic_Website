@@ -1,0 +1,90 @@
+.barroot-child {
+  height: 141px;
+  width: 1440px;
+
+  background-color: #e8e7e2;
+  border: 1px solid black;
+  box-sizing: border-box;
+  display: none;
+  max-width: 100%;
+}
+
+.accesories,
+.bottoms,
+.caps,
+.oversized,
+.tshirt {
+  text-decoration: none;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.navbar,
+.barroot {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.navbar {
+  width: 1321px;
+  overflow: hidden;
+  justify-content: center;
+  gap: 38px;
+  max-width: 100%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.barroot {
+  width: 100%;
+  position: relative;
+  background-color: #e8e7e2;
+  border: 1px solid black;
+  box-sizing: border-box;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  font-size: 32px;
+  color: black;
+  font-family: jsMath-cmr10;
+}
+
+@media screen and (max-width: 1025px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .barroot {
+    padding: 1rem 0.5rem;
+  }
+}
+
+@media screen and (max-width: 975px) {
+
+  .accesories,
+  .bottoms,
+  .caps,
+  .oversized,
+  .tshirt {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+
+  .accesories,
+  .bottoms,
+  .caps,
+  .oversized,
+  .tshirt {
+    font-size: 19px;
+  }
+
+  .navbar {
+    gap: 15px;
+  }
+}

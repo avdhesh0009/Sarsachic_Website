@@ -1,0 +1,159 @@
+.product-details {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 20px;
+}
+
+.description-info-2 {
+  display: none;
+}
+
+.more-container {
+  margin-top: 100px;
+}
+
+.more-products {
+  text-align: center;
+}
+
+.image-gallery {
+  max-width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.product-image {
+  width: 100%;
+  max-width: 290px;
+}
+
+.product-info {
+  max-width: 600px;
+  padding: 20px;
+  text-align: left;
+}
+
+.product-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.product-fit,
+.product-rating,
+.product-price,
+.size-selector,
+.add-to-cart,
+.add-to-wishlist,
+.product-details-text,
+.additional-info {
+  margin: 10px 0;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.discounted-price {
+  color: red;
+  font-weight: bold;
+}
+
+.size-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.size-button {
+  padding: 5px 10px;
+  border: 1px solid grey;
+  background: white;
+  cursor: pointer;
+}
+
+.size-button.selected {
+  background: black;
+  color: white;
+}
+
+.add-to-cart {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+  text-align: center;
+  font-size: 15px;
+}
+
+.heart {
+
+  font-size: 13px;
+  /* Optional: Adjust icon size */
+}
+
+.butto {
+  display: flex;
+  gap: 85px;
+}
+
+.size-chart {
+  background: black;
+  color: white;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 15px;
+
+}
+
+.add-to-wishlist {
+
+  width: 70%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.add-to-cart {
+  background: black;
+  color: white;
+}
+
+.add-to-wishlist {
+  background: white;
+  border: 1px solid black;
+}
+
+.product-details-text,
+.additional-info {
+  margin-top: 20px;
+}
+
+.additional-info h2 {
+  cursor: pointer;
+  color: rgb(8, 8, 8);
+}
+
+.plus-icon {
+  font-size: large;
+}
+
+@media (max-width: 768px) {
+  .product-details {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-gallery,
+  .product-info {
+    max-width: 100%;
+  }
+
+  .product-info {
+    padding: 0 20px;
+  }
+}

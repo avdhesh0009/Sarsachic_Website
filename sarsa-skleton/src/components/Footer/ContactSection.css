@@ -1,0 +1,81 @@
+.contact-section {
+  background-color: #d3d3d3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.contact-text {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+.contact-form {
+  display: flex;
+  gap: 0px;
+  margin-top: 8px;
+  width: 200px;
+}
+
+.email-input {
+  padding: 10px;
+  border: none;
+  flex: 1;
+}
+
+.join-button {
+  padding: 2.5px 30px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+ 
+}
+
+.social-icons {
+  display: flex;
+  gap: 30px;
+  margin-top: 8px;
+  margin-right: 1rem;
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .contact-section {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .contact-content {
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .contact-text {
+    margin-right: 0px;
+    text-align: left;
+  }
+
+  .contact-form {
+    margin-left: 0; /* Remove margin for larger screens */
+    align-items: center;
+    justify-content: center;
+  }
+}

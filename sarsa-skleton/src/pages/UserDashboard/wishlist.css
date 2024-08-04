@@ -1,0 +1,11 @@
+.viewprd{
+    background-color: black;
+    color: white;
+    border-radius: 9px;
+    height: 49px;
+    width: 200px;
+    left: 297px;
+    top: 356px;
+    position: absolute;
+    /* border: 2px solid black; */
+}

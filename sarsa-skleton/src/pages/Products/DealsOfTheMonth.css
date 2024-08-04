@@ -1,0 +1,120 @@
+.deals-container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  display: flex;
+
+  align-items: center;
+  text-align: center;
+}
+
+.text-item {
+  width: 100%;
+}
+
+.deals-container h1 {
+  font-size: 2.5em;
+}
+
+.deals-container p {
+  font-size: 1.2em;
+  color: gray;
+}
+
+.deals-container button {
+  background-color: #ccc;
+  border: none;
+  border-radius: 15px;
+  padding: 10px 30px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.timer-container {
+  margin-top: 20px;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.timer-box {
+  background: #f8f8f8;
+  border: 2px dotted rgb(120, 118, 118);
+  border-radius: 10px;
+  padding: 10px;
+  width: 70px;
+}
+
+.slider-wrapper {
+  overflow: hidden;
+}
+
+.timer-number {
+  display: block;
+
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.timer-label {
+  font-size: 0.8em;
+  color: #888;
+}
+
+.images-container {
+  display: flex;
+  margin-top: 30px;
+}
+
+.image-item {
+  margin: 0 10px;
+}
+
+.image-item img {
+  width: 300px;
+  height: 400px;
+
+}
+
+.discount {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: white;
+  padding: 5px 10px;
+  font-size: 1.5em;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .deals-container {
+    flex-direction: column;
+  }
+
+  .timer {
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .timer-box {
+    width: 50px;
+    padding: 5px;
+  }
+
+  .timer-number {
+    font-size: 1.5em;
+  }
+
+  .images-container {
+    flex-direction: column;
+  }
+
+  .image-item {
+    margin: 10px 0;
+  }
+}

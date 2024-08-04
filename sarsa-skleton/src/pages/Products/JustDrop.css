@@ -1,0 +1,121 @@
+:root {
+  --font-inter: Inter, sans-serif;
+  --font-size-xxl: 3rem;
+  --color-black: #000;
+  --color-white: #fff;
+  --color-dark-gray: #3e3e3e;
+  --gap-xxl: 2rem;
+  --padding-xxl: 2rem;
+  --border-radius-sm: 10px;
+}
+
+.desktop-15 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--padding-xxl);
+  background-color: var(--color-white);
+}
+
+.desktop-15-child {
+  width: 70px;
+  height: 5px;
+  background-color: var(--color-black);
+}
+
+.just-drop {
+  margin: var(--padding-xxl) 0;
+  font-weight: 900;
+  color: var(--color-black);
+  font-size: var(--font-size-xxl);
+  text-align: center;
+}
+
+.product-display {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: var(--gap-xxl);
+  padding: var(--padding-xxl);
+  margin: var(--padding-xxl) 0;
+}
+
+.product-details-icon {
+  flex-shrink: 0;
+  width: 474px;
+  height: 600px;
+  border-radius: var(--border-radius-sm);
+  object-fit: cover;
+}
+
+.follow-us-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.follow-us-parent {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-xxl);
+  margin-bottom: var(--gap-xxl);
+}
+
+.follow-us {
+  font-weight: bold;
+  font-size: var(--font-size-xxl);
+}
+
+.image-grid, .single-image-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-xxl);
+}
+
+.image-row {
+  display: flex;
+  gap: var(--gap-xxl);
+}
+
+.rectangle-parent, .rectangle-group, .rectangle-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xxl);
+}
+
+.frame-inner, .image-placeholder-icon, .rectangle-icon, .frame-child1, .frame-child2, .single-image-icon {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius-sm);
+}
+
+
+.follow-us-container {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .follow-us {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .social-icons a {
+    font-size: 2rem;
+    color: black;
+    transition: color 0.3s;
+  }
+  
+  .social-icons a:hover {
+    color: #007BFF; /* Change to your desired hover color */
+  }
+
+ 

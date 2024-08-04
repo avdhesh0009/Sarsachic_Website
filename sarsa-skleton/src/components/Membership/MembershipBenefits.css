@@ -1,0 +1,146 @@
+.membership-container {
+    display: flex;
+    background: linear-gradient(to right, #bdbdbd, #545151);
+    padding: 20px;
+    
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+
+.membership-card {
+    
+    height: 840px;
+   border: 1px solid white;
+    padding: 20px;
+    background-color: #2e2e2e;
+    border-radius: 70px;
+   width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+}
+
+.crown {
+    height: 100px;/* Ensure text inside is centered */
+}
+
+.head {
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.membership-card h2 {
+    /* Empty, keeping your original styles */
+}
+
+.membership-card ul {
+    list-style: none;
+    padding: 0;
+    width: 50%; 
+}
+
+.membership-card li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.membership-card .icon {
+    width: 100px;
+    height: 100px;
+    margin-right: 15px;
+}
+
+
+.membership-card .text h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.membership-card .text p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+
+.membership-card .price {
+    text-align: center;
+    background: linear-gradient(to right, #737373, #D9D9D9); /* Linear gradient */
+    color: black; /* Ensure text is readable */
+    padding: 20px;
+    font-weight: bolder;
+    border-radius: 50px;
+    font-size: 26px;
+    text-decoration: underline;
+}
+
+.another-plan {
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #2e2e2e;
+    border-radius: 0 70px 70px 0; 
+    
+    height: 700px;
+    width: 400px;
+    padding: 20px;
+}
+.arrow-icon {
+    /* Space between text and arrow */
+    /* Adjust size of the arrow */
+  }
+
+.crbtn{
+    display: flex;
+    flex-direction: column;
+}
+
+.another-plan .crown-icon1 {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    padding-left: 90px;
+    
+   
+    
+}
+
+.another-plan button {
+   
+    color: #D9D9D9;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: linear-gradient(to right, #737373, #D9D9D9); /* Linear gradient */
+    color: black; /* Ensure text is readable */
+    padding: 20px;
+    font-weight: bolder;
+    border-radius: 50px;
+    font-size: 20px;
+    
+}
+
+.another-plan button:hover {
+    background-color: #030202;
+}
+
+.ap{
+    display: flex;
+    padding-bottom: 110px;
+    
+}
+
+.flipped-text {
+    display: inline-block;/* Ensures transform works properly */
+    transform: rotate(90deg); /* Flips the text vertically */
+    width: 60px;
+    height: 20px;
+
+    font-size: 40px; /* Adjust text color as needed */
+    transform-origin: left bottom; /* Adjust pivot point */
+  white-space: nowrap; 
+  }

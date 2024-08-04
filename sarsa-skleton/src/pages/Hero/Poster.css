@@ -1,0 +1,77 @@
+.main-content {
+  position: relative;
+  text-align: center;
+  color: white;
+ 
+}
+
+.main-image {
+  margin: 0;
+  width: 100%;
+}
+@media (max-width: 768px) {
+ 
+}
+
+.header1 {
+  background-color: #e9e6e6;
+  padding: 0px 0;
+  text-align: center;
+  margin-bottom:0px ;
+}
+
+.nav {
+  justify-content: center;
+ 
+}
+
+
+
+.nav-list {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+   /* Ensure center alignment */
+  gap: 20px; /* Adds space between navigation items */
+}
+
+.nav-item a {
+  text-decoration: none; /* Removes the underline */
+  color: black; /* Sets the text color to black */
+  font-size: 1em; /* Sets the font size */
+  transition: color 0.3s; /* Adds a transition effect for hover state */
+}
+
+.nav-item a:hover {
+  color: #555; /* Changes the text color on hover */
+}
+
+.nav-item {
+  text-align: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-list {
+   
+    gap: 10px; /* Adjust gap for vertical layout */
+  }
+
+  .nav-item a {
+    font-size: 1.2rem; /* Increase font size for better readability */
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-item a {
+    font-size: 10px; /* Adjust font size for smaller screens */
+  }
+}
+

@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    line-height: normal;
+  }
+  
+  :root {
+    /* fonts */
+    --font-inter: Inter;
+    --font-laila: Laila;
+  
+    /* font sizes */
+    --font-size-lgi: 19px;
+    --font-size-mid: 17px;
+  
+    /* Colors */
+    --color-white: #fff;
+    --color-goldenrod: #e7a200;
+    --color-black: #000;
+    --color-gainsboro: #d9d9d9;
+    --color-darkslategray-100: #3e3e3e;
+    --color-darkslategray-200: #393939;
+    --color-gray: #242424;
+  
+    /* Border radiuses */
+    --br-8xl: 27px;
+    --br-36xl: 55px;
+  }
+  

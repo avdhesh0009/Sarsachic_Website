@@ -1,0 +1,61 @@
+/* src/Footer.css */
+.footer-1 {
+  display: flex;
+  justify-content: space-around;
+  /* Ensure equal spacing between sections */
+  background-color: #000;
+  color: #fff;
+  padding: 50px;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 0 10px;
+  /* Equal left and right margin */
+  text-align: center;
+  /* Center-align text within each section */
+}
+
+.footer-section h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.footer-section p {
+  margin: 5px 0;
+  font-size: larger;
+  display: flex;
+  /* Use flexbox for proper alignment */
+  align-items: center;
+  /* Align items vertically */
+  justify-content: center;
+  /* Center items horizontally */
+}
+
+.footer-section a {
+  color: #fff !important; /* Adding !important to increase specificity */
+  text-decoration: none;
+  margin-left: 5px;
+  /* Add some space between the icon and text */
+}
+
+.footer-section a:hover {
+  text-decoration: underline !important;
+}
+
+.footer-icon {
+  margin-right: 2px;
+  /* Add some space between the icon and text */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .footer-1 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section {
+    margin-bottom: 20px;
+  }
+}
