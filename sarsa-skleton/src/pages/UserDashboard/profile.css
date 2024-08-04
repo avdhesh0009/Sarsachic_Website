@@ -1,0 +1,186 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .profile-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  
+  .profile-box {
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-right: 0;
+  }
+  
+  .profile-box .name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-box .profile-pic {
+    width: 80px; /* Adjust size as needed */
+    height: 80px; /* Adjust size as needed */
+    border-radius: 50%;
+    background: #ccc;
+    margin-right: 10px; /* Space between image and name */
+  }
+  
+  .profile-box h2 {
+    margin: 0;
+    font-size: 1.5rem; /* Adjust font size as needed */
+  }
+  
+  .profile-box button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fff;
+    cursor: pointer;
+  }
+  
+  .profile-box button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  
+  .profile-box button span {
+    flex-grow: 1;
+  }
+  
+  .profile-content {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+  
+  .profile-content .heading {
+    text-align: center;
+  }
+  
+  .profile-board {
+    position: relative;
+  }
+  
+  .edit-profile {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .edit-profile img {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .profile-info {
+    margin-top: 50px;
+  }
+  
+  .profile-info .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .profile-info .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .profile-info .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .profile-info .form-group-half {
+    width: 48%;
+  }
+  
+  .profile-info .form-group input[type="text"],
+  .profile-info .form-group input[type="number"],
+  .profile-info .form-group input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .profile-info .form-group input[type="radio"] {
+    margin-right: 10px; /* Space between radio button and label */
+  }
+  
+  .profile-info .form-group div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .profile-info .form-group div span {
+    margin-right: 20px; /* Space between each gender option */
+  }
+  
+  .save {
+    display: block;
+    width: 80%; /* Adjust width as needed */
+    max-width: 300px; /* Adjust max-width as needed */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    margin: 0 auto; /* Center the button */
+  }
+  
+  /* Media Queries for Responsiveness */
+  
+  @media (min-width: 768px) {
+    .profile-container {
+      flex-wrap: nowrap;
+    }
+  
+    .profile-box {
+      width: 25%;
+      max-width: none;
+      margin-right: 20px;
+      margin-bottom: 0;
+    }
+  
+    .profile-content {
+      width: 75%;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .profile-info .form-group input[type="text"],
+    .profile-info .form-group input[type="number"],
+    .profile-info .form-group input[type="date"] {
+      max-width: 400px;
+    }
+  
+    .profile-info .form-group div {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+  

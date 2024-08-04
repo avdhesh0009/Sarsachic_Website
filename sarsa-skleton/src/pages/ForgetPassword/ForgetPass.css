@@ -1,0 +1,71 @@
+.forgot-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  overflow: hidden;
+  min-height: 100vh;
+  height: 100vh;
+}
+
+.forgot-section-1 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 20%;
+  top: 15%;
+}
+
+.forgot-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.forgot-input-wrapper {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 60px;
+}
+
+.forgot-input {
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+  gap: 1rem;
+}
+
+.forgot-button {
+  width: 60%;
+  align-self: flex-start;
+  cursor: pointer;
+  font-size: 13px;
+  border: 0;
+  border-radius: 12px;
+  padding: 11.4px 8.2px;
+  background-color: #ea454c;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+@media screen and (max-width: 1068px) {
+  .forgot-text {
+    font-size: 10px;
+  }
+
+  .forgot-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 10px;
+  }
+
+  .forgot-button {
+    font-size: 10px;
+  }
+}

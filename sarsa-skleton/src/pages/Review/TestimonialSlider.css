@@ -1,0 +1,142 @@
+.testimonial-slider {
+  height: 70vh;
+  text-align: center;
+  padding: 20px;
+  background-color: #f7f7f7;
+  position: relative;
+  margin-top: 30px;
+  left: 50%;
+ 
+
+}
+
+
+.testimonial-slider h1 {
+  margin: 20px;
+  font-size: 50px;
+}
+
+.con {
+  display: flex;
+}
+
+.testimonial-image {
+  border-radius: 0;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.testimonial-content {
+  text-align: left;
+
+}
+
+.testimonial-quote {
+  font-style: italic;
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+
+.testimonial-rating {
+  margin-bottom: 10px;
+}
+
+.testimonial-rating span {
+  color: #FFD700;
+  font-size: 2.2em;
+  margin-right: 5px;
+}
+
+.testimonial-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 2.2em;
+}
+
+.testimonial-role {
+  color: #777;
+  font-size: 1.2em;
+}
+
+/* Arrow Navigation Styles */
+.slick-arrow {
+  position: absolute;
+  margin-top: 120px;
+  font-size: 24px;
+  color: #030303;
+  background-color: #030303;
+  cursor: pointer;
+  z-index: 1;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.slick-arrow:hover {
+  background-color: rgba(94, 21, 21, 0.9);
+}
+
+.slick-next {
+  right: 50%;
+  transform: translateX(100%);
+}
+
+.slick-prev {
+  left: 50%;
+  transform: translateX(-100%);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .testimonial {
+    width: 250px;
+    padding: 15px;
+    margin: 10px auto;
+    display: block;
+  }
+
+  .testimonial-image {
+    width: 80px;
+    height: 80px;
+    margin-right: 0;
+    margin-bottom: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .testimonial-quote {
+    font-size: 0.9em;
+    margin-bottom: 8px;
+  }
+
+  .testimonial-rating span {
+    font-size: 1em;
+  }
+
+  .testimonial-name {
+    font-size: 1.1em;
+  }
+
+  .testimonial-role {
+    font-size: 0.9em;
+  }
+
+  .slick-arrow {
+    bottom: 10px;
+    font-size: 20px;
+    padding: 4px 8px;
+  }
+
+  .slick-next {
+    right: 50%;
+    transform: translateX(100%);
+  }
+
+  .slick-prev {
+    left: 50%;
+    transform: translateX(-100%);
+  }
+}

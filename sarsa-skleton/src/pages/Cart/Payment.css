@@ -1,0 +1,372 @@
+.end {
+    /* border: 2px solid black; */
+
+    width: 100vw;
+    height: 25vw;
+    background-color: black;
+}
+
+.paymenthead {
+    font-size: x-large;
+    margin-top: 14px;
+    margin-left: 85px;
+}
+
+.addressdisplay {
+    display: flex;
+}
+
+.home {
+    position: relative;
+    width: 26px;
+    left: 82px;
+    margin-top: 18px;
+}
+
+.line {
+    position: relative;
+    top: 23px;
+    left: 87px;
+
+}
+
+.wallet {
+    position: relative;
+    width: 37px;
+    left: 76px;
+    top: 9px;
+}
+
+.notepad {
+    top: 87px;
+    left: 559px;
+    position: absolute;
+    width: 48px;
+    height: 51px;
+}
+
+.paymentform {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    /* position: relative; */
+    margin-left: 82px;
+}
+
+.debit {
+    margin-top: 16px;
+}
+
+.debit h4 {
+    display: inline;
+}
+
+.cardno {
+    margin-top: 14px;
+}
+
+#number {
+    border-radius: 9px;
+    border: 2px solid black;
+    height: 39px;
+    width: 558px;
+
+}
+
+.card {
+    margin-top: 14px;
+
+}
+
+#name {
+    border-radius: 9px;
+    border: 2px solid black;
+    height: 39px;
+    width: 558px;
+
+}
+
+.expirydate_cvv {
+    display: flex;
+}
+
+.ex {
+    margin-top: 14px;
+}
+
+#date {
+    border-radius: 9px;
+    border: 2px solid black;
+    height: 39px;
+    width: 270px;
+
+}
+
+.cv {
+    margin-left: 15px;
+    margin-top: 14px;
+    /* position: relative; */
+    top: -52px;
+    left: 282px;
+}
+
+#cvv {
+    border-radius: 9px;
+    border: 2px solid black;
+    height: 39px;
+    width: 270px;
+}
+
+.addcard {
+    height: 52px;
+    list-style: none;
+    text-decoration: none;
+    background-color: black;
+    padding: 11px;
+    margin-top: 27px;
+
+    width: 259px;
+    border-radius: 13px;
+}
+
+.addcard span {
+    color: white;
+}
+
+.gpay {
+    margin-top: 18px;
+}
+
+.gpay h4 {
+    display: inline;
+}
+
+.paypal {
+    margin-top: 18px;
+}
+
+.paypal h4 {
+    display: inline;
+}
+
+.cod {
+    margin-top: 18px;
+}
+
+.cod h4 {
+    display: inline;
+}
+
+.continue {
+    height: 52px;
+    list-style: none;
+    text-decoration: none;
+    background-color: black;
+    padding: 11px;
+    margin-top: 27px;
+    margin-bottom: 27px;
+
+    width: 259px;
+    border-radius: 13px;
+
+}
+
+.continue span {
+    color: white;
+}
+
+.sarsachic {
+    color: white;
+    font-weight: 600;
+    font-size: x-large;
+    position: absolute;
+    left: 669px;
+    padding: 10px;
+    list-style: none;
+    text-decoration: none;
+    margin-top: 58px;
+    left: 128px;
+
+}
+
+.sarsachic p {
+    margin-top: 58px;
+}
+
+.sarsachic a {
+    text-decoration: none;
+    color: white;
+}
+
+.sarsachic div {
+    margin-top: 36px;
+
+}
+
+.sss {
+    display: flex;
+
+}
+
+.shop {
+    font-size: x-large;
+    top: 14px;
+
+    position: relative;
+    margin-top: 58px;
+    left: 771px;
+    color: white;
+}
+
+/* .shop p{
+    margin-top: 31px;
+} */
+.shop1 a {
+    display: inline;
+    margin-top: 31px;
+    text-decoration: none;
+    color: white;
+
+}
+
+.shop1 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 57px;
+    font-size: large;
+}
+
+.support {
+    font-size: x-large;
+    top: 14px;
+
+    position: relative;
+    margin-top: 58px;
+    left: 1143px;
+    color: white;
+}
+
+.searchi {
+    top: 7px;
+    left: 1333px;
+    position: absolute;
+    height: 26px;
+    width: 28px;
+}
+
+.wishi {
+    top: -6px;
+    left: 1369px;
+    position: absolute;
+    width: 54px;
+}
+
+.carti {
+    left: 1435px;
+    position: absolute;
+    top: 9px;
+    height: 27px;
+    width: 25px;
+}
+
+.cashcard {
+    left: 936px;
+    position: absolute;
+    border: 2px solid black;
+    width: 390px;
+    height: 249px;
+
+}
+
+.subtotal {
+    left: 40px;
+    top: 14px;
+    position: absolute;
+    font-size: larger;
+    font-weight: 700;
+}
+
+.subtotal1 {
+    top: 16px;
+    left: 290px;
+    position: absolute;
+    font-size: larger;
+    font-weight: 700;
+}
+
+.hl1 {
+    left: 21px;
+    width: 348px;
+    position: relative;
+    top: 40px;
+
+}
+
+.discount {
+    position: absolute;
+    top: 57px;
+    left: 41px;
+}
+
+#coupon {
+    border: 2px solid black;
+    border-radius: 8px;
+    height: 47px;
+    width: 316px;
+    border: 2px solid black;
+
+}
+
+.discount button {
+    color: white;
+    background-color: black;
+    left: 198px;
+    top: 19px;
+    position: absolute;
+    text-decoration: none;
+    height: 50px;
+    width: 120px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+
+}
+
+.del {
+    font-size: larger;
+    left: 45px;
+    position: absolute;
+    top: 156px;
+}
+
+.del1 {
+    font-size: larger;
+    left: 293px;
+    position: absolute;
+    top: 156px;
+}
+
+.hl2 {
+    left: 21px;
+    width: 348px;
+    position: relative;
+    top: 183px;
+
+}
+
+.grandt {
+    font-weight: 700;
+    font-size: larger;
+    left: 48px;
+    position: absolute;
+    top: 200px;
+
+}
+
+.grandt1 {
+    font-weight: 700;
+    font-size: larger;
+    left: 293px;
+    position: absolute;
+    top: 201px;
+
+}

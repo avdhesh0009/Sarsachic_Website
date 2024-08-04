@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.currency-header select {
+  border: none;
+  appearance: none;
+  font-size: 1.15rem;
+
+  color: #000;
+  cursor: pointer;
+
+}
+
+.currency-header option {
+  font-size: 22px;
+}
+
+.header-navbar {
+  background: linear-gradient(to left, #D0D1CA 50%, #ffffff 50%);
+  display: flex;
+  padding: 10px 0;
+}
+
+.header-section {
+  flex: 2;
+  text-align: center;
+  margin-right: 70px;
+}
+
+.header-left {
+  display: flex;
+  text-align: center;
+}
+
+.left-header-icons {
+  list-style: none;
+  flex: 1;
+}
+
+.left-header-icons li {
+  display: inline-block;
+  cursor: pointer;
+  margin: 10px 20px;
+}
+
+
+.right-header-icons {
+  list-style: none;
+  flex: 3;
+  text-align: center;
+}
+
+.right-header-icons li {
+  display: inline-block;
+  margin: 10px 20px;
+  font-size: 18px;
+}
+
+.left-header-icons li {
+  font-size: 18px;
+}
+
+.logo {
+  /* Grow to fill the space */
+  font-weight: bolder;
+  color: rgb(0, 0, 0);
+  /* Change color of logo text */
+  font-size: 34px;
+  /* Optional: Adjust font size */
+}
+
+.logo a {
+  text-decoration: none;
+  color: black;
+
+}
+
+
+
+@media screen and (max-width: 768px) {}

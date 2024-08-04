@@ -1,0 +1,348 @@
+.paymenthead {
+    font-size: x-large;
+    margin-top: 50px;
+    margin-left: 85px;
+}
+
+.price-cart {
+    font-size: large;
+    font-weight: 700;
+    position: absolute;
+    left: 357px;
+
+}
+
+.quantity-cart {
+    font-size: large;
+    font-weight: 700;
+    position: absolute;
+    left: 473px;
+
+}
+
+.sub_total {
+    font-size: large;
+    font-weight: 700;
+    position: absolute;
+    left: 632px;
+
+}
+
+#t1price {
+    position: absolute;
+    left: 153px;
+
+}
+
+#t1price2 {
+    position: absolute;
+    left: 437px;
+
+}
+
+#t2price {
+    position: absolute;
+    left: 153px;
+
+}
+
+#t2price2 {
+    position: absolute;
+    left: 437px;
+
+}
+
+#t3price {
+    position: absolute;
+    left: 153px;
+
+}
+
+#t3price2 {
+    position: absolute;
+    left: 437px;
+
+}
+
+.box1-cart {
+    border-radius: 11px;
+    height: 31px;
+    width: 82px;
+    position: absolute;
+    left: 264px;
+    border: 2px solid black;
+}
+
+.box1-cart .quant {
+    top: 6px;
+    left: 22px;
+    position: relative;
+    margin-right: 6px;
+}
+
+.box2-cart {
+    border-radius: 11px;
+    height: 31px;
+    width: 82px;
+    position: absolute;
+    left: 264px;
+    border: 2px solid black;
+}
+
+.box2-cart .quant {
+    top: 6px;
+    left: 22px;
+    position: relative;
+    margin-right: 6px;
+}
+
+.box3-cart {
+    border-radius: 11px;
+    height: 31px;
+    width: 82px;
+    position: absolute;
+    left: 264px;
+    border: 2px solid black;
+}
+
+.box3-cart .quant {
+    top: 6px;
+    left: 22px;
+    position: relative;
+    margin-right: 6px;
+}
+
+.summbox {
+    margin-left: 84px;
+    margin-top: 30px;
+    flex-direction: column;
+    display: flex;
+    /* border: 2px solid black; */
+    width: 607px;
+    height: 483px;
+    gap: 2rem;
+}
+
+.products-cart {
+    font-size: large;
+    font-weight: 700;
+    position: absolute;
+    left: 86px;
+}
+
+
+
+.tshirt1 .image-t1 {
+    left: 105px;
+    top: 180px;
+    /* position: absolute; */
+    width: 80px;
+
+}
+
+.t1des {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 63px;
+    left: 119px;
+}
+
+.t1des p {
+    margin-top: 4px;
+}
+
+.tshirt2 {
+    display: flex;
+}
+
+.tshirt2 .image-t2 {
+    left: 105px;
+    top: 297px;
+    position: absolute;
+    width: 80px;
+
+}
+
+.t2des {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 128px;
+    left: 119px;
+}
+
+.t2des p {
+    margin-top: 4px;
+}
+
+
+.tshirt3 .image-t3 {
+    left: 105px;
+    top: 439px;
+    position: absolute;
+    width: 91px;
+
+}
+
+.t3des {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 206px;
+    left: 119px;
+}
+
+.t3des p {
+    margin-top: 4px;
+}
+
+.shippingadd {
+    left: 21px;
+    position: relative;
+    top: 215px;
+}
+
+.shippingadd h3 {
+    margin-top: 45px;
+    margin-bottom: 15px;
+}
+
+.edit1 {
+    left: 494px;
+    position: absolute;
+    width: 29px;
+
+}
+
+.edit2 {
+    left: 494px;
+    position: absolute;
+    width: 29px;
+
+}
+
+.carti {
+    left: 1435px;
+    position: absolute;
+    top: 9px;
+    height: 27px;
+    width: 25px;
+}
+
+.cashcard {
+    left: 936px;
+    position: absolute;
+    border: 2px solid black;
+    width: 390px;
+    height: 249px;
+
+}
+
+.subtotal {
+    left: 40px;
+    top: 14px;
+    position: absolute;
+    font-size: larger;
+    font-weight: 700;
+}
+
+.subtotal1 {
+    top: 16px;
+    left: 290px;
+    position: absolute;
+    font-size: larger;
+    font-weight: 700;
+}
+
+.hl1 {
+    left: 21px;
+    width: 348px;
+    position: relative;
+    top: 40px;
+
+}
+
+.discount-cart {
+    position: absolute;
+    top: 57px;
+    left: 41px;
+}
+
+#coupon {
+    border: 2px solid black;
+    border-radius: 8px;
+    height: 47px;
+    width: 316px;
+    border: 2px solid black;
+
+}
+
+.discount-cart button {
+    color: white;
+    background-color: black;
+    left: 198px;
+    top: 19px;
+    position: absolute;
+    text-decoration: none;
+    height: 50px;
+    width: 120px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+
+}
+
+.del {
+    font-size: larger;
+    left: 45px;
+    position: absolute;
+    top: 156px;
+}
+
+.del1 {
+    font-size: larger;
+    left: 293px;
+    position: absolute;
+    top: 156px;
+}
+
+.hl2 {
+    left: 21px;
+    width: 348px;
+    position: relative;
+    top: 183px;
+
+}
+
+.grandt {
+    font-weight: 700;
+    font-size: larger;
+    left: 48px;
+    position: absolute;
+    top: 200px;
+
+}
+
+.grandt1 {
+    font-weight: 700;
+    font-size: larger;
+    left: 293px;
+    position: absolute;
+    top: 201px;
+
+}
+
+.ship {
+    padding: 14px 38px;
+    background-color: white;
+    border: none;
+    position: absolute;
+    bottom: 0;
+    left: 47%;
+    border:1px solid black;
+}
+
+.ship .ship-cart {
+    color: white;
+    text-decoration: none;
+}

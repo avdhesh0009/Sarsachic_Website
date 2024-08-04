@@ -1,0 +1,139 @@
+.new-arrivals {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.new-arrivals h1 {
+  font-size: 2.5em;
+
+}
+
+a {
+  text-decoration: none !important;
+  color: #000 !important;
+}
+
+
+.new-arrivals p {
+  margin-top: 40px;
+  font-size: 1.2em;
+  color: gray;
+}
+
+.tabs {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tabs button {
+  background-color: #f8f8f8;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.tabs button.active {
+  background-color: #ccc;
+  font-weight: bold;
+}
+
+.products-arrival {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-content: center;
+}
+
+.product-card-arrival {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card-arrival:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-card-arrival img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.product-info-arrival {
+  padding: 20px;
+}
+
+
+.product-info-arrival h2 {
+  font-size: 1.5em;
+  margin: 10px 0px;
+
+}
+
+
+.product-info-arrival p {
+  font-size: 1em;
+  margin: 5px 0;
+}
+
+.product-info-arrival .rating-arrival {
+  color: gold;
+  font-size: 1.2em;
+}
+
+.product-info-arrival h3 {
+  font-size: 1.5em;
+  color: #333;
+}
+
+.product-info-arrival .status {
+  color: red;
+  font-size: 0.9em;
+}
+
+.view-more {
+  background-color: #ccc;
+  border: none;
+  border-radius: 15px;
+  padding: 10px 30px;
+  font-size: 1em;
+  cursor: pointer;
+  margin: 20px 0;
+}
+
+.tabs button {
+  font-size: 14px;
+  border-radius: 22px;
+  padding: 10px 35px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .products-arrival {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card-arrival {
+    width: 90%;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+}
+
+
+@media (max-width: 1200px) {
+  .products-arrival {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

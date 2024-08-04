@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  overflow: hidden;
+  min-height: 100vh;
+  height: 100vh;
+}
+.forgot-password {
+  color: red;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+}
+
+.text span {
+  opacity: 0.5;
+}
+
+.section-1 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 20%;
+  top: 20%;
+}
+
+.input-wrapper {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 30px;
+}
+
+.input-email {
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+  gap: 0.5rem;
+}
+
+#input-box {
+  width: 55%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  padding: 11px 8px;
+  border: none;
+  border-radius: 12px;
+}
+
+.input-pass {
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+  gap: 0.5rem;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6rem;
+  font-size: 12px;
+}
+
+.remember-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 2.1px 0 0;
+}
+
+.button {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.sign-in-button {
+  width: 60%;
+  align-self: flex-start;
+  cursor: pointer;
+  border: 0;
+  border-radius: 12px;
+  padding: 11.4px 8.2px;
+  background-color: #ea454c;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.Google-button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 60%;
+  align-self: flex-start;
+  cursor: pointer;
+  border: 0;
+  border-radius: 12px;
+  padding: 11.4px 8.2px;
+  background-color: white;
+  justify-content: center;
+  color: black;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.Google-button img {
+  width: 18px;
+  height: 18px;
+}
+
+.dont-have-an-account-sign-up-wrapper {
+  margin-left: 90px;
+  margin-top: 10px;
+}
+
+.dont-have-an-container {
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+}
+
+.sign-up-fo {
+  color: #ea454c;
+}
+
+.cover-img {
+  position: relative;
+  min-width: 351px;
+  overflow: hidden;
+  object-fit: cover;
+  height: 750px;
+  width: 100%;
+  overflow: hidden;
+  background-size: cover;
+  z-index: 1;
+}
+.cover-img {
+  position: relative;
+  min-width: 351px;
+  overflow: hidden;
+  object-fit: cover;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-size: cover;
+  z-index: 1;
+}
+
+@media screen and (max-width: 1068px) {
+  .text {
+    font-size: 10px;
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 10px;
+  }
+  .Google-button,
+  .button {
+    font-size: 10px;
+  }
+
+  .dont-have-an-account-sign-up-wrapper {
+    margin-left: 0;
+  }
+}

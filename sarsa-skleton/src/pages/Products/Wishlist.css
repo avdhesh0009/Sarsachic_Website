@@ -1,0 +1,182 @@
+
+  
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .wish{
+    left: 68px;
+    top: 1px;
+    position: absolute;
+    margin-bottom: 20px;
+  }
+  
+  .totalitems {
+    margin-top: 20px;
+    top: 25px;
+    position: absolute;
+    left: 71px;
+  }
+  
+  .row1{
+    margin-top: 40px;
+  }
+  .row1,
+  .row2,
+  .row3,
+  .row4 {
+   
+    display: flex;
+    flex-wrap: wrap; /* Ensure boxes wrap to the next line if necessary */
+  }
+  
+  .box {
+    border-radius: 33px;
+    margin: 8px 17px;
+    position: relative;
+    border: 2px solid black;
+    width: 324px;
+    height: 312px;
+  }
+  
+  .add {
+    bottom: 33px;
+    left: 20px;
+    position: absolute;
+    width: 24px;
+  }
+  
+  button {
+    text-decoration: none;
+  }
+  
+  .leftarrow {
+    top: 0px;
+    position: absolute;
+    width: 45px;
+  }
+  
+  .addtocart {
+    bottom: 18px;
+    border-bottom-left-radius: 27px;
+    border-bottom-right-radius: 27px;
+    height: 48px;
+    width: 329px;
+    color: white;
+    background-color: black;
+    position: relative;
+    left: -3px;
+  }
+  
+  .cart {
+    right: 86px;
+    top: 9px;
+    position: absolute;
+    width: 24px;
+    color: invert;
+    filter: invert(1);
+  }
+  
+  .wish {
+    left: 12px;
+    top: 12px;
+    position: absolute;
+    width: 31px;
+  }
+  
+  .ts1 {
+    border-radius: 33px 33px 0 0;
+    width: 324px;
+    height: 260px;
+  }
+  
+  .ts2 {
+    margin-left: 44px;
+    width: 219px;
+  }
+  
+  .ts3 {
+    margin-top: 11px;
+    margin-left: 15px;
+    width: 271px;
+  }
+  
+  .ts4 {
+    margin-top: 8px;
+    margin-left: 19px;
+    width: 274px;
+  }
+  
+  .ts5 {
+    height: 274px;
+    margin-top: 8px;
+    margin-left: 49px;
+    width: 216px;
+  }
+  
+  .ts6 {
+    margin-top: 8px;
+    margin-left: 30px;
+    width: 264px;
+  }
+  
+  .ts8 {
+    margin-top: 8px;
+    margin-left: 22px;
+    width: 274px;
+  }
+  
+  .ts9 {
+    margin-top: 8px;
+    margin-left: 24px;
+    width: 274px;
+  }
+  
+  .ts10 {
+    height: 278px;
+    margin-top: 4px;
+    margin-left: 45px;
+    width: 234px;
+  }
+  
+  .ts11 {
+    margin-top: 8px;
+    margin-left: 24px;
+    width: 274px;
+  }
+  
+  .ts12 {
+    margin-top: 8px;
+    margin-left: 23px;
+    width: 274px;
+  }
+  
+  .ts13 {
+    margin-top: 8px;
+    margin-left: 23px;
+    width: 274px;
+  }
+  
+  .ts14 {
+    margin-top: 3px;
+    margin-left: 46px;
+    width: 210px;
+  }
+  
+  .ts15 {
+    margin-top: 8px;
+    margin-left: 26px;
+    width: 274px;
+  }
+  
+  .ts16 {
+    margin-top: 8px;
+    margin-left: 24px;
+    width: 274px;
+  }
+  

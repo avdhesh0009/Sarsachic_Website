@@ -1,0 +1,115 @@
+.page-wrapper {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  background-color: #f3f5fa;
+}
+
+.allproducts-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 2rem;
+}
+
+.scroll-section {
+  display: grid;
+  grid-template-rows: 50% 50%;
+}
+
+.products {
+  margin-left: 10%;
+  margin-right: 5%;
+  display: flex;
+  gap: 7rem;
+}
+
+.page-title {
+  text-align: center;
+  padding: 20px 20px;
+  font-size: 32px;
+  margin-top: 2%;
+}
+
+.fixed-section img {
+  margin-left: 100px;
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+}
+
+.fixed-section {
+
+  display: flex;
+  width: 75%;
+  height: 85%;
+}
+
+.shop-button {
+  display: none;
+  bottom: 100px;
+  right: 100px;
+  padding: 0.7rem 1.5rem;
+  border-radius: 22px;
+  background-color: rgb(255, 255, 255);
+  border: none;
+}
+
+.products {
+  margin-bottom: 4%;
+}
+
+.explore-more1 {
+  width: 100%;
+}
+
+.explore-more1 button {
+  position: relative;
+  background-color: black;
+  color: white;
+  padding: 0.8rem 3rem;
+  border: 1px solid black;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  left: 40%;
+}
+
+.explore-more1 button:hover {
+  background-color: rgb(40, 39, 39);
+}
+
+@media screen and (max-width: 600px) {
+  .fixed-section {
+    display: none;
+  }
+
+  .products {
+    gap: 4rem;
+  }
+
+  .allproducts-container {
+    grid-template-columns: auto auto;
+  }
+
+  .explore-more1 button {
+    left: 30%;
+  }
+
+  .page-title {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .fixed-section {
+    display: none;
+  }
+
+  .products {
+    gap: 4rem;
+  }
+
+  .allproducts-container {
+    grid-template-columns: auto auto;
+  }
+}

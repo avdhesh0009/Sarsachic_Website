@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --font-jsmath-cmr10: jsMath-cmr10;
+
+  /* font sizes */
+  --font-size-13xl: 32px;
+  --font-size-lgi: 19px;
+  --font-size-7xl: 26px;
+
+  /* Colors */
+  --color-gainsboro: #e8e7e2;
+  --color-black: #000;
+}
+a{
+  text-decoration: none !important;
+  color: #000 !important;
+}

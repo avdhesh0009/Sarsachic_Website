@@ -1,0 +1,40 @@
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Arial, sans-serif";
+  border: border-box;
+  overflow: none;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --font-jsmath-cmr10: jsMath-cmr10;
+
+  /* font sizes */
+  --font-size-13xl: 32px;
+  --font-size-lgi: 19px;
+  --font-size-7xl: 26px;
+
+  /* Colors */
+  --color-gainsboro: #e8e7e2;
+  --color-black: #000;
+}
