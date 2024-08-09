@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import searchImg from '../../images/search.jpg';
 import wishlistImg from '../../images/wishlist.jpg';
@@ -11,20 +11,12 @@ import changepassImg from '../../images/changepass.jpg';
 import logoutImg from '../../images/logout.jpg';
 import './profile.css';
 import useAxiosPublic from '../../hooks/useAxios';
+import Sidebar from './Sidebar';
 
 const Profile = () => {
   const axios = useAxiosPublic();
   const [message,setMessage] = useState('');
-  const handleLogout = async () =>{
-    try{
-      const response = await axios.post('/users/logout');
-      console.log(response.data);
-      setMessage(response.data.message);
-    }
-    catch(error){
-      console.log(error);
-    }
-  }
+  
   return (
     <div className="profile-container">
       {message && (
@@ -33,50 +25,10 @@ const Profile = () => {
         </div>
       )}
       <div className="profile-box">
-        <div className="name">
-          <div className="profile-pic"></div>
-          <h2>Tushar Chauhan</h2>
-        </div>
-        <Link to="/userProfile">
-          <button className="user">
-            <img src={userImg} alt="" />
-            <span>My Profile</span>
-          </button>
-        </Link>
-        <Link to="/adddeliveryaddress">
-          <button className="address">
-            <img src={addressImg} alt="" />
-            <span>Delivery Address</span>
-          </button>
-        </Link>
-        <Link to="/myorders">
-          <button className="bag">
-            <img src={bagImg} alt="" />
-            <span>My Orders</span>
-          </button>
-        </Link>
-        
-        <Link to="/mywishlist">
-          <button className="wishlist">
-            <img src={wishlistImg} alt="" />
-            <span>My Wishlist</span>
-          </button>
-        </Link>
-        <Link to="/updatepassword">
-          <button className="changepass">
-            <img src={changepassImg} alt="" />
-            <span>Change Password</span>
-          </button>
-        </Link>
-        <button onClick={handleLogout}>
-          <button className="logout">
-            <img src={logoutImg} alt="" />
-            <span>Logout</span>
-          </button>
-        </button>
+       <Sidebar/>
       </div>
       <div className="profile-content">
-        <h1 className="heading">Welcome Tushar!</h1>
+        <h1 className="pheading">Welcome Tushar!</h1>
         <div className="profile-board">
           <button className="edit-profile"><img src={editiconImg} alt="" /></button>
           <form action="" className="profile-info">
