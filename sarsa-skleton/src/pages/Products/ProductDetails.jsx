@@ -141,12 +141,8 @@ const ProductDetails = () => {
             <h2>SHIPPING AND RETURN <FaPlus className='plus-icon' /></h2>
           </div>
         </div>
-        <div className="slider-new">
-          <TestimonialSlider />
-
-        </div>
-
       </div>
+      <TestimonialSlider />
     </>
   );
 };

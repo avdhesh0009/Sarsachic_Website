@@ -1,72 +1,85 @@
 .testimonial-slider {
-  height: 70vh;
+  height: auto;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   padding: 20px;
   background-color: #f7f7f7;
   position: relative;
-  margin-top: 30px;
-  left: 50%;
- 
-
+  margin: 30px auto; /* Center the slider with auto margin */
+  max-width: 800px; /* Limit the maximum width for better layout control */
+  width: 100%; /* Ensure full width for smaller screens */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow for better visual separation */
 }
 
 
+
+
 .testimonial-slider h1 {
-  margin: 20px;
-  font-size: 50px;
+  margin: 20px 0;
+  font-size: 2em;
+}
+
+.testimonial-slider p {
+  margin-bottom: 40px; /* Add margin to space out the text */
 }
 
 .con {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
 }
 
 .testimonial-image {
-  border-radius: 0;
   width: 250px;
   height: 250px;
   object-fit: cover;
   margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 .testimonial-content {
   text-align: left;
-
+  max-width: 600px;
+  margin: 0 auto; /* Center the text inside the content area */
 }
 
 .testimonial-quote {
   font-style: italic;
-  margin-bottom: 10px;
-  font-size: 30px;
+  margin-bottom: 20px; /* Add margin to space out the quote from other text */
+  font-size: 1.5em;
 }
 
 .testimonial-rating {
-  margin-bottom: 10px;
+  margin-bottom: 20px; /* Add margin to space out the rating from other text */
 }
 
 .testimonial-rating span {
   color: #FFD700;
-  font-size: 2.2em;
+  font-size: 1.2em;
   margin-right: 5px;
 }
 
 .testimonial-name {
   font-weight: bold;
-  margin-bottom: 5px;
-  font-size: 2.2em;
+  margin-bottom: 10px; /* Add margin to space out the name from other text */
+  font-size: 1.5em;
 }
 
 .testimonial-role {
   color: #777;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 /* Arrow Navigation Styles */
 .slick-arrow {
   position: absolute;
-  margin-top: 120px;
+  top: 50%; /* Vertically center the arrows */
+  transform: translateY(-50%);
   font-size: 24px;
   color: #030303;
-  background-color: #030303;
+  background-color: #2c2a2a;
   cursor: pointer;
   z-index: 1;
   padding: 10px 15px;
@@ -79,49 +92,80 @@
 }
 
 .slick-next {
-  right: 50%;
-  transform: translateX(100%);
+  right: 10px;
 }
 
 .slick-prev {
-  left: 50%;
-  transform: translateX(-100%);
+  left: 10px;
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .testimonial-slider h1 {
+    font-size: 2em;
+  }
+
+  .testimonial-quote {
+    font-size: 1.3em;
+  }
+
+  .testimonial-name {
+    font-size: 1.3em;
+  }
+
+  .testimonial-role {
+    font-size: 1em;
+  }
+}
+
 @media (max-width: 600px) {
+  .testimonial-slider h1 {
+    font-size: 1.5em;
+  }
+
+  .testimonial-slider p {
+    font-size: 1em;
+  }
+
+  .con {
+    display: block;
+  }
+
   .testimonial {
-    width: 250px;
+    width: 90%;
+    margin: 0 auto;
     padding: 15px;
-    margin: 10px auto;
     display: block;
   }
 
   .testimonial-image {
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    height: auto;
     margin-right: 0;
     margin-bottom: 15px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+  }
+
+  .testimonial-content {
+    text-align: center; /* Center content on smaller screens */
   }
 
   .testimonial-quote {
-    font-size: 0.9em;
-    margin-bottom: 8px;
+    font-size: 1em;
+    margin-bottom: 10px; /* Adjust margin for smaller screens */
   }
 
   .testimonial-rating span {
-    font-size: 1em;
+    font-size: 1.2em;
   }
 
   .testimonial-name {
-    font-size: 1.1em;
+    font-size: 1.3em;
+    margin-bottom: 10px; /* Adjust margin for smaller screens */
   }
 
   .testimonial-role {
-    font-size: 0.9em;
+    font-size: 1em;
   }
 
   .slick-arrow {

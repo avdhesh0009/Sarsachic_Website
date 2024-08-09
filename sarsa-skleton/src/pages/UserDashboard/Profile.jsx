@@ -11,21 +11,14 @@ import changepassImg from '../../images/changepass.jpg';
 import logoutImg from '../../images/logout.jpg';
 import './profile.css';
 import useAxiosPublic from '../../hooks/useAxios';
-import { WebContext } from '../../providers/WebProvider';
-import { useRef } from 'react';
-import ProfileImageUpload from '../../components/ProfileImageUpload';
 
 const Profile = () => {
   const axios = useAxiosPublic();
   const [message,setMessage] = useState('');
-
-  const { setUser, user } = useContext(WebContext);
-
   const handleLogout = async () =>{
     try{
       const response = await axios.post('/users/logout');
       console.log(response.data);
-      console.log(user);
       setMessage(response.data.message);
     }
     catch(error){
@@ -41,8 +34,8 @@ const Profile = () => {
       )}
       <div className="profile-box">
         <div className="name">
-          <ProfileImageUpload />
-          <h2>{user?.user?.username}</h2>
+          <div className="profile-pic"></div>
+          <h2>Tushar Chauhan</h2>
         </div>
         <Link to="/userProfile">
           <button className="user">
@@ -83,7 +76,7 @@ const Profile = () => {
         </button>
       </div>
       <div className="profile-content">
-        <h1 className="heading">Welcome {user?.user?.username}!</h1>
+        <h1 className="heading">Welcome Tushar!</h1>
         <div className="profile-board">
           <button className="edit-profile"><img src={editiconImg} alt="" /></button>
           <form action="" className="profile-info">
@@ -104,7 +97,7 @@ const Profile = () => {
               </div>
               <div className="form-group form-group-half">
                 <label htmlFor="number">Mobile Number</label>
-                <input type="number" name="number" id="number" />
+                <input type="mnumber" name="mnumber" id="mnumber" />
               </div>
             </div>
             <div className="form-group">

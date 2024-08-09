@@ -1,54 +1,82 @@
-.profileboard{
-    border-radius: 40px;
-    top: 130px;
-    left: 600px;
-    height: 441px;
-    border: 1px solid #e5dddd;
-    
-    box-shadow: 0px 0px 8px #ddd0d0;
-    position: absolute;
-    width: 800px;
-
-}
-.profileinfo{
-    /* border: 2px solid black; */
-    border-radius: 40px;
-    top: 11px;
-    left: 14px;
-    height: 395px;
-    position: absolute;
-    width: 769px;
-}
-.heading{
-    top: 98px;
-    position: absolute;
-    left: 836px;
-}
-.profileboard img{
-    top: 14px;
-    left: 266px;
-    position: absolute;
-    width: 242px;
-}
-.profileboard p{
-    left: 233px;
-    top: 268px;
-    position: absolute;
-}
-.profileboard b{
-    left: 209px;
-    top: 309px;
-    position: absolute;
-
-}
-.shopnow{
-    background-color: black ;
-    color: white;
-    border-radius: 9px;
-    height: 35px;
-    width: 200px;
-    left: 279px;
-    top: 376px;
-    position: absolute;
-    border: 2px solid black;
-}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .profile-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  
+  .profile-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .profile-content {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+  
+  .pheading {
+    text-align: center;
+  }
+  
+  .orderboard {
+    text-align: center;
+  }
+  
+  .empty-cart-img {
+    width: 100%;
+    max-width: 200px; /* Adjust as needed */
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .orderboard p,
+  .orderboard b {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .shopnow {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+  }
+  
+  .shopnow:hover {
+    background: #444;
+  }
+  
+  /* Media Queries for Responsiveness */
+  
+  @media (min-width: 768px) {
+    .profile-container {
+      flex-wrap: nowrap;
+    }
+  
+    .profile-box {
+      width: 25%;
+      margin-bottom: 0;
+    }
+  
+    .profile-content {
+      width: 75%;
+    }
+  }
+  
