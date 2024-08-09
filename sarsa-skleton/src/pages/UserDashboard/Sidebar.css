@@ -1,0 +1,68 @@
+/* Sidebar.css */
+.sidebar {
+    width: 250px;
+   
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  
+  .profile-section {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .profile-name {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .menu {
+    display: flex;
+    flex-direction: column;
+    width: 130%;
+  }
+  
+  .menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: 5px 0;
+    color: black;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .menu-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .menu-item span {
+   
+  
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .menu-item {
+      padding: 15px;
+    }
+  }
+  

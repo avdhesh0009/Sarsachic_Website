@@ -7,6 +7,7 @@ import './TestimonialSlider.css';
 import img1 from '../../images/testImg.png';
 import img2 from '../../images/testImg.png';
 import img3 from '../../images/testImg.png';
+import ReviewPopup from './ReviewPopup';
 
 const NextArrow = (props) => {
   const { className, style, onClick } = props;
@@ -94,6 +95,7 @@ const TestimonialSlider = () => {
       <h1>This Is What Our Customers Say</h1>
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, non.</p>
       <Slider {...settings} className='slider'>
+      
         {testimonials.map((testimonial, index) => (
           <div key={index} className="testimonial">
             <div className='con'>
@@ -113,7 +115,9 @@ const TestimonialSlider = () => {
             
           </div>
         ))}
+        
       </Slider>
+      <ReviewPopup/>
     </div>
   );
 };
