@@ -24,6 +24,7 @@ import img9 from '../../images/ts6.jpg'
 import img10 from '../../images/ts8.jpg'
 import img11 from '../../images/ts9.jpg'
 import useAxiosPublic from '../../hooks/useAxios';
+import Sidebar from './Sidebar';
 
 const MyWishlist = () => {
   const [favourites, setFavourites] = useState([]);
@@ -53,46 +54,7 @@ const MyWishlist = () => {
   return (
     <div className="profile-container">
       <div className="profile-box">
-        <div className="name">
-          <div className="profile-pic"></div>
-          <h2>Tushar Chauhan</h2>
-        </div>
-        <Link to="/userProfile">
-          <button className="user">
-            <img src={userImg} alt="User" />
-            <span>My Profile</span>
-          </button>
-        </Link>
-        <Link to="/adddeliveryaddress">
-          <button className="address">
-            <img src={addressImg} alt="Address" />
-            <span>Delivery Address</span>
-          </button>
-        </Link>
-        <Link to="/myorders">
-          <button className="bag">
-            <img src={bagImg} alt="My Orders" />
-            <span>My Orders</span>
-          </button>
-        </Link>
-        <Link to="/mywishlist">
-          <button className="wishlist">
-            <img src={wishlistImg} alt="My Wishlist" />
-            <span>My Wishlist</span>
-          </button>
-        </Link>
-        <Link to="/updatepassword">
-          <button className="changepass">
-            <img src={changepassImg} alt="Change Password" />
-            <span>Change Password</span>
-          </button>
-        </Link>
-        <Link to="">
-          <button className="logout">
-            <img src={logoutImg} alt="Logout" />
-            <span>Logout</span>
-          </button>
-        </Link>
+       <Sidebar/>
       </div>
       
         <h1 className="heading">Welcome Tushar!</h1>
