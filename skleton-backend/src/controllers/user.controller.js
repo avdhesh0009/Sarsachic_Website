@@ -12,6 +12,47 @@ import bcrypt from "bcrypt";
 import { Home } from "../models/homedata.model.js";
 
 
+const saveProfileImage = asyncHandler( async(req,res,next)=>{
+    const {userId} = req.params;
+    // console.log(userId);
+    if (req.file && !req.file.mimetype.startsWith("image")) {
+      throw new ApiError(400, "Please provide an image file");
+    }
+
+    const profileImageFromCloudinary = req.file
+    ? await uploadOnCloudinary(req.file.path)
+    : null;
+
+  if (!profileImageFromCloudinary && req.file) {
+    throw new ApiError(500, "Error uploading image to cloudinary");
+  }
+  let profileImage;
+
+  if (profileImageFromCloudinary) {
+    profileImage = profileImageFromCloudinary.url;
+  }
+
+  const imageData = await User.updateOne({_id:userId},{imageUrl:profileImage,})
+
+  if (!imageData) {
+    throw new ApiError(500, "Error saving image data");
+  }
+
+  res.status(201).json(new ApiResponse(201, {imageData,profileImage}));
+})
+
+const getProfileImage = asyncHandler( async (req,res) =>{
+    const {userId} = req.params;
+
+    const {imageUrl} = await User.findOne({_id:userId});
+
+    if(!imageUrl){
+        throw new ApiError(500, "Image Url Doesn't Exist");
+    }
+
+    res.status(201).json(new ApiResponse(201,imageUrl));
+})
+
 const generateAccessToken = async(userId) =>{
     try {
         const user = await User.findById(userId)
@@ -122,7 +163,7 @@ const verifyUser = asyncHandler(async (req,res) => {
 
     await UserVerification.deleteOne({ userId });
 
-    res.status(200).json(new ApiResponse(200, "User Verified Successfully"));
+    res.status(200).json(new ApiResponse(200,"User Verified Successfully"));
 })
 
 const registerUser = asyncHandler( async (req, res) => {
@@ -408,7 +449,9 @@ export {
     resetPasswordGet,
     resetPasswordPost,
     googleAuth,
-    changePassword
+    changePassword,
+    saveProfileImage,
+    getProfileImage
 }
 
 

@@ -1,4 +1,5 @@
 import { Router } from "express";
+import {upload} from "../middlewares/multer.middleware.js"
 import {
   loginUser,
   logoutUser,
@@ -8,7 +9,9 @@ import {
   resetPasswordPost,
   verifyUser,
   googleAuth,
-  changePassword
+  changePassword,
+  saveProfileImage,
+  getProfileImage
 } from "../controllers/user.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import {
@@ -78,5 +81,9 @@ router.route('/get-cart').get(verifyJWT, getCart )
 router.route('/add-favorite').post(verifyJWT, addToFavorites )
 router.route('/get-favorites').get(verifyJWT,getFavorites)
 router.route('/remove-from-favorites/:productId').get(verifyJWT,removeFromFavorites)
+
+
+router.route('/upload-profile-image/:userId').post(verifyJWT,upload.single("profile-image"),saveProfileImage)
+router.route('/image-url/:userId').get(verifyJWT,getProfileImage)
 
 export default router;
