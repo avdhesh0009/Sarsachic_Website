@@ -1,13 +1,10 @@
 import mongoose from "mongoose";
 
 const reviewSchema = new mongoose.Schema({
-    productId:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Product"
-    },
-    imageUrl:{
-        type:String,
-        trim:true
+    product: { 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Product', 
+        required: true 
     },
     name:{
         type:String,
