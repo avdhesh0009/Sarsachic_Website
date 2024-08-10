@@ -26,10 +26,6 @@ import UpdatePassword from "./pages/UserDashboard/UpdatePassword.jsx";
 import Wishlist from "./pages/Products/Wishlist.jsx";
 
 import VerifyForgotPasswordLink from "./pages/VerifyForgotPasswordLink.jsx";
-import AddReviewForm from "./pages/AddReviewForm.jsx";
-
-
-
 
 export default function App() {
   return (
@@ -58,7 +54,6 @@ export default function App() {
         <Route element={<MyOrders />} path="/myOrders" />
         <Route element={<MyWishlist />} path="/mywishlist" />
         <Route element={<UpdatePassword />} path="/updatepassword" />
-        <Route element={<AddReviewForm/>} path="/review-form"/>
       </Routes>
       <Footer />
     </BrowserRouter>

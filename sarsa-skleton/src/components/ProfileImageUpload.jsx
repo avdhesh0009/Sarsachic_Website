@@ -120,7 +120,7 @@ const ProfileImageUpload = () => {
       </div>
       {!isEditing && (
         <button onClick={editProfileImage}>
-          <img src={editiconImg} alt="Edit" /> Edit
+          Edit Image
         </button>
       )}
     </div>

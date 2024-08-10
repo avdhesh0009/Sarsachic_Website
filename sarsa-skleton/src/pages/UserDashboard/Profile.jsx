@@ -56,7 +56,7 @@ const Profile = () => {
               <label htmlFor="birthdate">Birthdate</label>
               <input type="date" name="birthdate" id="birthdate" />
             </div>
-            <div className="form-group">
+            <div className="form-group-rad">
               <label htmlFor="gender">Gender</label>
               <div>
                 <input type="radio" name="gender" id="male" />

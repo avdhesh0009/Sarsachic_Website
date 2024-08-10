@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './TestimonialSlider.css';
-
 import img1 from '../../images/testImg.png';
 import img2 from '../../images/testImg.png';
 import img3 from '../../images/testImg.png';
 import ReviewPopup from './ReviewPopup';
+import useAxiosPublic from '../../hooks/useAxios.jsx';
+import { useState } from 'react';
 
 const NextArrow = (props) => {
   const { className, style, onClick } = props;
@@ -27,30 +28,25 @@ const PrevArrow = (props) => {
   );
 };
 
-const TestimonialSlider = () => {
-  const testimonials = [
-    {
-      image: img1,
-      name: 'Alice Smith',
-      role: 'Designer',
-      rating: 5,
-      quote: "Awesome product! Highly recommended."
-    },
-    {
-      image: img2,
-      name: 'John Doe',
-      role: 'Developer',
-      rating: 4,
-      quote: "Great experience using this service."
-    },
-    {
-      image: img3,
-      name: 'Emily Brown',
-      role: 'Marketing Specialist',
-      rating: 5,
-      quote: "The best tool I've used for our campaigns."
-    }
-  ];
+const TestimonialSlider = ({id}) => {
+
+  const axios = useAxiosPublic();
+  const [testimonials,setTestimonials] = useState([]);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const response = await axios.get(`/products/get-reviews/${id}`);
+        console.log(response.data.data.reviews);
+        setTestimonials(response.data.data.reviews);
+      } catch (error) {
+        console.error('Error fetching reviews:', error);
+      }
+    };
+  
+    fetchReviews();
+  }, []);  // If 'id' is a prop or state, it should be included in the dependency array.
+  
 
   const settings = {
     dots: false,
@@ -94,12 +90,13 @@ const TestimonialSlider = () => {
     <div className="testimonial-slider">
       <h1>This Is What Our Customers Say</h1>
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, non.</p>
+      {/* <button onClick={getAllReviews}>Click Me</button> */}
       <Slider {...settings} className='slider'>
       
         {testimonials.map((testimonial, index) => (
           <div key={index} className="testimonial">
             <div className='con'>
-            <img src={testimonial.image} alt={testimonial.name} className="testimonial-image" />
+            <img src={'/'} alt={testimonial.name} className="testimonial-image" />
             <div className="testimonial-content">
               <p className="testimonial-quote">"{testimonial.quote}"</p>
               <div className="testimonial-rating">
@@ -117,7 +114,7 @@ const TestimonialSlider = () => {
         ))}
         
       </Slider>
-      <ReviewPopup/>
+      <ReviewPopup id={id}/>
     </div>
   );
 };
