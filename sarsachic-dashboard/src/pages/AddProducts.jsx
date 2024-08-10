@@ -47,7 +47,8 @@ const AddProducts = () => {
     ageGroup: "",
     gender: "",
     design: "",
-    price: "",
+    oginialPrice: "",
+    discountedPrice:"",
     stockQuantity: "",
     sizes: "",
     colors: "",
@@ -147,7 +148,8 @@ const AddProducts = () => {
         ageGroup: "",
         gender: "",
         design: "",
-        price: "",
+        oginialPrice: "",
+        discountedPrice:"",
         stockQuantity: "",
         sizes: "",
         colors: "",
@@ -351,12 +353,24 @@ const AddProducts = () => {
         )}
 
         <div className="form-group">
-          <label htmlFor="price">Price:</label>
+          <label htmlFor="oginialPrice">Original Price:</label>
           <input
             type="number"
-            id="price"
-            name="price"
-            value={productData.price}
+            id="oginialPrice"
+            name="oginialPrice"
+            value={productData.oginialPrice}
+            onChange={handleInputChange}
+            required
+            className="form-control"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="discountedPrice">Discounted Price:</label>
+          <input
+            type="number"
+            id="discountedPrice"
+            name="discountedPrice"
+            value={productData.discountedPrice}
             onChange={handleInputChange}
             required
             className="form-control"
