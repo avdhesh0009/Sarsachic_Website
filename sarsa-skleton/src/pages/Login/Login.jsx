@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import image from "../../images/n-1.jpeg";
 import Google from "../../images/search-1.png";
 import { Link, NavLink } from "react-router-dom";
@@ -6,10 +6,12 @@ import SignUp from "../SignUp/SignUp";
 import "./Login.css";
 import useAxiosPublic from "../../hooks/useAxios";
 import OAuth from "../../components/OAuth";
+import { WebContext } from "../../providers/WebProvider";
 
 function Login() {
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
+  const {user,setUser} = useContext(WebContext);
   const axios = useAxiosPublic();
   const handleSubmit = async () =>{
     try {
@@ -17,7 +19,11 @@ function Login() {
         email,
         password
       },{withCredentials:true})
-      console.log(response.data);
+      // console.log(response.data);
+      setUser(response.data.data);
+      const data = response.data;
+      // console.log(data);
+      localStorage.setItem('sarsaUser', JSON.stringify({user:data.data.user, accessToken : data.data.accessToken}));
     } catch (error) {
       console.log(error);
     }
