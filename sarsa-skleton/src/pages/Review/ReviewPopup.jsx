@@ -30,7 +30,7 @@ const ReviewPopup = ({id}) => {
        quote:review
     }
     try {
-      const response = await axios.post('/products/add-reviews',{
+      const response = await axios.post(`/products/add-reviews/${user?.user?._id}`,{
         productId:id,
         reviewData
       })

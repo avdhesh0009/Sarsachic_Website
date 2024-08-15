@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import searchImg from '../../images/search.jpg';
 import wishlistImg from '../../images/wishlist.jpg';
@@ -12,10 +12,12 @@ import logoutImg from '../../images/logout.jpg';
 import './profile.css';
 import useAxiosPublic from '../../hooks/useAxios';
 import Sidebar from './Sidebar';
+import { WebContext } from '../../providers/WebProvider';
 
 const Profile = () => {
   const axios = useAxiosPublic();
   const [message,setMessage] = useState('');
+  const {user} = useContext(WebContext);
   
   return (
     <div className="profile-container">
@@ -28,7 +30,7 @@ const Profile = () => {
        <Sidebar/>
       </div>
       <div className="profile-content">
-        <h1 className="pheading">Welcome Tushar!</h1>
+        <h1 className="pheading">{user?.user?.username}!</h1>
         <div className="profile-board">
           <button className="edit-profile"><img src={editiconImg} alt="" /></button>
           <form action="" className="profile-info">

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -9,6 +9,7 @@ import img3 from '../../images/testImg.png';
 import ReviewPopup from './ReviewPopup';
 import useAxiosPublic from '../../hooks/useAxios.jsx';
 import { useState } from 'react';
+import { WebContext } from '../../providers/WebProvider.jsx';
 
 const NextArrow = (props) => {
   const { className, style, onClick } = props;
@@ -32,6 +33,8 @@ const TestimonialSlider = ({id}) => {
 
   const axios = useAxiosPublic();
   const [testimonials,setTestimonials] = useState([]);
+  const [imageLink,setImageLink] = useState('');
+  const {user} = useContext(WebContext);
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -42,6 +45,18 @@ const TestimonialSlider = ({id}) => {
       } catch (error) {
         console.error('Error fetching reviews:', error);
       }
+      // try {
+      //   const [data1, data2] = await Promise.all([
+      //     axios.get(`/products/get-reviews/${id}`), 
+      //     axios.get(`/users/image-url/${user.user._id}`)
+      //   ]);
+      //   // console.log('data1', data1, 'data2', data2);
+      //   setTestimonials(data1.data.data.reviews);
+      //   setImageLink(data2.data.data);
+      //   // console.log("First Data",data1.data.data.reviews);
+      // } catch (error) {
+      //   console.error('Error making requests:', error);
+      // } 
     };
   
     fetchReviews();
@@ -96,7 +111,7 @@ const TestimonialSlider = ({id}) => {
         {testimonials.map((testimonial, index) => (
           <div key={index} className="testimonial">
             <div className='con'>
-            <img src={'/'} alt={testimonial.name} className="testimonial-image" />
+            <img src={testimonial.imageUrl} alt={testimonial.name} className="testimonial-image" />
             <div className="testimonial-content">
               <p className="testimonial-quote">"{testimonial.quote}"</p>
               <div className="testimonial-rating">
