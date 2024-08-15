@@ -13,6 +13,7 @@ import { useLocation, useParams } from "react-router-dom";
 import useAxiosPublic from '../../hooks/useAxios.jsx';
 import { useContext } from 'react';
 import { WebContext } from "../../providers/WebProvider.jsx";
+import ReviewPopup from '../Review/ReviewPopup.jsx';
 
 const ProductDetails = () => {
   const [sizes, setSizes] = useState([]);
@@ -85,7 +86,9 @@ const ProductDetails = () => {
       <div className="product-details">
         <div className="image-gallery">
           {productData.images && productData.images.map((image,index)=>(
-             <img src={image} alt="T-shirt back" className="product-image" />
+             <div key={index}>
+               <img src={image} alt="T-shirt back" className="product-image" />
+             </div>
           ))}
         </div>
         <div className="product-info">
@@ -96,8 +99,8 @@ const ProductDetails = () => {
               <p className="product-rating">★★★★☆</p>
             </div>
             <div className="product-price">
-              <span className="original-price">RS 1099.00</span>
-              <span className="discounted-price">{productData.price}</span>
+              <span className="original-price">{productData?.oginialPrice}</span>
+              <span className="discounted-price">{productData?.discountedPrice}</span>
             </div>
           </div>
 
@@ -142,7 +145,8 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-      <TestimonialSlider />
+      <ReviewPopup id={productId}/>
+      <TestimonialSlider id={productId}/>
     </>
   );
 };

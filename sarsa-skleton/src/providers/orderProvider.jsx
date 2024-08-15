@@ -13,8 +13,10 @@ const OrderProvider = ({children}) => {
           try {
             const response = await axios.get("/users/get-cart");
             const cartData = response.data.data;
+            console.log(cartData);
             const calculatedTotal = cartData.reduce(
-              (acc, productItem) => acc + productItem.quantity * productItem.product.price,
+              (acc, productItem) => acc + productItem.quantity * productItem.product.discountedPrice,
+              // productItem.product.price,
               0
             );
             setTotal(calculatedTotal);

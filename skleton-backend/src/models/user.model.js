@@ -48,6 +48,10 @@ const userSchema = new Schema(
       },
     ],
     ShippingAddress: [{ type: mongoose.Schema.Types.ObjectId, ref: "ShippingAddress" }],
+    imageUrl:{
+      type:String,
+      trime:true
+    }
   },
   {
     timestamps: true,

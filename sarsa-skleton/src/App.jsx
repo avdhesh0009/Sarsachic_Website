@@ -27,9 +27,6 @@ import Wishlist from "./pages/Products/Wishlist.jsx";
 
 import VerifyForgotPasswordLink from "./pages/VerifyForgotPasswordLink.jsx";
 
-
-
-
 export default function App() {
   return (
     <BrowserRouter>

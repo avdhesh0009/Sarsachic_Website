@@ -88,7 +88,6 @@ export const getWebData = asyncHandler(async(req,res,next) => {
 
   const lastCreatedHomeData = await Home.findOne().sort({ createdAt: -1 })
 
-
  return res.status(200).json(
   new ApiResponse(200, lastCreatedHomeData)
 )
@@ -96,12 +95,9 @@ export const getWebData = asyncHandler(async(req,res,next) => {
 
 export const getShopData = asyncHandler(async(req,res,next) => {
 
-
   const shop = req.params.shop
-
-
+  
   const lastShopBanner = await Theme.findOne({themeName: shop}).sort({createdAt: -1})
-
 
   return res.status(200).json(
     new ApiResponse(200, lastShopBanner)
