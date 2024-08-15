@@ -9,6 +9,7 @@ import {
   getProductWithReviews
 } from "../controllers/product.controller.js";
 
+import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
@@ -20,7 +21,7 @@ router.get('/:id', getProductById); // Get a single product by ID
 router.put('/:id', updateProduct); // Update product by ID
 router.delete('/:id', deleteProduct); // Delete product by ID
 
-router.post('/add-reviews',createReview);
+router.post('/add-reviews/:userId',verifyJWT,createReview);
 
 export default router;
 

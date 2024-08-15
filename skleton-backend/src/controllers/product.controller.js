@@ -4,11 +4,17 @@ import { ApiResponse} from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import mongoose from "mongoose";
+import { User } from "../models/user.model.js";
 
 // save reviews
 export const createReview = asyncHandler(async (req,res) => {
     const {productId,reviewData} = req.body;
-    const review = new Reviews({ ...reviewData, product: productId });
+    const {userId} =req.params;
+    const {imageUrl} = await User.findOne({_id:userId});
+    if(!imageUrl){
+      imageUrl=""
+    }
+    const review = new Reviews({ ...reviewData, product: productId,imageUrl});
     await review.save();
 
     await Product.findByIdAndUpdate(productId, {
