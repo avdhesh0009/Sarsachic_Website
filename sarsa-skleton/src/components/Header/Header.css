@@ -1,8 +1,16 @@
-* {
-  margin: 0;
-  padding: 0;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: linear-gradient(to left, #D0D1CA 50%, #ffffff 50%);
+   /* Use 'fixed' if you want it always at the top */
+  top: 0;
+  z-index: 1000; /* Ensures the header is on top of other elements */
 }
-
+.header a{
+  text-decoration: none;
+}
 .currency-header select {
   border: none;
   appearance: none;
@@ -17,66 +25,87 @@
   font-size: 22px;
 }
 
-.header-navbar {
-  background: linear-gradient(to left, #D0D1CA 50%, #ffffff 50%);
+
+.left-header-icons, .right-header-icons {
   display: flex;
-  padding: 10px 0;
+  list-style-type: none;
+  
 }
 
-.header-section {
-  flex: 2;
+.left-header-icons li, .right-header-icons li {
+  padding: 0 10px;
+}
+
+.headinghdr {
+  flex-grow: 1;
   text-align: center;
-  margin-right: 70px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  padding-right:55px;
+  z-index: 1001; /* Ensures the heading is on top of other elements */
 }
-
-.header-left {
-  display: flex;
-  text-align: center;
-}
-
-.left-header-icons {
-  list-style: none;
-  flex: 1;
-}
-
-.left-header-icons li {
-  display: inline-block;
-  cursor: pointer;
-  margin: 10px 20px;
+.iconhdr{
+  color: #000;
 }
 
 
-.right-header-icons {
-  list-style: none;
-  flex: 3;
-  text-align: center;
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+   
+    
+  }
+
+  .headinghdr {
+    margin:0 0 0 45px;
+    
+    font-size: 30px;
+   
+    
+  }
+
+  .left-header-icons, .right-header-icons {
+    justify-content: space-between;
+    font-size: larger;
+    width: 100%;
+    
+  }
+
+
+ 
+
+  .left-header-icons li, .right-header-icons li {
+    margin: 5px;
+  }
+}
+@media (max-width: 576px) {
+  .header {
+    
+    align-items: center;
+    padding: 10px;
+  }
+
+  .headinghdr {
+    font-size: 28px; /* Adjust the heading size for small screens */
+   color: black;
+   margin:0 0 0 45px; /* Center the heading more comfortably */
+    text-align: center; /* Align heading to the left for small screens */
+  }
+
+  .left-header-icons, .right-header-icons {
+    flex-direction: row; /* Stack the icons vertically */
+     /* Align icons to the left */
+    width: 100%;
+  }
+
+  .left-header-icons li, .right-header-icons li {
+    margin: 5px 0; /* Space out the list items vertically */
+  }
+
+  .right-header-icons {
+    margin-top: 10px; /* Add space between left and right sections */
+  }
 }
 
-.right-header-icons li {
-  display: inline-block;
-  margin: 10px 20px;
-  font-size: 18px;
-}
 
-.left-header-icons li {
-  font-size: 18px;
-}
-
-.logo {
-  /* Grow to fill the space */
-  font-weight: bolder;
-  color: rgb(0, 0, 0);
-  /* Change color of logo text */
-  font-size: 34px;
-  /* Optional: Adjust font size */
-}
-
-.logo a {
-  text-decoration: none;
-  color: black;
-
-}
-
-
-
-@media screen and (max-width: 768px) {}
