@@ -1,0 +1,80 @@
+.membership-container {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 60px;
+  }
+ 
+  .membership-heading {
+    text-align: center;
+    letter-spacing: 1.01em;
+    margin-bottom: 20px;
+  }
+  .headmem{
+    text-decoration: none;
+    color: #1f1e1e;
+    text-align: center;
+    font-size: 40px;
+    letter-spacing: 0.3em;
+  }
+  .headmem h1{
+    text-decoration: none;
+  }
+  
+  .membership-boxes {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .membership-box {
+    background-color: #1f1e1e;
+    padding: 20px;
+    margin: 10px;
+    width: 180px;
+    text-align: center;
+    border-radius: 35px;
+    
+    transition: transform 0.3s ease;
+  }
+  
+  .membership-box:hover {
+    transform: scale(1.05);
+  }
+  
+  .benefit-image {
+    max-width: 100%;
+    border-radius: 5px;
+  }
+  
+  .benefit-name {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .membership-boxes {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .membership-box {
+      width: 80%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .membership-box {
+      width: 80%;
+    }
+    .headmem{
+        font-size: xx-large;
+    }
+    .membership-heading {
+       font-size: large;
+      }
+      
+  }
+  
