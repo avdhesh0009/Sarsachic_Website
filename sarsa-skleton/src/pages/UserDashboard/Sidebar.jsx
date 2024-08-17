@@ -12,6 +12,7 @@ import editiconImg from '../../images/editicon.jpg';
 import changepassImg from '../../images/changepass.jpg';
 import logoutImg from '../../images/logout.jpg';
 import useAxiosPublic from '../../hooks/useAxios';
+import ProfileImageUpload from '../../components/ProfileImageUpload';
 
 const Sidebar = () => {
   const [user, setUser] = useState({ name: '', image:'' });
@@ -41,8 +42,9 @@ const Sidebar = () => {
     <div className="sidebar">
         
       <div className="profile-section">
-        <img src={user.image} alt="Profile" className="profile-image" />
-        <h3 className="profile-name">{user.name}</h3>
+        {/* <img src={user.image} alt="Profile" className="profile-image" />
+        <h3 className="profile-name">{user.name}</h3> */}
+        <ProfileImageUpload/>
       </div>
       <div className="menu">
       <Link to="/userProfile"> <div className="menu-item"><span>  <img src={userImg} alt="User" style={{ width: '20px', height: '20px' }}/></span>  My Profile</div></Link>

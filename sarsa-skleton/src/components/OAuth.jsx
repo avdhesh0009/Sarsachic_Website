@@ -36,9 +36,9 @@ function OAuth() {
         },
       );
       setUser(response.data.data);
-      // const data = response.data;
+      const data = response.data;
       // console.log(data);
-      // localStorage.setItem('sarsaUser', JSON.stringify({user:data.data.user, accessToken : data.data.accessToken}));
+      localStorage.setItem('sarsaUser', JSON.stringify({user:data.data.user, accessToken : data.data.accessToken}));
       navigate(location.state?.from ? location.state.from : "/");
     } catch (error) {
       console.log(error);
