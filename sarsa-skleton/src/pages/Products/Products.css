@@ -1,43 +1,48 @@
+.product-card-1 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Ensure it takes full width of its container */
+  box-sizing: border-box;
+}
+
 .product-image-1 {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  overflow: hidden; /* Hide overflow to maintain image boundaries */
 }
 
 .product-details-1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.heart-1 {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  width: 44px;
-  height: 44px;
-  z-index: 1000;
-}
-
-.plus-1 {
-  width: 34px;
-  height: 31px;
-}
-
-.title-1 {
-  display: flex;
-  margin-left: 80px;
-  gap: 2rem;
   margin-top: 10px;
-  margin-bottom: 10px;
 }
 
-.product-title-1 {
-  text-align: center;
+.icons-1 {
+  display: flex;
+  gap: 1rem;
+  margin-top: 10px;
+}
+
+.heart-1, .plus-1 {
+  width: 24px; /* Reduced size for smaller screens */
+  height: 24px; /* Reduced size for smaller screens */
 }
 
 .beforeimage,
 .afterimage {
-  width: 300px;
-  height: 450px;
+  width: 100%; /* Make images responsive to container width */
+  height: auto; /* Maintain aspect ratio */
   border: none;
   border-radius: 12px;
 }
@@ -45,28 +50,43 @@
 .afterimage {
   display: none;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .product-image-1:hover .afterimage {
   display: block;
-  border: none;
   transition: ease-in 0.3s;
 }
 
-@media screen and (max-width: 1168px) {
-
-  .heart {
-    right: 10%;
-    width: 30px;
-    height: 30px;
+@media screen and (max-width: 768px) {
+  .product-card-1 {
+    padding: 10px; /* Reduce padding on small screens */
   }
 
-  .title {
+  .icons-1 {
     flex-direction: column;
-    align-items: center;
-    margin-left: 0px;
-    gap: 1rem;
+    gap: 0.5rem;
+  }
+
+  .heart-1, .plus-1 {
+    width: 30px; /* Further reduced size for better fit */
+    height: 30px; /* Further reduced size for better fit */
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .product-card-1 {
+    padding: 8px; /* Minimal padding for very small screens */
+  }
+
+  .icons-1 {
+    gap: 0.3rem; /* Less gap between icons */
+  }
+
+  .heart-1, .plus-1 {
+    width: 24px; /* Keep icons small for very small screens */
+    height: 24px; /* Keep icons small for very small screens */
   }
 }

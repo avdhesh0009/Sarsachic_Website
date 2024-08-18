@@ -1,41 +1,56 @@
 .scroll-bar {
-    margin-bottom: 30px;
+    margin-bottom: 0;
     margin-top: 20px;
-}
-
-.scroll-bar ul {
+    overflow-x: auto; /* Allows horizontal scrolling if necessary */
+    overflow-y: hidden; /* Prevents vertical scrolling */
+    white-space: nowrap; /* Ensures buttons are in a single line */
+    width: 100%; /* Full width to ensure responsiveness */
+    padding: 0 10px; /* Adds padding to avoid content touching edges */
+  }
+  
+  .scroll-bar ul {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 5rem;
+   justify-content: center; /* Align items to the start */
     list-style: none;
-}
-
-.section-btn {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .section-btn {
     padding: 12px 20px;
     border: none;
+    white-space: nowrap; /* Ensures text doesn't wrap */
+    margin: 0 5px; /* Margin between buttons */
+    display: inline-block; /* Prevents buttons from stretching */
+  }
+  .section-btn {
+    padding: 12px 20px;
+    border: none;
+    white-space: nowrap;
 }
 
-.products-single-mens{
-    margin-left: 10%;
-    margin-right: 10%;
-    display: flex;
-    gap: 7rem;
-}
-
-.scroll-section-2 {
+.products-single-mens {
     display: grid;
-    grid-template-rows: 50% 50%;
-
+    grid-template-columns: repeat(3, 1fr); /* 3 products in a row */
+    gap: 1rem;
+    width: auto;
+    margin: 20px;
+    height: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+   
 }
 
 .mens-products-container {
-    margin-top: 100px;
+   
     gap: 2rem;
     width: 100%;
-    margin-bottom: 200px;
+   
 }
-
+.mens-banner{
+    margin: 20px;
+}
 .mens-category {
     display: flex;
     justify-content: space-between;
@@ -45,10 +60,6 @@
     align-items: center;
 }
 
-.category-mens span {
-    font-size: 22px;
-}
-
 .mens-banner img {
     max-width: 100%;
 }
@@ -56,3 +67,53 @@
 .active {
     background-color: rgb(136, 136, 136);
 }
+
+  /* Adjustments for medium screens */
+  
+  @media (max-width: 1024px) {
+    .scroll-bar{
+        
+    }
+    .scroll-bar ul {
+      gap: 1rem; /* Adjust spacing between buttons */
+      
+    }
+    .products-single-mens {
+        grid-template-columns: repeat(2, 1fr); /* 2 products per row */
+        gap: 2rem;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .mens-banner img {
+        max-width: 100%;
+     
+    }
+    .section-btn {
+      padding: 10px 15px; /* Adjust padding */
+    }
+  }
+  
+  /* Adjustments for small screens */
+  @media (max-width: 768px) {
+    .scroll-bar {
+      padding: 0 5px; /* Reduced padding on smaller screens */
+    }
+    .products-single-mens {
+        grid-template-columns: repeat(1, 1fr); /* 2 products per row */
+        gap: 2rem;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+  
+    .scroll-bar ul {
+      gap: 1rem; /* Adjust spacing between buttons */
+    }
+    .mens-banner img {
+        max-width: 100%;
+    }
+    .section-btn {
+      padding: 8px 12px; /* Smaller padding */
+      font-size: 0.875rem; /* Adjust font size */
+    }
+  }
+  
