@@ -101,11 +101,13 @@
 
   .left-header-icons li, .right-header-icons li {
     margin: 5px 0; /* Space out the list items vertically */
+    font-size: small;
   }
-
+ 
   .right-header-icons {
     margin-top: 10px; /* Add space between left and right sections */
   }
+
 }
 
 

@@ -4,53 +4,59 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-}
-
-.contact-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
+  box-sizing: border-box; /* Ensure padding is included in the total width */
 }
 
 .contact-text {
   font-size: 1.5rem;
   text-align: center;
-  margin-top: 0.5rem;
+  margin-bottom: 1rem; /* Space between text and form */
   font-weight: bold;
+}
+
+.contact-content {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  margin: auto;
+  gap: 10px; /* Small gap for form elements */
+  width: 100%; /* Make it responsive */
+  max-width: 400px; /* Max width for larger screens */
 }
 
 .contact-form {
   display: flex;
-  gap: 0px;
+  flex: 1; /* Take up available space */
+   /* Small gap for form elements */
   margin-top: 8px;
-  width: 200px;
 }
 
 .email-input {
   padding: 10px;
-  border: none;
+  border: 1px solid #ccc; /* Add border for better visibility */
+  border-radius: 4px; /* Rounded corners */
   flex: 1;
+  font-size: 1rem; /* Font size for better readability */
 }
 
 .join-button {
-  padding: 2.5px 30px;
+  padding: 10px 20px; /* Adjust padding for consistency */
   background-color: black;
   color: white;
   border: none;
+  border-radius: 4px; /* Rounded corners */
   cursor: pointer;
- 
+  font-size: 1rem; /* Font size for consistency */
 }
 
 .social-icons {
   display: flex;
-  gap: 30px;
-  margin-top: 8px;
-  margin-right: 1rem;
+  align-items: center; /* Center icons vertically */
+  gap: 20px; /* Space between social icons */
+  margin-top: 20px; /* Space between form and social icons */
 }
 
 .social-icon {
-  font-size: 1.5rem;
+  font-size: 1.5rem; /* Size of social icons */
   cursor: pointer;
 }
 
@@ -58,24 +64,44 @@
   .contact-section {
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; /* Align items in the center */
   }
-
+  .contact-text{
+    margin-top: 15px;
+  }
   .contact-content {
     flex-direction: row;
     align-items: center;
-    flex: 1;
     justify-content: center;
-  }
-
-  .contact-text {
-    margin-right: 0px;
-    text-align: left;
+    width: auto; /* Adjust width */
+    /* Increase gap for larger screens */
   }
 
   .contact-form {
-    margin-left: 0; /* Remove margin for larger screens */
-    align-items: center;
-    justify-content: center;
+    margin: 0; /* Remove margin for larger screens */
+  }
+
+  .social-icons {
+    margin-top: 0; /* Remove margin top for larger screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-text {
+    font-size: 1.25rem; /* Adjust font size for smaller screens */
+  }
+
+  .social-icons {
+    gap: 10px; /* Smaller gap on smaller screens */
+  }
+  .contact-form {
+    height: 40px;
+  }
+  .join-button{
+   margin: 0;
+   padding: 5px;
+    font-size: small;
+    height: 40px;
+    
   }
 }

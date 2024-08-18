@@ -98,7 +98,7 @@ function MensSection() {
         </div>
 
         <div className="mens-products-container">
-          <div className="scroll-section-2">
+         
             {/* <div className="products-single-mens">
               <Products
                 img1={image1}
@@ -145,7 +145,7 @@ function MensSection() {
                 <Products key={index} data={product}/>
               ))}
             </div>
-          </div>
+          
         </div>
       </div>
     </div>
