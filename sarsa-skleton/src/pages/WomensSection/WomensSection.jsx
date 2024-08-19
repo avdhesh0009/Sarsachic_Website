@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import './WomensSection.css'
 import Women from '../../images/womenBanner.png'
 import Products from "../Products/Products";
@@ -6,9 +7,41 @@ import image1 from "../../images/q.jpeg";
 import image2 from "../../images/3.png";
 import hoverimg from "../../images/2.png";
 import demonimg from "../../images/demon.png";
-
+import useAxiosPublic from '../../hooks/useAxios';
 
 function WomensSection() {
+
+    const location = useLocation();
+    const [searchParams] = useSearchParams();
+    const axios = useAxiosPublic()
+  
+    const [pageData, setPageData] = useState({})
+    const paramValue = searchParams.get('tab');
+    // console.log(paramValue);
+  
+    const navigate = useNavigate();
+  
+    const [products,setProducts]=useState([]);
+    const [featuredProducts, setFeaturedProducts] = useState([]);
+    const [SelectedFilters, setSelectedFilters] = useState([]);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const [data1, data2] = await Promise.all([
+            axios.get(`/users/shop-data/${paramValue}`),
+            axios.get(`/products/${paramValue}-products`)
+          ]);
+          // console.log('data1', data1, 'data2', data2.data);
+        //   console.log(data2.data.data);
+          setProducts(data2.data.data);
+        } catch (error) {
+          console.error('Error making requests:', error);
+        }
+      };
+    
+      fetchData();
+    }, [SelectedFilters]); 
     return (
         <div className="mens-frame">
             <div className="mens-section">
@@ -32,49 +65,11 @@ function WomensSection() {
                 </div>
 
                 <div className="mens-products-container">
-                    <div className="scroll-section-2">
-                        <div className="products-single">
-                            <Products
-                                img1={image1}
-                                img2={demonimg}
-                                price="RS. 699"
-                                name="Goku Oversized Tshirt"
-                            />
-                            <Products
-                                img1={image2}
-                                img2={hoverimg}
-                                price="RS. 699"
-                                name="Never Fear oversized Tshirt"
-                            />
-                            <Products
-                                img1={image2}
-                                img2={hoverimg}
-                                price="RS. 699"
-                                name="Never Fear oversized Tshirt"
-                            />
-
-                        </div>
-                        <div className="products-single">
-                            <Products
-                                img1={image1}
-                                img2={demonimg}
-                                price="RS. 699"
-                                name="Goku Oversized Tshirt"
-                            />
-                            <Products
-                                img1={image2}
-                                img2={hoverimg}
-                                price="RS. 699"
-                                name="Never Fear oversized Tshirt"
-                            />
-                            <Products
-                                img1={image2}
-                                img2={hoverimg}
-                                price="RS. 699"
-                                name="Never Fear oversized Tshirt"
-                            />
-                        </div>
-                    </div>
+                    <div className="products-single-mens">
+                    {products.map((product, index) => (
+                        <Products key={index} data={product}/>
+                    ))}
+                    </div> 
                 </div>
             </div>
         </div>
