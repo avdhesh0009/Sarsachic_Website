@@ -57,6 +57,38 @@ export const addProduct = async (req, res) => {
   }
 };
 
+function getCategoryKeyByValue(value, map) {
+  return Object.keys(map).find(key => map[key] === value);
+}
+
+// fetch mens-section only
+export const getMensProducts = asyncHandler(async(req,res)=>{
+  const categoryProduct = req.params.category;
+  // console.log(categoryProduct);
+  const categoryMap = {
+    men: "men's fashion",
+    women: "women's fashion",
+    kid: "kids' fashion",
+    // Add more categories as needed
+  };
+
+ const categoryKey = getCategoryKeyByValue(categoryProduct,categoryMap);
+ if(!categoryKey){
+    throw new ApiError(400,"No categories are selected there")
+ }
+ 
+ const products = await Product.find({ category: categoryKey});
+
+ if(!products){
+  throw new ApiError(400,"No products are found using this category");
+ }
+
+ res.status(200).json(
+  new ApiResponse(200,products,"Products are fetched successfully")
+ )
+
+})
+
 // Fetch all products
 export const getAllProducts = async (req, res) => {
   try {
@@ -66,7 +98,6 @@ export const getAllProducts = async (req, res) => {
     res.status(500).json({ success: false, error: error.message });
   }
 };
-
 
 // Fetch a single product by ID
 export const getProductById = async (req, res) => {
