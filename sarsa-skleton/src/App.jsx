@@ -16,7 +16,7 @@ import Payment from "./pages/Cart/Payment.jsx";
 import Shipping from "./pages/Cart/Shipping.jsx";
 import Summary from "./pages/Cart/Summary.jsx";
 import VerifyUser from "./pages/VerifyUser.jsx";
-
+import MembershipBenefits from './components/Membership/MembershipBenefits.jsx'
 import Profile from "./pages/UserDashboard/Profile.jsx";
 import Delivery from "./pages/UserDashboard/Delivery.jsx";
 import MyOrders from "./pages/UserDashboard/MyOrders.jsx";
@@ -53,6 +53,7 @@ export default function App() {
         <Route element={<Delivery />} path="/adddeliveryaddress" />
         <Route element={<MyOrders />} path="/myOrders" />
         <Route element={<MyWishlist />} path="/mywishlist" />
+        <Route element={<MembershipBenefits />} path="/membership" />
         <Route element={<UpdatePassword />} path="/updatepassword" />
       </Routes>
       <Footer />

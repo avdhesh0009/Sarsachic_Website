@@ -43,7 +43,7 @@
 .product-details-icon {
   flex-shrink: 0;
   width: 474px;
-  height: 600px;
+  height: auto;
   border-radius: var(--border-radius-sm);
   object-fit: cover;
 }
@@ -87,8 +87,8 @@
   }
 
   .product-details-icon {
-    width: 100%;
-    height: auto;
+    width: 50%;
+    height: 500px;
   }
 }
 
@@ -112,7 +112,7 @@
   }
 
   .product-details-icon {
-    width: 100%;
-    height: auto;
+    width: 70%;
+    height: 400px;
   }
 }

@@ -35,7 +35,7 @@
     padding: 20px;
     margin: 20px;
     border-radius: 30px;
-    height: 100px;
+    height: fit-content;
     display: flex;
     flex-direction: column;
   }
@@ -97,29 +97,36 @@
     
   }
   /* Responsive design */
-  @media (max-width: 768px) {
+  @media (max-width: 900px){
     .review-containerr {
       flex-direction: column;
     }
-  
+    .review-image{
+      width: fit-content;
+     margin-left: 200px;
+    }
+  }
+  @media (max-width: 768px) {
+   
     .reviewss {
       grid-template-columns: 1fr;
     }
   
-    .review-image {
-      
-       /* Maintain reduced gap on small screens */
+    .review-image{
+      width: fit-content;
+     margin: auto;
     }
   
     .review-image img {
       max-width: 80%; /* Optionally adjust image width */
     }
-  }
-  @media (max-width: 768px){
     .review-headingg{
       font-size: 40px;
       text-align: center;
     }
+  }
+  @media (max-width: 595px){
 
   }
+  
   
