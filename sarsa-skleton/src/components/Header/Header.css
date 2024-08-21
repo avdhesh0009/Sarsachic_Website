@@ -1,113 +1,196 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background: linear-gradient(to left, #D0D1CA 50%, #ffffff 50%);
-   /* Use 'fixed' if you want it always at the top */
-  top: 0;
-  z-index: 1000; /* Ensures the header is on top of other elements */
-}
-.header a{
-  text-decoration: none;
-}
-.currency-header select {
-  border: none;
-  appearance: none;
-  font-size: 1.15rem;
-
-  color: #000;
-  cursor: pointer;
-
+  padding: 10px 10px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  transition: background-color 0.8s;
 }
 
-.currency-header option {
-  font-size: 22px;
+.header.menu-open {
+  background-color: rgba(194, 196, 181, 0.4); /* Change to desired background color when menu is open */
 }
 
-
-.left-header-icons, .right-header-icons {
+.left-section,
+.right-section {
   display: flex;
-  list-style-type: none;
-  
+  gap: 20px;
 }
 
-.left-header-icons li, .right-header-icons li {
-  padding: 0 10px;
+.center-heading {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: transform 0.8s, width 0.8s; /* Smooth transition for positioning changes */
 }
 
-.headinghdr {
-  flex-grow: 1;
-  text-align: center;
-  font-size: 24px;
+.center-heading h1 {
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #000;
-  padding-right:55px;
-  z-index: 1001; /* Ensures the heading is on top of other elements */
-}
-.iconhdr{
-  color: #000;
+  color: #000000;
 }
 
+.currency-selector {
+  position: relative;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-@media (max-width: 768px) {
+.currency-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #302e2e;
+  color: #fff;
+  border: 1px solid #ddd;
+  z-index: 100;
+}
+
+.currency-options div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.currency-options div:hover {
+  background-color: #969292;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #333;
+}
+
+.icon-menu {
+  display: flex;
+  gap: 20px;
+}
+
+.icon-menu svg {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: row;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 868px) {
+  .nav-menu,
+  .icon-menu {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-menu.open {
+    display: flex;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 0px;
+    z-index: 10;
+  }
+
+  .icon-menu.open {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
   .header {
     flex-direction: column;
-   
-    
+    align-items: flex-start;
   }
 
-  .headinghdr {
-    margin:0 0 0 45px;
-    
-    font-size: 30px;
-   
-    
-  }
-
-  .left-header-icons, .right-header-icons {
+  .center-heading {
+   position: sticky;
+    transform: none;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
     justify-content: space-between;
-    font-size: larger;
-    width: 100%;
-    
   }
-
 
  
-
-  .left-header-icons li, .right-header-icons li {
-    margin: 5px;
-  }
-}
-@media (max-width: 576px) {
-  .header {
-    
-    align-items: center;
-    padding: 10px;
-  }
-
-  .headinghdr {
-    font-size: 28px; /* Adjust the heading size for small screens */
-   color: black;
-   margin:0 0 0 45px; /* Center the heading more comfortably */
-    text-align: center; /* Align heading to the left for small screens */
-  }
-
-  .left-header-icons, .right-header-icons {
-    flex-direction: row; /* Stack the icons vertically */
-     /* Align icons to the left */
+  .left-section,
+  .right-section {
     width: 100%;
+    flex-direction: column;
+    gap: 15px;
   }
 
-  .left-header-icons li, .right-header-icons li {
-    margin: 5px 0; /* Space out the list items vertically */
-    font-size: small;
+  .nav-menu.open {
+    flex-direction: row;
+    width: 100%;
+    gap: 30px;
   }
- 
-  .right-header-icons {
-    margin-top: 10px; /* Add space between left and right sections */
+
+  .icon-menu.open {
+    justify-content: flex-end;
+    width: 100%;
+    gap: 30px;
   }
+
 
 }
 
+@media (max-width: 480px) {
+  .icon-menu {
+    gap: 10px;
+  }
 
+  .left-section,.right-section {
+    gap: 10px;
+    width: 100%;
+  }
+
+  .currency-selector {
+    font-size: 0.9rem;
+  }
+
+  .nav-menu.open {
+    gap: 20px;
+  }
+
+  .nav-menu a {
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu-toggle {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .center-heading {
+    justify-content: space-between;
+  }
+
+  .icon-menu svg {
+    font-size: 1.2rem;
+  }
+}

@@ -23,14 +23,14 @@ const JustDrop = () => {
           alt=""
           src={slider2}
         />
-        <div className="product-display-inner">
+        
           <img
-            className="frame-child"
+            className="product-details-icon"
             loading="lazy"
             alt=""
             src={slider3}
           />
-        </div>
+       
       </div>
       <div className="follow-us-container">
        

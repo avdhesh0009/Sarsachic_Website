@@ -119,4 +119,32 @@
   .logoText {
     font-size: 70px;
   }
+  .App{
+    height: 80vh;
+  }
+  .left-text{
+    left: 10%;
+    font-size: small;
+  }
+  .model-img{
+    top: 350px;
+  }
+ 
+}
+
+@media screen and (max-width: 378px) {
+  
+  .logoText {
+    font-size: 50px;
+  }
+  .model-img{
+    top: 250px;
+  }
+  .left-text{
+    left: 5%;
+    font-size: small;
+  }
+  .App{
+    height: 50vh;
+  }
 }

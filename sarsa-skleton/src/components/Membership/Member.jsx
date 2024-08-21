@@ -21,7 +21,7 @@ const Member = () => {
         MEMBERSHIP
     </h1>
     </Link>
-    <div className="membership-container">
+    <div className="membership-containerr">
       <h2 className="membership-heading">ENJOY THESE BENEFITS !</h2>
       <div className="membership-boxes">
         {benefits.map((benefit) => (

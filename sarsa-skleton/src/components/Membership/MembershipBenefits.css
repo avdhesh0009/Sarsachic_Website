@@ -10,7 +10,7 @@
 
 .membership-card {
     
-    height: 840px;
+    height: 900px;
    border: 1px solid white;
     padding: 20px;
     background-color: #2e2e2e;
@@ -144,3 +144,105 @@
     transform-origin: left bottom; /* Adjust pivot point */
   white-space: nowrap; 
   }
+  @media (max-width: 768px) {
+    .membership-container {
+        padding: 10px;
+        flex-direction: column-reverse;
+    }
+
+    .membership-card, .another-plan {
+        padding: 15px;
+        width: 450px;
+    }
+
+    .head {
+        font-size: 30px;
+    }
+
+    .membership-card ul {
+        width: 100%;
+    }
+
+    .membership-card li {
+        flex-direction: column;
+    }
+
+    .membership-card .icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .membership-card .text h3 {
+        font-size: 14px;
+    }
+
+    .membership-card .text p {
+        font-size: 10px;
+    }
+
+    .membership-card .price {
+        font-size: 18px;
+        padding: 10px;
+    }
+    .another-plan{
+        height: min-content;
+        border-radius: 30px;
+    }
+    .flipped-text{
+        transform: none;
+    }
+    .another-plan button {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .flipped-text {
+        font-size: 25px;
+
+    }
+    .ap{
+        padding-top: 20px;
+        padding-bottom: 0;
+    }
+    .crbtn img{
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .membership-card, .another-plan {
+        padding: 10px;
+        width: 400px;
+    }
+
+    .head {
+        font-size: 25px;
+    }
+
+    .membership-card .icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .membership-card .text h3 {
+        font-size: 12px;
+    }
+
+    .membership-card .text p {
+        font-size: 8px;
+    }
+
+    .membership-card .price {
+        font-size: 16px;
+        padding: 5px;
+    }
+
+    .another-plan button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .flipped-text {
+        font-size: 20px;
+    }
+}
