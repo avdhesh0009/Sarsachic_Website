@@ -23,6 +23,7 @@ function Login() {
       // console.log(response.data.success);
       setRedirect(response.data.success);
       setUser(response.data.data);
+      setRedirect(data.data.user);
       const data = response.data;
       // console.log(data);
       localStorage.setItem('sarsaUser', JSON.stringify({user:data.data.user, accessToken : data.data.accessToken}));
