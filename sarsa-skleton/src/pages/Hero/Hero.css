@@ -45,7 +45,7 @@
 .model-img {
   position: absolute;
   transform: translate(-50%, -50%);
-  z-index: 1000;
+  z-index: 10;
   top: 56%;
   left: 50%;
 
@@ -145,6 +145,6 @@
     font-size: small;
   }
   .App{
-    height: 50vh;
+    height: 70vh;
   }
 }
