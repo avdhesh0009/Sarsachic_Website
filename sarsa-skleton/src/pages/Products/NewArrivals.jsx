@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./NewArrivals.css";
+
 import img1 from "../../images/shiny-dress.jpg";
 import img2 from "../../images/shiny-dress.jpg";
 import img3 from "../../images/full-sweater.png";

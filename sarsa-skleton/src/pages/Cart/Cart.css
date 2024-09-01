@@ -1,7 +1,7 @@
+
+
 .paymenthead {
     font-size: x-large;
-    margin-top: 50px;
-    margin-left: 85px;
 }
 
 .price-cart {
@@ -231,11 +231,11 @@
 }
 
 .cashcard {
-    left: 936px;
-    position: absolute;
+  
+    position: relative;
     border: 2px solid black;
     width: 390px;
-    height: 249px;
+    height: 149px;
 
 }
 
@@ -278,19 +278,7 @@
 
 }
 
-.discount-cart button {
-    color: white;
-    background-color: black;
-    left: 198px;
-    top: 19px;
-    position: absolute;
-    text-decoration: none;
-    height: 50px;
-    width: 120px;
-    border-bottom-right-radius: 8px;
-    border-top-right-radius: 8px;
 
-}
 
 .del {
     font-size: larger;
