@@ -1,63 +1,76 @@
-import React from 'react'
-import './Summary.css'
-import CashCard from '../CashCard'
-import { useContext } from 'react'
-import { OrderContext } from '../../providers/orderProvider'
+import React from "react";
+import "./Summary.css";
 
-function Summary() {
-    const {total,deliveryCharge,discount} = useContext(OrderContext);
-    return (
-        <div>
-            <p class="paymenthead">Review Your Order</p>
-            <div class="addressdisplay">
-                <img src="img/home.png" alt="Error" class="home" />
-                <span class="line">--------------------------------------</span>
-                <img src="img/wallet.jpg" alt="Error" class="wallet" />
-                <span class="line">--------------------------------------</span>
-                <img src="img/notepad.jpg" alt="Error" class="notepad" />
+import img1 from '../../images/full-sweater.png';
+import img2 from '../../images/white-shirt.png';
 
-            </div>
-            <CashCard props={{total,deliveryCharge,discount}}/>
-            <div class="summbox">
-                <span>Estimated Delivery: 17 July 2024</span>
-                <div class="tshirt1">
-                    <img src="img/tshirt1.png" alt="" />
-                    <div class="t1des">
-                        <p>Black T-shirt</p>
-                        <p>$20.00</p>
-                        <p>Size:M</p>
-                    </div>
+const OrderReview = () => {
+  // Hardcoded order data
+  const order = {
+    id: "12345",
+    date: "2024-09-01T10:00:00Z",
+    items: [
+      {
+        name: "Never fear Oversized T-Shirt",
+        size: "MEDIUM",
+        quantity: 2,
+        price: 699,
+        image: img1
+      },
+      {
+        name: "White Shirt",
+        size: "SMALL",
+        quantity: 1,
+        price: 499,
+        image: img2
+      }
+    ],
+    payment: {
+      subTotal: 1897,
+      shippingCharge: 50,
+      discount: 189.7,
+      total: 1757.3,
+      paymentType:"GooglePay",
+    }
+  };
 
-                </div>
-                <div class="tshirt2">
-                    <img src="img/tshirt2.png" alt="" />
-                    <div class="t2des">
-                        <p>White T-shirt</p>
-                        <p>$20.00</p>
-                        <p>Size:M</p>
-                    </div>
-                </div>
-                <div class="tshirt3">
-                    <img src="img/tshirt3.jpg" alt="" />
-                    <div class="t3des">
-                        <p>White T-shirt</p>
-                        <p>$20.00</p>
-                        <p>Size:M</p>
-                    </div>
-                </div>
-                <div class="shippingadd">
-                    <h3>Shipping Address</h3>
-                    <img src="img/edit.jpg" alt="" class="edit1" />
-                    <p>Robert Fox</p>
-                    <p>415 Washington Ave, Manchester Kentucky 39495</p>ff
-                    <h3>Payment Method</h3>
-                    <img src="img/edit.jpg" alt="" class="edit2" />
-                    <p>Debit Card(... ... ... 849)</p>
-                </div>
+  return (
+    <div className="order-review-container">
+      <h1>Order Review</h1>
 
-            </div>
-        </div>
-    )
-}
+      <div className="order-details">
+        <h2>Order Details</h2>
+        <p><strong>Order ID:</strong> {order.id}</p>
+        <p><strong>Date:</strong> {new Date(order.date).toLocaleDateString()}</p>
+        <h3>Items</h3>
+        <ul>
+          {order.items.map((item, index) => (
+            <li key={index}>
+              <img src={item.image} alt={item.name} className="order-item-image" />
+              <p><strong>Product:</strong> {item.name}</p>
+              <p><strong>Size:</strong> {item.size}</p>
+              <p><strong>Quantity:</strong> {item.quantity}</p>
+              <p><strong>Price:</strong> ${item.price.toFixed(2)}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-export default Summary
+      <div className="payment-details">
+        <h2>Payment Details</h2>
+        <p><strong>Subtotal:</strong> ${order.payment.subTotal.toFixed(2)}</p>
+        <p><strong>Shipping Charge:</strong> ${order.payment.shippingCharge.toFixed(2)}</p>
+        <p><strong>Discount:</strong> ${order.payment.discount.toFixed(2)}</p>
+        <p><strong>Total:</strong> ${order.payment.total.toFixed(2)}</p>
+        <p><strong>Payment Method:</strong> {order.payment.paymentType}</p>
+      </div>
+
+      <div className="order-actions">
+        <button className="button">Back to Orders</button>
+        <button className="button">Proceed to Checkout</button>
+      </div>
+    </div>
+  );
+};
+
+export default OrderReview;

@@ -99,7 +99,7 @@
       padding: 0 5px; /* Reduced padding on smaller screens */
     }
     .products-single-mens {
-        grid-template-columns: repeat(1, 1fr); /* 2 products per row */
+        grid-template-columns: repeat(2, 1fr); /* 2 products per row */
         gap: 2rem;
         margin-left: 5%;
         margin-right: 5%;

@@ -87,7 +87,7 @@ const Header = () => {
          <Link to="/contact">Contact Us</Link>
         </div>
         <Link to="/mywishlist">  <GoHeart className="icon" /></Link>
-        <Link to="/cart">  <BsCart className="icon" /></Link>
+        <Link to="/cart1">  <BsCart className="icon" /></Link>
         <Link to="/userProfile">  <FaRegUser className="icon" /></Link>
       </div>
 

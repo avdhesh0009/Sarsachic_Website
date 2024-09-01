@@ -1,4 +1,5 @@
 import { Routes, BrowserRouter, Route } from "react-router-dom";
+import { Toaster } from 'react-hot-toast';
 import Header from "./components/Header/Header.jsx";
 import Hero from "./pages/Hero/Hero.jsx";
 import Login from "./pages/Login/Login.jsx";
@@ -26,10 +27,13 @@ import UpdatePassword from "./pages/UserDashboard/UpdatePassword.jsx";
 import Wishlist from "./pages/Products/Wishlist.jsx";
 
 import VerifyForgotPasswordLink from "./pages/VerifyForgotPasswordLink.jsx";
+import CartNew from "./pages/Cart/CartNew.jsx";
 
 export default function App() {
   return (
+   
     <BrowserRouter>
+    
       <Header />
       <Routes>
         <Route element={<Home />} index />
@@ -44,6 +48,7 @@ export default function App() {
         <Route element={<WomensSection />} path="/womens-section" />
         <Route element={<ProductDetails />} path="/product-section/:productId" />
         <Route element={<Cart />} path="/cart" />
+        <Route element={<CartNew />} path="/cart1" />
         <Route element={<Payment />} path="/payment" />
         <Route element={<Shipping />} path="/shipping" />
         <Route element={<Summary />} path="/summary" />
@@ -57,6 +62,7 @@ export default function App() {
         <Route element={<UpdatePassword />} path="/updatepassword" />
       </Routes>
       <Footer />
+      <Toaster/>
     </BrowserRouter>
   );
 }

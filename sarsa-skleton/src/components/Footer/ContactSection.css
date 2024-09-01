@@ -23,7 +23,7 @@
   max-width: 400px; /* Max width for larger screens */
 }
 
-.contact-form {
+.contact-formF {
   display: flex;
   flex: 1; /* Take up available space */
    /* Small gap for form elements */
@@ -38,10 +38,11 @@
   font-size: 1rem; /* Font size for better readability */
 }
 
-.join-button {
+.join-buttonF {
   padding: 10px 20px; /* Adjust padding for consistency */
   background-color: black;
   color: white;
+  margin-top: 8px;
   border: none;
   border-radius: 4px; /* Rounded corners */
   cursor: pointer;
@@ -77,7 +78,7 @@
     /* Increase gap for larger screens */
   }
 
-  .contact-form {
+  .contact-formF {
     margin: 0; /* Remove margin for larger screens */
   }
 
@@ -94,14 +95,16 @@
   .social-icons {
     gap: 10px; /* Smaller gap on smaller screens */
   }
-  .contact-form {
-    height: 40px;
+  .contact-formF {
+    height: 45px;
   }
-  .join-button{
+  .join-buttonF{
    margin: 0;
-   padding: 5px;
+   padding: 1px 10px;
     font-size: small;
-    height: 40px;
+    height: 38px;
+    margin-top: 8px;
+   
     
   }
 }
