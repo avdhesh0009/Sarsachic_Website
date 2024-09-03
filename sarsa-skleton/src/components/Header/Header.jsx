@@ -103,9 +103,7 @@ const Header = () => {
         </div>
         <Link to="/mywishlist">  <GoHeart className="icon" /></Link>
         <Link to="/cart">  <BsCart className="icon" /></Link>
-        <button onClick={handleProfile}>
-          <FaRegUser className="icon" />
-        </button>
+        <Link to="/userProfile">  <FaRegUser className="icon" /></Link>
       </div>
 
       {menuOpen && (

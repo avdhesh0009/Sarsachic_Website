@@ -24,7 +24,7 @@ const ContactSection = () => {
     <div className="contact-section">
        <span className="contact-text">BE IN TOUCH WITH US</span>
       <div className="contact-content">
-        <form className="contact-form" onSubmit={handleSubmit}>
+        <form className="contact-formF" onSubmit={handleSubmit}>
           <input 
             type="email" 
             placeholder="ENTER YOUR EMAIL" 
@@ -32,8 +32,9 @@ const ContactSection = () => {
             value={email}
             onChange={ev=>setEmail(ev.target.value)}
           />
-          <button className="join-button">JOIN US</button>
+           <button className="join-buttonF">JOIN US</button>
         </form>
+       
       </div>
       <div className="social-icons">
         <FaInstagram className="social-icon" />

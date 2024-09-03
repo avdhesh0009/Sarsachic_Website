@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 
 import App from "./App";
 import WebProvider from "./providers/WebProvider";
-import OrderProvider from "./providers/orderProvider";
+import OrderProvider from "./providers/OrderProvider";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);

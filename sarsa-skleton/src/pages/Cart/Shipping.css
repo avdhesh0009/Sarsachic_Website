@@ -1,12 +1,13 @@
+/* Base styles */
 .paymenthead {
-    font-size: x-large;
-    margin-top: 14px;
-    margin-left: 85px;
+    font-size: 2rem;
+    margin: 1rem 5%; /* Added vertical and horizontal margins */
 }
 
 .addressdisplay {
     display: flex;
-    margin-left: 100px;
+    flex-direction: column;
+    margin: 0 5% 1rem; /* Adjusted margins */
 }
 
 .ad {
@@ -16,244 +17,223 @@
     gap: 2rem;
 }
 
-.home-icon {
-    width: 26px;
-
-}
-
-.wallet-icon {
-
-    width: 37px;
-
-}
-
+.home-icon,
+.wallet-icon,
 .notepad-icon {
-
-    width: 48px;
-
+    width: 5%;
 }
 
+/* Form and Input styles */
 .paymentform {
-    margin-top: 14px;
+    margin: 1rem 5% 2rem; /* Added margins to top, bottom, and sides */
     display: flex;
     flex-direction: column;
-    /* position: relative; */
-    margin-left: 82px;
+    max-width: 800px;
+    margin: 0 auto; /* Center the form */
 }
 
 #delopt {
-    width: 521px;
+    width: 100%;
+    margin-bottom: 1rem; /* Added margin below the paragraph */
 }
 
 .robertfox {
-    height: 87px;
-    width: 233px;
+    height: auto;
+    width: 100%;
     border: 2px solid black;
     border-radius: 10px;
+    margin-bottom: 1rem; /* Added margin below the div */
 }
 
-.mobno {
-    margin-top: 14px;
-}
-
-.pincode {
-    margin-top: 14px;
-}
-
-#number {
-    border-radius: 9px;
+input, select {
+    border-radius: 0.5rem;
     border: 2px solid black;
-    height: 39px;
-    width: 558px;
-
+    width: calc(100% - 2rem); /* Adjusted width to include margin */
+    padding: 0.5rem;
+    box-sizing: border-box;
+    margin-top: 0.5rem;
 }
 
-.nametop {
-    margin-top: 14px;
 
+button a {
+    color: white;
+    text-decoration: none;
 }
 
-.houseflat {
-    margin-top: 14px;
+/* Table styles */
 
+
+
+.paymenthead {
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
-.areacolony {
-    margin-top: 14px;
-
+.address-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
 }
 
-#name {
-    border-radius: 9px;
-    border: 2px solid black;
-    height: 39px;
-    width: 558px;
-
+.address-card {
+    background-color: #f8f8f8;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
 }
 
 .deliverhere {
-    height: 52px;
-    list-style: none;
-    text-decoration: none;
-    background-color: black;
-    padding: 11px;
-    margin-top: 27px;
+    background-color: #000000;
     color: white;
-    width: 259px;
-    border-radius: 13px;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 4px;
 }
 
-
-
-.selectcity {
-    width: 86px;
-    margin-top: 13px;
+.deliverhere:hover {
+    background-color: #68696b;
 }
 
-#selectcity1 {
-    border-radius: 9px;
-    border: 2px solid black;
-    height: 39px;
-    width: 558px;
-
-
+.paymentform {
+    margin-top: 40px;
 }
 
-.continue {
-    height: 52px;
-    list-style: none;
-    text-decoration: none;
-    background-color: black;
-    padding: 11px;
-    margin-top: 27px;
-    margin-bottom: 27px;
-    color: whitesmoke;
-    width: 259px;
-    border-radius: 13px;
-
-}
-
-.searchi {
-    top: 7px;
-    left: 1333px;
-    position: absolute;
-    height: 26px;
-    width: 28px;
-}
-
-.wishi {
-    top: -6px;
-    left: 1369px;
-    position: absolute;
-    width: 54px;
-}
-
-.carti {
-    left: 1435px;
-    position: absolute;
-    top: 9px;
-    height: 27px;
-    width: 25px;
-}
-
-.cashcard {
-    left: 936px;
-    position: absolute;
-    border: 2px solid black;
-    width: 390px;
-    height: 249px;
-
-}
-
-.subtotal {
-    left: 40px;
-    top: 14px;
-    position: absolute;
-    font-size: larger;
-    font-weight: 700;
-}
-
-.subtotal1 {
-    top: 16px;
-    left: 290px;
-    position: absolute;
-    font-size: larger;
-    font-weight: 700;
-}
-
-.hl1 {
-    left: 21px;
-    width: 348px;
-    position: relative;
-    top: 40px;
-
-}
-
-.discount {
-    position: absolute;
-    top: 57px;
-    left: 41px;
-}
-
-#coupon {
-    border: 2px solid black;
+.newadd {
+    background-color: #ffffff;
+    padding: 20px;
     border-radius: 8px;
-    height: 47px;
-    width: 316px;
-    border: 2px solid black;
-
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.discount button {
+.nametop,
+.mobno,
+.houseflat,
+.areacolony,
+.selectcity,
+.pincode,
+.newdefaultcheckbox {
+    margin-bottom: 20px;
+}
+.newdefaultcheckbox{
+    display: flex;
+    justify-content: flex-start;
+}
+.chkbox{
+    height: 15px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button.continue {
+    background-color: #000000;
     color: white;
-    background-color: black;
-    left: 198px;
-    top: 19px;
-    position: absolute;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+.btn{
+    display: flex;
+    justify-content: space-between;
+}
+
+button.continue:hover {
+    background-color: #5d5e5d;
+}
+
+button.continue a {
+    color: white;
     text-decoration: none;
-    height: 50px;
-    width: 120px;
-    border-bottom-right-radius: 8px;
-    border-top-right-radius: 8px;
-
 }
 
-.del {
-    font-size: larger;
-    left: 45px;
-    position: absolute;
-    top: 156px;
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .paymenthead, .addressdisplay, .paymentform, table {
+        margin: 1rem 2%; /* Reduced margins for medium screens */
+    }
+
+    .ad {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .home-icon,
+    .wallet-icon,
+    .notepad-icon {
+        width: 25%;
+    }
+
+    #delopt, .robertfox, .paymentform {
+        width: 100%;
+    }
+
+    .deliverhere, .continue {
+        width: 100%;
+    }
 }
 
-.del1 {
-    font-size: larger;
-    left: 293px;
-    position: absolute;
-    top: 156px;
-}
+@media (max-width: 480px) {
+    .paymenthead {
+        font-size: 1.5rem;
+        margin: 1rem 2%; /* Reduced margins for small screens */
+    }
 
-.hl2 {
-    left: 21px;
-    width: 348px;
-    position: relative;
-    top: 183px;
+    .addressdisplay {
+        margin: 0 2% 1rem; /* Adjusted margins for small screens */
+    }
 
-}
+    .paymentform {
+        margin: 1rem 2% 2rem;
+    }
 
-.grandt {
-    font-weight: 700;
-    font-size: larger;
-    left: 48px;
-    position: absolute;
-    top: 200px;
+    .deliverhere, .continue {
+        width: 100%;
+        margin: 1rem 0; /* Adjusted margin for small screens */
+    }
 
-}
+    input, select {
+        font-size: 0.9rem;
+        width: calc(100% - 2rem); /* Adjusted width for input fields */
+    }
+   
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto; /* Allow horizontal scroll on smaller screens */
+    }
 
-.grandt1 {
-    font-weight: 700;
-    font-size: larger;
-    left: 293px;
-    position: absolute;
-    top: 201px;
+    thead {
+        display: none; /* Hide the table header on small screens */
+    }
 
+    tbody, tr {
+        display: block;
+        width: 100%;
+    }
+
+    td {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.5rem;
+    }
+
+    td::before {
+        content: attr(data-label); /* Add labels for each cell */
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
 }

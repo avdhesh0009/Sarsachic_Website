@@ -14,6 +14,7 @@ import useAxiosPublic from '../../hooks/useAxios.jsx';
 import { useContext } from 'react';
 import { WebContext } from "../../providers/WebProvider.jsx";
 import ReviewPopup from '../Review/ReviewPopup.jsx';
+import toast from "react-hot-toast";
 
 const ProductDetails = () => {
   const [sizes, setSizes] = useState([]);
@@ -45,9 +46,11 @@ const ProductDetails = () => {
       const response = await axios.post('/users/add-favorite',{
         productId
       }); 
+      toast.success("Added to wishlist");
       console.log(response.data);
     }
     catch(error){
+      toast.error("Some Error Occurred");
       console.log(error,'add to favorites error');
     }
   }
@@ -59,9 +62,12 @@ const ProductDetails = () => {
         quantity:1,
         size
       })
+      
+      toast.success("Added to cart");
       console.log(response.data);
     }
     catch(error){
+      toast.error("Some Error Occurred");
       console.log(error);
     }
   }
@@ -145,7 +151,7 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-      <ReviewPopup id={productId}/>
+     
       <TestimonialSlider id={productId}/>
     </>
   );
