@@ -8,15 +8,36 @@ import CheckoutSteps from './CheckoutSteps';
 import { OrderContext } from "../../providers/OrderProvider.jsx";
 import CashCard from '../CashCard';
 import ProductBar from '../../components/ProductBar/ProductBar.jsx';
+import useAxiosPublic from '../../hooks/useAxios.jsx';
+import { useEffect } from 'react';
 
 const CartNew = () => {
+
+  const axios = useAxiosPublic();
+  const [items, setItems] = useState([]);
  
-  const [items, setItems] = useState([
-    { id: 1, name: 'Never fear Oversized T-Shirt', size: 'MEDIUM', price: 699, quantity: 1, image: img1 },
-    { id: 2, name: 'Never fear Oversized T-Shirt', size: 'MEDIUM', price: 699, quantity: 1, image: img2 },
-    { id: 3, name: 'Never fear Oversized T-Shirt', size: 'MEDIUM', price: 699, quantity: 1, image: img2 },
-    { id: 4, name: 'Never fear Oversized T-Shirt', size: 'MEDIUM', price: 699, quantity: 1, image: img2 },
-  ]);
+  // const [items, setItems] = useState([
+  //   { id: 1, name: 'Never fear Oversized T-Shirt', size: 'MEDIUM', price: 699, quantity: 1, image: img1 },
+  //   { id: 2, name: 'Never fear Oversized T-Shirt', size: 'MEDIUM', price: 699, quantity: 1, image: img2 },
+  //   { id: 3, name: 'Never fear Oversized T-Shirt', size: 'MEDIUM', price: 699, quantity: 1, image: img2 },
+  //   { id: 4, name: 'Never fear Oversized T-Shirt', size: 'MEDIUM', price: 699, quantity: 1, image: img2 },
+  // ]);
+
+   // Fetch cart data on component mount
+   useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        const response = await axios.get("/users/get-cart");
+        const cartData = response.data.data;
+        console.log(cartData);
+        setItems(cartData);
+      } catch (error) {
+        console.error("Error fetching cart data:", error);
+      }
+    };
+
+    fetchCart();
+  }, []);
 
   // Handle increment quantity
   const handleIncrement = (id) => {
@@ -36,6 +57,49 @@ const CartNew = () => {
     toast.error("Item Deleted");
   };
 
+  const handleQuantityChange = async (productId, sizeId, change) => {
+    const updatedCart = items.map((item) => {
+      if (item.product._id === productId) {
+        // Update size quantity (if applicable)
+        const updatedSizes = item.sizes.map((size) =>
+          size._id === sizeId
+            ? { ...size, quantity: size.quantity + change }
+            : size
+        );
+  
+        // Ensure the quantity doesn't drop below 1
+        return {
+          ...item,
+          sizes: updatedSizes.map((size) => ({
+            ...size,
+            quantity: Math.max(1, size.quantity),
+          })),
+        };
+      }
+      return item;
+    });
+  
+    setItems(updatedCart); // Update the cart state
+  
+    // Make an API call to update quantity on the server
+    try {
+      const updatedItem = updatedCart.find(
+        (item) => item.product._id === productId
+      );
+      const updatedSize = updatedItem.sizes.find((size) => size._id === sizeId);
+      
+      // API call to update the quantity in the database
+      await axios.put(`/users/update-cart`, {
+        productId,
+        sizeId,
+        quantity: updatedSize.quantity, // Send updated quantity to backend
+      });
+    } catch (error) {
+      console.error("Error updating quantity:", error);
+      // Optionally revert the state change if the update fails
+    }
+  };  
+  
   const subTotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const shipping = 50;
   const totalPrice = subTotal + shipping;
@@ -53,19 +117,65 @@ const CartNew = () => {
       <div className="cart-container">
         <div className="cart-items">
           {items.map(item => (
-            <div key={item.id} className="cart-item">
-              <img src={item.image} alt={item.name} />
+            <div key={item._id} className="cart-item">
+              <img src={item.product.images[0]} alt={item.product.name} />
               <div className="item-details">
-                <h3>{item.name}</h3>
-                <p>SIZE: {item.size}</p>
-                <p>PRICE: {item.price}</p>
-                <div className="quantity-control">
-                  <button onClick={() => handleDecrement(item.id)}>-</button>
+                <h3>{item.product.name}</h3>
+                {/* <p>SIZE: {item.size}</p> */}
+                <p>PRICE: {item.product.price}</p>
+                {/* Here we have to make original price and discounted price */}
+                {/* <p>PRICE: {item.product.price}</p> */} 
+                {/* <div className="quantity-control">
+                  <button onClick={() =>
+                          handleQuantityChange(
+                            item.productItem._id,
+                            sizeObj._id,
+                            -1
+                          )
+                  }>-</button>
                   <span>{item.quantity}</span>
-                  <button onClick={() => handleIncrement(item.id)}>+</button>
+                  <button onClick={() =>
+                          handleQuantityChange(
+                            productItem.product._id,
+                            sizeObj._id,
+                            1
+                          )
+                        }>+</button>
                   <button className="delete-button" onClick={() => handleDelete(item.id)}><MdDelete /></button>
-                </div>
-              
+                </div> */}
+                {item.sizes.map((sizeObj) => (
+                  <div className="size-controls" key={sizeObj._id}>
+                    <p>Size: {sizeObj.size}</p>
+                    <div className="box1-cart">
+                      <button
+                        className="quant"
+                        onClick={() =>
+                          handleQuantityChange(
+                            item.product._id,
+                            sizeObj._id,
+                            -1
+                          )
+                        }
+                      >
+                        -
+                      </button>
+                      <span className="quant">{sizeObj.quantity}</span>
+                      <button
+                        className="quant"
+                        onClick={() =>
+                          handleQuantityChange(
+                            item.product._id,
+                            sizeObj._id,
+                            1
+                          )
+                        }
+                      >
+                        +
+                      </button>
+                      <button className="delete-button" onClick={() => handleDelete(item._id)}><MdDelete /></button>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           ))}

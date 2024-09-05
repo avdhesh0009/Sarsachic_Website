@@ -23,7 +23,7 @@ function Cart() {
     };
 
     fetchCart();
-  }, [axios]);
+  }, []);
 
   // Handle quantity change (increment/decrement)
   const handleQuantityChange = async (productId, sizeId, change) => {
@@ -71,7 +71,7 @@ function Cart() {
               />
               <div className="t1des">
                 <p className="product-name">{productItem.product.name}</p>
-                <p className="price">${productItem.product.price.toFixed(2)}</p>
+                <p className="price">${productItem.product.price?.toFixed(2)}</p>
 
                 {/* Size and quantity controls */}
                 {productItem.sizes.map((sizeObj) => (
