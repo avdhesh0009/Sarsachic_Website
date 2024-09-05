@@ -1,22 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import './DealsOfTheMonth.css';
+//import useAxiosPublic from "../hooks/useAxios.jsx";
+import axios from 'axios';
+
 import img1 from '../../images/deal1.png';
 import img2 from '../../images/deal2.png';
 import img3 from '../../images/text.png';
-import { Swiper, SwiperSlide } from 'swiper/react';
 
-import 'swiper/swiper-bundle.css';
-
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import Swipe from '../../components/Swiper/Swipe';
 
 const DealsOfTheMonth = () => {
+  const [timeLeft, setTimeLeft] = useState({});
+  const [endOfMonth, setEndOfMonth] = useState(null);
 
+  useEffect(() => {
+ 
+    const fetchCountdown = async () => {
+      try {
+        const response = await axios.get("/api/v1/countdown/api/get-countdown");
+        const countdownEndDate = response.data.data; 
+       // console.log("api response:",response);
+        if (countdownEndDate) {
+          setEndOfMonth(new Date(countdownEndDate));
+        } else {
+          console.error("Countdown end date is missing in response");
+        }
+      } catch (error) {
+        console.error("Failed to fetch countdown timer:", error);
+      }
+    };
 
+    fetchCountdown();
+  }, []);
 
   const calculateTimeLeft = () => {
     const now = new Date();
-    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0); // End of current month
+    if (!endOfMonth) return {};
+
     const difference = endOfMonth - now;
     let timeLeft = {};
 
@@ -32,22 +51,17 @@ const DealsOfTheMonth = () => {
     return timeLeft;
   };
 
-
-
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
-    return () => clearTimeout(timer);
-  });
+    return () => clearInterval(timer);
+  }, [endOfMonth]);
 
   const formatTime = (time) => {
     return String(time).padStart(2, '0');
   };
-
   return (
     <div className="deals-container">
       <div className="text-item">
@@ -76,8 +90,15 @@ const DealsOfTheMonth = () => {
           </div>
         </div>
       </div>
-      <Swipe />
-
+      <div className="images-container">
+        <div className="image-item">
+          <img src={img1} alt="Deal 1" />
+         
+        </div>
+        <div className="image-item">
+          <img src={img2} alt="Deal 2" />
+        </div>
+      </div>
     </div>
   );
 };
