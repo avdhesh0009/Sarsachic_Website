@@ -52,22 +52,30 @@ const CartNew = () => {
   };
 
   // Handle deleting an item
-  const handleDelete = (id) => {
-    setItems(items.filter(item => item.id !== id));
+  const handleDelete = async (productId) => {
+    // setItems(items.filter(item => item.id !== id));
+    try {
+      const response = await axios.post(`users/remove-from-cart`,{
+        productId
+      })
+      // console.log(response.data.data);
+      setItems(response.data.data)
+    } 
+    catch (error) {
+      console.log(error);
+    }
     toast.error("Item Deleted");
   };
 
   const handleQuantityChange = async (productId, sizeId, change) => {
     const updatedCart = items.map((item) => {
       if (item.product._id === productId) {
-        // Update size quantity (if applicable)
         const updatedSizes = item.sizes.map((size) =>
           size._id === sizeId
             ? { ...size, quantity: size.quantity + change }
             : size
         );
-  
-        // Ensure the quantity doesn't drop below 1
+
         return {
           ...item,
           sizes: updatedSizes.map((size) => ({
@@ -79,24 +87,21 @@ const CartNew = () => {
       return item;
     });
   
-    setItems(updatedCart); // Update the cart state
+    setItems(updatedCart); 
   
-    // Make an API call to update quantity on the server
     try {
       const updatedItem = updatedCart.find(
         (item) => item.product._id === productId
       );
       const updatedSize = updatedItem.sizes.find((size) => size._id === sizeId);
       
-      // API call to update the quantity in the database
-      await axios.put(`/users/update-cart`, {
+      const response = await axios.post(`/users/update-cart`, {
         productId,
         sizeId,
-        quantity: updatedSize.quantity, // Send updated quantity to backend
+        quantity: updatedSize.quantity,
       });
     } catch (error) {
       console.error("Error updating quantity:", error);
-      // Optionally revert the state change if the update fails
     }
   };  
   
@@ -117,7 +122,7 @@ const CartNew = () => {
       <div className="cart-container">
         <div className="cart-items">
           {items.map(item => (
-            <div key={item._id} className="cart-item">
+            <div key={item.product._id} className="cart-item">
               <img src={item.product.images[0]} alt={item.product.name} />
               <div className="item-details">
                 <h3>{item.product.name}</h3>
@@ -172,7 +177,7 @@ const CartNew = () => {
                       >
                         +
                       </button>
-                      <button className="delete-button" onClick={() => handleDelete(item._id)}><MdDelete /></button>
+                      <button className="delete-button" onClick={() => handleDelete(item.product._id)}><MdDelete /></button>
                     </div>
                   </div>
                 ))}
@@ -190,7 +195,6 @@ const CartNew = () => {
         
       </div>
       
-     
     </>
   );
 };
