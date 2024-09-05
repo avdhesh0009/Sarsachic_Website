@@ -23,6 +23,7 @@ import {
   addToCart,
   getCart,
   removeFromCart,
+  updateCart
 } from "../controllers/cart.controllers.js";
 import { createProduct, deleteProduct, getFeaturedProducts, getProductById, getProducts, updateProduct } from "../controllers/apu_product_controller.js";
 import { addToFavorites ,getFavorites,removeFromFavorites} from "../controllers/favorite.controller.js";
@@ -76,7 +77,8 @@ router.route('/get-web-data').get(getWebData)
 
 router.route('/add-cart').post(verifyJWT, addToCart )
 router.route('/get-cart').get(verifyJWT, getCart )
-
+router.route('/update-cart').post(verifyJWT, updateCart )
+router.route('/remove-from-cart').post(verifyJWT, removeFromCart )
 
 router.route('/add-favorite').post(verifyJWT, addToFavorites )
 router.route('/get-favorites').get(verifyJWT,getFavorites)
