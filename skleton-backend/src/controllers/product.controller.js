@@ -1,4 +1,50 @@
 import Product from "../models/Product.js";
+import { Reviews } from "../models/review.model.js";
+import { ApiResponse} from "../utils/ApiResponse.js";
+import { ApiError } from "../utils/ApiError.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
+import mongoose from "mongoose";
+import { User } from "../models/user.model.js";
+
+// save reviews
+export const createReview = asyncHandler(async (req,res) => {
+    const {productId,reviewData} = req.body;
+    const {userId} =req.params;
+    const {imageUrl} = await User.findOne({_id:userId});
+    if(!imageUrl){
+      imageUrl=""
+    }
+    const review = new Reviews({ ...reviewData, product: productId,imageUrl});
+    await review.save();
+
+    await Product.findByIdAndUpdate(productId, {
+      $push: { reviews: review._id }
+    });
+
+    if(!review){
+      throw new ApiError(400,"Unable to save the reviews");
+    }
+
+    res.status(200).json(
+      new ApiResponse(200,"Review save successfully")
+    )
+})
+
+// get reviews
+export const getProductWithReviews = asyncHandler(async (req, res) => {
+  const {id:productId} = req.params;
+  if (!mongoose.Types.ObjectId.isValid(productId)) {
+      return res.status(400).json({ success: false, error: "Invalid product ID" });
+  }
+  const product = await Product.findById(productId).populate('reviews');
+  if (!product) {
+      throw new ApiError(400, "Error while fetching the reviews data");
+  }
+  res.status(200).json(
+      new ApiResponse(200,product,"Reviews fetched successfully")
+  );
+});
+
 
 // Add product
 export const addProduct = async (req, res) => {
@@ -11,6 +57,38 @@ export const addProduct = async (req, res) => {
   }
 };
 
+function getCategoryKeyByValue(value, map) {
+  return Object.keys(map).find(key => map[key] === value);
+}
+
+// fetch mens-section only
+export const getMensProducts = asyncHandler(async(req,res)=>{
+  const categoryProduct = req.params.category;
+  // console.log(categoryProduct);
+  const categoryMap = {
+    men: "men's fashion",
+    women: "women's fashion",
+    kid: "kids' fashion",
+    // Add more categories as needed
+  };
+
+ const categoryKey = getCategoryKeyByValue(categoryProduct,categoryMap);
+ if(!categoryKey){
+    throw new ApiError(400,"No categories are selected there")
+ }
+ 
+ const products = await Product.find({ category: categoryKey});
+
+ if(!products){
+  throw new ApiError(400,"No products are found using this category");
+ }
+
+ res.status(200).json(
+  new ApiResponse(200,products,"Products are fetched successfully")
+ )
+
+})
+
 // Fetch all products
 export const getAllProducts = async (req, res) => {
   try {
@@ -20,7 +98,6 @@ export const getAllProducts = async (req, res) => {
     res.status(500).json({ success: false, error: error.message });
   }
 };
-
 
 // Fetch a single product by ID
 export const getProductById = async (req, res) => {

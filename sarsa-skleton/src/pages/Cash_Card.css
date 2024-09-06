@@ -1,0 +1,106 @@
+/* CashCard.css */
+
+/* General Styles */
+.cashcard {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+   background-color: rgb(255, 255, 255);
+  }
+  
+  .subtotal,
+  .del,
+  .grandt {
+    display: block;
+    font-weight: bold;
+    margin: 20px;
+  }
+  
+  .subtotal1,
+  .del1,
+  .grandt1 {
+    display: block;
+    text-align: right;
+    font-weight: bold;
+    margin: 20px;
+  }
+  
+  .discount-cart {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+  }
+  
+  .discountbox {
+    margin: 0px 0;
+    display: flex;
+    width: 350px;
+    gap: 10px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  button.apply {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 20px;
+    
+    width: fit-content;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .cashcard {
+      padding: 15px;
+      max-width: 100%;
+    }
+  
+    .discount-cart {
+      flex-direction: column;
+    }
+  
+    .discountbox {
+      margin: 10px 0;
+    }
+  
+    button.apply {
+      padding: 8px;
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .cashcard {
+      padding: 10px;
+    }
+  
+    .subtotal,
+    .del,
+    .grandt {
+      font-size: 14px;
+    }
+  
+    .subtotal1,
+    .del1,
+    .grandt1 {
+      font-size: 14px;
+    }
+  
+    button.apply {
+      padding: 6px;
+      font-size: 12px;
+    }
+  }
+  

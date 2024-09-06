@@ -10,6 +10,9 @@ import NewArrivals from '../Products/NewArrivals.jsx'
 import ReviewandMembership from '../../components/Membership/ReviewandMembership.jsx';
 import { WebContext } from '../../providers/WebProvider.jsx';
 import JustDrop from '../Products/JustDrop.jsx';
+import Rev from '../../components/Membership/Rev.jsx';
+import Member from '../../components/Membership/Member.jsx';
+
 
 function Home() {
 
@@ -24,7 +27,9 @@ function Home() {
             <NewArrivals />
             <ShopSections />
             <JustDrop/>
-            <ReviewandMembership />
+            <Rev/>
+            <Member/>
+           
         </div>
     )
 }

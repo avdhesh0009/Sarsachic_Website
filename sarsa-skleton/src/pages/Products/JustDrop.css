@@ -43,7 +43,7 @@
 .product-details-icon {
   flex-shrink: 0;
   width: 474px;
-  height: 600px;
+  height: auto;
   border-radius: var(--border-radius-sm);
   object-fit: cover;
 }
@@ -53,69 +53,66 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-}
-
-.follow-us-parent {
-  display: flex;
-  align-items: center;
-  gap: var(--gap-xxl);
-  margin-bottom: var(--gap-xxl);
+  text-align: center;
+  margin-top: 40px;
 }
 
 .follow-us {
   font-weight: bold;
-  font-size: var(--font-size-xxl);
+  font-size: 1.5rem;
+  margin-bottom: 8px;
 }
 
-.image-grid, .single-image-container {
+.social-icons {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--gap-xxl);
+  justify-content: center;
+  gap: 20px;
 }
 
-.image-row {
-  display: flex;
-  gap: var(--gap-xxl);
+.social-icons a {
+  font-size: 2rem;
+  color: black;
+  transition: color 0.3s;
 }
 
-.rectangle-parent, .rectangle-group, .rectangle-container {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-xxl);
+.social-icons a:hover {
+  color: #007BFF; /* Change to your desired hover color */
 }
 
-.frame-inner, .image-placeholder-icon, .rectangle-icon, .frame-child1, .frame-child2, .single-image-icon {
-  width: 100%;
-  height: auto;
-  border-radius: var(--border-radius-sm);
-}
-
-
-.follow-us-container {
-    text-align: center;
-    margin-top: 40px;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .product-display {
+   
+    align-items: center;
   }
-  
-  .follow-us {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    font-weight: bold;
+
+  .product-details-icon {
+    width: 50%;
+    height: 500px;
   }
-  
-  .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+}
+
+@media (max-width: 480px) {
+  :root {
+    --gap-xxl: 1rem;
+    --padding-xxl: 1rem;
   }
-  
-  .social-icons a {
+
+  .just-drop {
     font-size: 2rem;
-    color: black;
-    transition: color 0.3s;
-  }
-  
-  .social-icons a:hover {
-    color: #007BFF; /* Change to your desired hover color */
   }
 
- 
+  .social-icons a {
+    font-size: 1.5rem;
+  }
+
+  .product-display {
+    padding: var(--padding-xxl);
+    margin: var(--padding-xxl) 0;
+  }
+
+  .product-details-icon {
+    width: 70%;
+    height: 400px;
+  }
+}

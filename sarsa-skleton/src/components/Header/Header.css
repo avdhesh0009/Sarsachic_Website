@@ -1,82 +1,320 @@
-* {
+/* Basic Styles */
+body {
   margin: 0;
-  padding: 0;
+  font-family: Arial, sans-serif;
 }
 
-.currency-header select {
-  border: none;
-  appearance: none;
-  font-size: 1.15rem;
-
-  color: #000;
-  cursor: pointer;
-
-}
-
-.currency-header option {
-  font-size: 22px;
-}
-
-.header-navbar {
-  background: linear-gradient(to left, #D0D1CA 50%, #ffffff 50%);
+header {
   display: flex;
-  padding: 10px 0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: linear-gradient(to right, #fff 50%, #d0d1ca 50%);
+  color: rgb(33, 32, 32);
 }
 
-.header-section {
-  flex: 2;
-  text-align: center;
-  margin-right: 70px;
+.header-center {
+  margin: 0 85px 0 0;
 }
 
+.header-center h1 {
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+/* Left, Center, and Right Sections */
 .header-left {
   display: flex;
-  text-align: center;
 }
 
-.left-header-icons {
-  list-style: none;
-  flex: 1;
+.header-right {
+  display: flex;
+  align-items: center;
 }
 
-.left-header-icons li {
-  display: inline-block;
+.icon {
+  margin: 0 20px;
+  font-size: 30px;
   cursor: pointer;
-  margin: 10px 20px;
 }
 
-
-.right-header-icons {
-  list-style: none;
-  flex: 3;
-  text-align: center;
+/* Hamburger Menu Styling */
+.menu-icon {
+  font-size: 30px;
+  background: none;
+  border: none;
+  color: rgb(9, 9, 9);
+  cursor: pointer;
+  display: none; /* Hide by default */
 }
-
-.right-header-icons li {
+/* Currency Selector */
+.selector {
+  position: relative;
   display: inline-block;
-  margin: 10px 20px;
-  font-size: 18px;
+  
 }
 
-.left-header-icons li {
-  font-size: 18px;
+.selected {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  background-color: #fff;
 }
 
-.logo {
-  /* Grow to fill the space */
-  font-weight: bolder;
-  color: rgb(0, 0, 0);
-  /* Change color of logo text */
-  font-size: 34px;
-  /* Optional: Adjust font size */
+
+.options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 4px;
+  background-color: #fff;
+  z-index: 10;
 }
 
-.logo a {
+.option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: #f0f0f0;
+}
+.desktop-links{
+  font-size: 24px;
+  padding: 0 0 ;
+
+}
+
+/* Responsiveness */
+
+@media (max-width: 1065px){
+  .desktop-links {
+   font-size: 15px; /* Hide desktop links on small screens */
+  }
+  .header-center{
+    margin: 0 55px 0 0;
+  }
+  .header-center h1{
+    font-size: 30px;
+  }
+  .icon {
+   
+    font-size: 25px;
+    cursor: pointer;
+  }
+}
+
+/* Show menu icon on smaller screens */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block; /* Show the menu icon on small screens */
+  }
+  .header-center{
+    margin: 0 0 0 95px;
+  }
+  .desktop-links {
+    display: none; /* Hide desktop links on small screens */
+  }
+}
+
+/* Show About Us, Contact Us, and Accessories links on larger screens */
+@media (min-width: 769px) {
+  /* Hide the menu icon on larger screens */
+  .menu-icon {
+    display: none;
+  }
+
+  /* Show desktop links */
+  .desktop-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .desktop-links a {
+    text-decoration: none;
+    color: black;
+   
+  }
+}
+
+/* Sidebar Menu Styling */
+.sidebar-menu {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: auto;
+  height: fit-content;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: left 0.3s ease;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.sidebar-content {
+  flex-grow: 1;
+  padding: 0 0px;
+}
+
+.sidebar-menu a {
+  padding: 15px;
+  color: rgb(33, 32, 32);
   text-decoration: none;
-  color: black;
+  text-align: left;
+}
 
+.sidebar-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Close Icon Styling */
+.close-icon {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgb(33, 32, 32);
+  padding: 20px;
+  align-self: flex-end; /* Moves the close icon to the bottom */
+}
+
+/* Sidebar Tabs and Category List Styling */
+.sidebar-tabs {
+  display: flex;
+}
+
+.category-tab {
+  font-weight: bold;
+  border: 1px solid black;
+  padding: 25px 0;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+}
+
+.category-tab:hover {
+  background-color: #f0f0f0;
+}
+
+h3 {
+  margin-top: 20px;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  color: black;
+}
+
+.category-item img {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+}
+
+.category-item span {
+  font-size: 16px;
+}
+
+/* Currency Selector */
+.currency-selector {
+  margin: 20px;
+}
+
+.currency-selector h4 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.currency-button {
+  padding: 10px 30px;
+  margin-right: 10px;
+  border: 1px solid black;
+  background-color: white;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.currency-button.active {
+  background-color: #cfcfc9;
+}
+
+/* Active Tab Styling */
+.category-tab.active {
+  background-color: #f0f0f0;
+  border-bottom: 2px solid black;
 }
 
 
+/* Responsive Styling */
+@media (max-width: 480px) {
+  header {
+    padding: 5px 5px;
+  }
 
-@media screen and (max-width: 768px) {}
+  .header-center {
+    margin: 0 0 0 40px;
+  }
+
+  .header-center h1 {
+    font-size: 20px;
+  }
+
+  .header-right {
+    justify-content: center;
+  }
+
+  .header-right .icon {
+    font-size: 15px;
+    margin: 0 8px;
+  }
+
+  .header-left .icon {
+    font-size: 15px;
+  }
+
+  .menu-icon {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+  .header-center h1 {
+    font-size: 25px;
+  }
+  .header-center{
+    margin: 0 0 0 50px;
+  }
+
+  .header-right .icon {
+    font-size: 20px;
+    margin: 0 10px;
+  }
+
+  .header-left .icon {
+    font-size: 20px;
+  }
+
+  .menu-icon {
+    font-size: 20px;
+  }
+}

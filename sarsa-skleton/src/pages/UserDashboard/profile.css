@@ -84,13 +84,14 @@ body {
   box-sizing: border-box;
 }
 
-.profile-info .form-group input[type="radio"] {
+.profile-info .form-group-rad input[type="radio"] {
   margin-right: 10px;
 }
 
 .profile-info .form-group div {
   display: flex;
   align-items: center;
+ 
   flex-wrap: wrap;
 }
 

@@ -8,6 +8,7 @@ import image2 from "../../images/3.png";
 import hoverimg from "../../images/2.png";
 import demonimg from "../../images/demon.png";
 import useAxiosPublic from '../../hooks/useAxios';
+import './../Products/NewArrivals.css'
 
 
 function MensSection() {
@@ -17,42 +18,37 @@ function MensSection() {
   const axios = useAxiosPublic()
 
   const [pageData, setPageData] = useState({})
-
-
   const paramValue = searchParams.get('tab');
   console.log(paramValue);
 
+  const navigate = useNavigate();
 
-
-
+  const [products,setProducts]=useState([]);
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [SelectedFilters, setSelectedFilters] = useState([]);
   useEffect(() => {
-    const getpageData = async () => {
-      await axios(`/users/shop-data/${paramValue}`)
-        .then((res) => {
-          setPageData(res.data.data)
-
-        })
-    }
-
-    getpageData()
-  }, [])
-
+    const fetchData = async () => {
+      try {
+        const [data1, data2] = await Promise.all([
+          axios.get(`/users/shop-data/${paramValue}`),
+          axios.get(`/products/${paramValue}-products`)
+        ]);
+        // console.log('data1', data1, 'data2', data2.data);
+        // console.log(data2.data.data);
+        setProducts(data2.data.data);
+      } catch (error) {
+        console.error('Error making requests:', error);
+      }
+    };
+  
+    fetchData();
+  }, [SelectedFilters]);  
 
   return (
     <div className="mens-frame">
       <div className="mens-section">
-        <div className="scroll-bar">
-          <ul>
-            <li><button className='section-btn active'>Mens Fashion</button></li>
-            <li><button className='section-btn'>Womens Fashion</button></li>
-            <li><button className='section-btn' >Womens Accessories</button></li>
-            <li><button className='section-btn'>Mens Accessories</button></li>
-            <li><button className='section-btn'>Discount Deals</button></li>
-          </ul>
-        </div>
-
         <div className="mens-banner">
-          <img src={pageData.themeImage || Men} alt="" />
+          <img src={pageData?.themeImage || Men} alt="" />
         </div>
 
         <div className="mens-category">
@@ -61,49 +57,11 @@ function MensSection() {
         </div>
 
         <div className="mens-products-container">
-          <div className="scroll-section-2">
             <div className="products-single-mens">
-              <Products
-                img1={image1}
-                img2={demonimg}
-                price="RS. 699"
-                name="Goku Oversized Tshirt"
-              />
-              <Products
-                img1={image2}
-                img2={hoverimg}
-                price="RS. 699"
-                name="Never Fear oversized Tshirt"
-              />
-              <Products
-                img1={image2}
-                img2={hoverimg}
-                price="RS. 699"
-                name="Never Fear oversized Tshirt"
-              />
-
-            </div>
-            <div className="products-single-mens">
-              <Products
-                img1={image1}
-                img2={demonimg}
-                price="RS. 699"
-                name="Goku Oversized Tshirt"
-              />
-              <Products
-                img1={image2}
-                img2={hoverimg}
-                price="RS. 699"
-                name="Never Fear oversized Tshirt"
-              />
-              <Products
-                img1={image2}
-                img2={hoverimg}
-                price="RS. 699"
-                name="Never Fear oversized Tshirt"
-              />
-            </div>
-          </div>
+              {products.map((product, index) => (
+                <Products key={index} data={product}/>
+              ))}
+            </div> 
         </div>
       </div>
     </div>

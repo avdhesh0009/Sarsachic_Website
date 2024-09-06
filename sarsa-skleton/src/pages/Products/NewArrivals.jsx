@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./NewArrivals.css";
+
 import img1 from "../../images/shiny-dress.jpg";
 import img2 from "../../images/shiny-dress.jpg";
 import img3 from "../../images/full-sweater.png";
@@ -9,101 +10,6 @@ import img6 from "../../images/white-shirt.png";
 import { Link, Navigate, useNavigate} from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxios";
 import ProductDetails from "./ProductDetails";
-
-
-// const products = [
-//   {
-//     name: "Shiny Dress",
-//     brand: "Al Karam",
-//     price: 95.5,
-//     reviews: "4.1k",
-//     status: "Almost Sold Out",
-//     imgSrc: img1,
-//     rating: 5,
-//     category: "women"
-//   },
-//   {
-//     name: "Long Dress",
-//     brand: "Al Karam",
-//     price: 95.5,
-//     reviews: "4.1k",
-//     status: "Almost Sold Out",
-//     imgSrc: img2,
-//     rating: 5,
-//     category: "women"
-//   },
-//   {
-//     name: "Full Sweater",
-//     brand: "Al Karam",
-//     price: 95.5,
-//     reviews: "4.1k",
-//     status: "Almost Sold Out",
-//     imgSrc: img3,
-//     rating: 5,
-//     category: "women"
-//   },
-//   {
-//     name: "White Dress",
-//     brand: "Al Karam",
-//     price: 95.5,
-//     reviews: "4.1k",
-//     status: "Almost Sold Out",
-//     imgSrc: img4,
-//     rating: 5,
-//     category: "women"
-//   },
-//   {
-//     name: "Colorful Dress",
-//     brand: "Al Karam",
-//     price: 95.5,
-//     reviews: "4.1k",
-//     status: "Almost Sold Out",
-//     imgSrc: img5,
-//     rating: 5,
-//     category: "women"
-//   },
-//   {
-//     name: "White Shirt",
-//     brand: "Al Karam",
-//     price: 95.5,
-//     reviews: "4.1k",
-//     status: "Almost Sold Out",
-//     imgSrc: img6,
-//     rating: 5,
-//     category: "women"
-//   },
-//   {
-//     name: "White Shirt",
-//     brand: "Al Karam",
-//     price: 95.5,
-//     reviews: "4.1k",
-//     status: "Almost Sold Out",
-//     imgSrc: img6,
-//     rating: 5,
-//     category: "men"
-//   },
-//   {
-//     name: "White Shirt",
-//     brand: "Al Karam",
-//     price: 95.5,
-//     reviews: "4.1k",
-//     status: "Almost Sold Out",
-//     imgSrc: img6,
-//     rating: 5,
-//     category: "men"
-//   },
-//   {
-//     name: "White Shirt",
-//     brand: "Al Karam",
-//     price: 95.5,
-//     reviews: "4.1k",
-//     status: "Almost Sold Out",
-//     imgSrc: img6,
-//     rating: 5,
-//     category: "men"
-//   },
-
-// ];
 
 const NewArrivals = () => {
   const navigate = useNavigate();

@@ -116,7 +116,7 @@ const AppCustomization = () => {
         },
       });
       console.log(response.data);
-    } catch (error) {n
+    } catch (error) {
       console.error(error);
     }
   };
@@ -196,7 +196,7 @@ const AppCustomization = () => {
                   image={imageSrc}
                   crop={crop}
                   zoom={zoom}
-                  aspect={4 / 5}
+                  aspect={2/5}
                   onCropChange={setCrop}
                   onZoomChange={setZoom}
                   onCropComplete={onCropComplete}
@@ -206,7 +206,7 @@ const AppCustomization = () => {
                 onClick={handleCrop}
                 className="absolute top-2 right-2 p-2 bg-blue-500 text-white rounded-full"
               >
-                <FaCrop />
+              <FaCrop />
               </button>
             </div>
           </ReactModal>

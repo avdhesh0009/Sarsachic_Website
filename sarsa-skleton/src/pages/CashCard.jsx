@@ -1,28 +1,26 @@
-import React from 'react'
-import '../pages/Cart/Shipping.css'
+import React from 'react';
+import './Cash_Card.css';
 
-function CashCard(props) {
-  const { total, deliveryCharge, discount } = props.props;
+function CashCard({ total, deliveryCharge, discount }) {
   return (
-    <div class="cashcard">
-        <span class="subtotal">Subtotal</span>
-        <span class="subtotal1">{total}</span>
-        <hr class="hl1" />
-        <div class="discount-cart">
-            <label for="coupon">Enter Discount Code</label>
-
-            <div class="discountbox">
-            <input type="text" name="myname" id="coupon" />
-            </div>
-            <button className="apply">Apply</button>
+    <div className="cashcard">
+      <span className="subtotal">Subtotal</span>
+      <span className="subtotal1">${total?.toFixed(2)}</span>
+      <hr className="hl1" />
+      <div className="discount-cart">
+        <label htmlFor="coupon">Enter Discount Code</label>
+        <div className="discountbox">
+          <input type="text" name="coupon" id="coupon" />
+          <button className="apply">Apply</button>
         </div>
-        <span class="del">Delivery Charge</span>
-        <span className="del1">{`$ ${deliveryCharge}`} </span>
-        <hr class="hl2" />
-        <span class="grandt">Grand Total</span>
-        <span class="grandt1">{total + deliveryCharge - discount}</span>
-    </div> 
-  )
+      </div>
+      <span className="del">Delivery Charge</span>
+      <span className="del1">${deliveryCharge?.toFixed(2)}</span>
+      <hr className="hl2" />
+      <span className="grandt">Grand Total</span>
+      <span className="grandt1">${(total + deliveryCharge - discount)?.toFixed(2)}</span>
+    </div>
+  );
 }
 
-export default CashCard
+export default CashCard;
