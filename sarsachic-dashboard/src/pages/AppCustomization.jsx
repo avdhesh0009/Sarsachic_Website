@@ -24,7 +24,14 @@ const AppCustomization = () => {
   const [themeZoom, setThemeZoom] = useState(1);
   const [themeCroppedAreaPixels, setThemeCroppedAreaPixels] = useState(null);
   const [isThemeModalOpen, setIsThemeModalOpen] = useState(false);
+  // Countdown
+  const [countdownEndDate, setCountdownEndDate] = useState("");
   const axios = useAxiosPublic();
+
+  
+  const handleCountdownChange = (e) => {
+    setCountdownEndDate(e.target.value);
+  };
 
   const handleColor1Change = (e) => {
     setColor1(e.target.value);
@@ -102,12 +109,30 @@ const AppCustomization = () => {
     }
   }, [themeCroppedAreaPixels, themeImageSrc]);
 
-  const handleSubmit = async () => {
+  // const handleSubmit = async () => {
+  //   const formData = new FormData();
+  //   formData.append("mainColor", color1);
+  //   formData.append("secondaryColor", color2);
+  //   formData.append("home-banner", homebanner);
+
+
+  //   try {
+  //     const response = await axios.post("/admin/save-home-banner", formData, {
+  //       headers: {
+  //         "Content-Type": "multipart/form-data",
+  //       },
+  //     });
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+  const handleHomeBannerSubmit = async () => {
     const formData = new FormData();
     formData.append("mainColor", color1);
     formData.append("secondaryColor", color2);
     formData.append("home-banner", homebanner);
-
+  //  formData.append("countdownEndDate", countdownEndDate);
 
     try {
       const response = await axios.post("/admin/save-home-banner", formData, {
@@ -120,7 +145,6 @@ const AppCustomization = () => {
       console.error(error);
     }
   };
-
   const handleThemeSubmit = async () => {
 
     const formData = new FormData();
@@ -140,6 +164,24 @@ const AppCustomization = () => {
     }
 
   };
+  //countdown 
+  const handleCountdownSubmit = async () => {
+    const formData = new FormData();
+    formData.append("countdownEndDate", countdownEndDate);
+    console.log("FormData:", countdownEndDate); 
+
+    try {
+      const response = await axios.post("/countdown/admin/save-countdown", {
+        countdownEndDate: countdownEndDate,
+        // headers: {
+        //   "Content-Type": "multipart/form-data",
+        // },
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+};
 
   return (
     <div className=" mx-auto p-4">
@@ -218,7 +260,7 @@ const AppCustomization = () => {
           )}
         </div>
         <button
-          onClick={handleSubmit}
+          onClick={handleHomeBannerSubmit}
           className="mt-4 p-2 bg-blue-500 text-white rounded"
         >
           Submit
@@ -290,6 +332,21 @@ const AppCustomization = () => {
           Submit Theme
         </button>
       </div>
+      <div className="my-8">
+        <label className="block mb-2">Countdown End Date:</label>
+        <input
+          type="datetime-local"
+          value={countdownEndDate}
+          onChange={handleCountdownChange}
+          className="p-2 border rounded"
+        />
+      </div>
+      <button
+        onClick={handleCountdownSubmit}
+        className="mt-4 p-2 bg-blue-500 text-white rounded"
+      >
+        Submit Countdown
+      </button>
     </div>
   );
 };

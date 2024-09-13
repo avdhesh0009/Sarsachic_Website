@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors'; 
 import productRoutes from './routes/product.routes.js'; 
+import countdownRoutes from './routes/countdown.routes.js';
+import profileRoutes from './routes/profile.routes.js';
 
 const app = express();
 import cookieParser from "cookie-parser"
@@ -17,6 +19,8 @@ app.use(cors({
 
 app.use(express.json());
 app.use('/api/v1/products', productRoutes);
+app.use('/api/v1/countdown', countdownRoutes);
+app.use('/api/v1/profile', profileRoutes);
 
 export default app;
 
