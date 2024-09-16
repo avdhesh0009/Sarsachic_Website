@@ -56,11 +56,11 @@ const Header = () => {
     setIsOpen(false);
   };
 
-  const handleProfile = () => {
+  const handleProfile = (data) => {
     if (!user) {
       navigate('/login'); // Programmatically navigate to the login page
     } else {
-      navigate('/userProfile'); // Programmatically navigate to the user profile page
+      navigate(data); // Programmatically navigate to the user profile page
     }
   };
 
@@ -101,9 +101,10 @@ const Header = () => {
         <div className="desktop-links">
          <Link to="/contact">Contact Us</Link>
         </div>
-        <Link to="/mywishlist">  <GoHeart className="icon" /></Link>
-        <Link to="/cart">  <BsCart className="icon" /></Link>
-        <Link to="/userProfile">  <FaRegUser className="icon" /></Link>
+        <button onClick={()=>handleProfile('/mywishlist')}>  <GoHeart className="icon" /></button>
+        <button onClick={()=>handleProfile('/cart')}>  <BsCart className="icon" /></button>
+        {/* <Link to="/userProfile">  <FaRegUser className="icon" /></Link> */}
+        <button onClick={()=>handleProfile('/userProfile')}>  <FaRegUser className="icon" /></button>
       </div>
 
       {menuOpen && (
