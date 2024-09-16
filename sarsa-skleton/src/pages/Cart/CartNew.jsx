@@ -17,7 +17,18 @@ const CartNew = () => {
   const axios = useAxiosPublic();
   const [items, setItems] = useState([]);
   const { total, deliveryCharge, discount } = useContext(OrderContext);
-
+  
+   // Handle deleting an item
+   const handleDelete = async (productId,sizeId) => {
+    try {
+      const response = await axios.post(`users/remove-from-cart`, { productId,sizeId });
+      setItems(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+    toast.error("Item Deleted");
+  };
+  
   // Fetch cart data on component mount
   useEffect(() => {
     const fetchCart = async () => {
@@ -32,30 +43,7 @@ const CartNew = () => {
     };
 
     fetchCart();
-  }, [axios]);
-
-  // Handle increment quantity
-  const handleIncrement = (id) => {
-    setItems(items.map(item => item.id === id ? { ...item, quantity: item.quantity + 1 } : item));
-    toast.success("Item Quantity Increased");
-  };
-
-  // Handle decrement quantity
-  const handleDecrement = (id) => {
-    setItems(items.map(item => item.id === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item));
-    toast.error("Item Quantity Decreased");
-  };
-
-  // Handle deleting an item
-  const handleDelete = async (productId) => {
-    try {
-      const response = await axios.post(`users/remove-from-cart`, { productId });
-      setItems(response.data.data);
-    } catch (error) {
-      console.log(error);
-    }
-    toast.error("Item Deleted");
-  };
+  }, [handleDelete]);
 
   const handleQuantityChange = async (productId, sizeId, change) => {
     const updatedCart = items.map((item) => {
@@ -101,38 +89,45 @@ const CartNew = () => {
 
       <div className="cart-container">
         <div className="cart-items">
-          {items.map(item => (
-            <div key={item.product._id} className="cart-item">
-              <img src={item.product.images[0]} alt={item.product.name} />
-              <div className="item-details">
-                <h3>{item.product.name}</h3>
-                <p>PRICE: {item.product.price}</p>
-                {item.sizes.map((sizeObj) => (
-                  <div className="size-controls" key={sizeObj._id}>
-                    <p>Size: {sizeObj.size}</p>
-                    <div className="box1-cart">
-                      <button
-                        className="quant"
-                        onClick={() => handleQuantityChange(item.product._id, sizeObj._id, -1)}
-                      >
-                        -
-                      </button>
-                      <span className="quant">{sizeObj.quantity}</span>
-                      <button
-                        className="quant"
-                        onClick={() => handleQuantityChange(item.product._id, sizeObj._id, 1)}
-                      >
-                        +
-                      </button>
-                      <button className="delete-button" onClick={() => handleDelete(item.product._id)}><MdDelete /></button>
-                    </div>
+         {items.map(item => (
+          <div key={item.product._id} className="cart-item">
+            {item.sizes.map(sizeObj => (
+              <div key={sizeObj._id} className="size-item">
+                <img
+                  src={(sizeObj.image || (item.product.images && item.product.images[0])) || '/path/to/default/image.jpg'} // Fallback to a default image if no images exist
+                  alt={`${item.product.name} - ${sizeObj.size}`}
+                />
+                <div className="item-details">
+                  <h3>{item.product.name}</h3>
+                  <p>Size: {sizeObj.size}</p>
+                  <p>Price: {sizeObj.price || item.product.price}</p> {/* Size-specific or default price */}
+                  <div className="quantity-control">
+                    <button
+                      className="quant"
+                      onClick={() => handleQuantityChange(item.product._id, sizeObj._id, -1)}
+                    >
+                      -
+                    </button>
+                    <span className="quant">{sizeObj.quantity}</span>
+                    <button
+                      className="quant"
+                      onClick={() => handleQuantityChange(item.product._id, sizeObj._id, 1)}
+                    >
+                      +
+                    </button>
+                    <button
+                      className="delete-button"
+                      onClick={() => handleDelete(item.product._id, sizeObj._id)}
+                    >
+                      <MdDelete />
+                    </button>
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
+            ))}
+          </div>
           ))}
         </div>
-
         <div className="cart-summary">
           <p>SUB TOTAL: {subTotal}</p>
           <p>SHIPPING CHARGE: {shipping}</p>
