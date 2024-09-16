@@ -1,35 +1,27 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProductDetails.css';
-import tshirtFront from '../../images/tshirt1.png';  // Update the path to your image
-import tshirtBack from '../../images/tshirt3.png';    // Update the path to your image
-import demonLogo from '../../images/tshirt2.png';      // Update the path to your image
-import demonArt from '../../images/tshirt4.png';        // Update the path to your image
 import { FaPlus, FaRegHeart } from 'react-icons/fa';
 import Poster from '../Hero/Poster';
-import TestimonialSlider from '../Review/TestimonialSlider.jsx'
-import Products from '../Products/Products.jsx'
-import JustDrop from '../Products/JustDrop.jsx'
-import { useLocation, useParams } from "react-router-dom";
+import TestimonialSlider from '../Review/TestimonialSlider.jsx';
+import { useParams } from "react-router-dom";
 import useAxiosPublic from '../../hooks/useAxios.jsx';
-import { useContext } from 'react';
-import { WebContext } from "../../providers/WebProvider.jsx";
-import ReviewPopup from '../Review/ReviewPopup.jsx';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import toast from "react-hot-toast";
 
 const ProductDetails = () => {
   const [sizes, setSizes] = useState([]);
-  const [size,setSize] = useState('XL');
-  const {productId} = useParams();
-  const [productData,setProductData] = useState('');
-  const [clicked, setclicked] = useState(false);
-
+  const [size, setSize] = useState('XL');
+  const { productId } = useParams();
+  const [productData, setProductData] = useState('');
+  const [clicked, setClicked] = useState(false);
   const axios = useAxiosPublic();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios(`/products/${productId}`);
-        // console.log(response.data);
         setProductData(response.data);
         const sizesString = response.data.sizes;
         const sizesArray = sizesString.split(',');
@@ -39,64 +31,95 @@ const ProductDetails = () => {
       }
     };
     fetchData();
-  },[]);
- 
-  const addToFavorites = async () =>{
-    try{
-      const response = await axios.post('/users/add-favorite',{
-        productId
-      }); 
+  }, [productId]);
+
+  const addToFavorites = async () => {
+    try {
+      const response = await axios.post('/users/add-favorite', { productId });
       toast.success("Added to wishlist");
-      console.log(response.data);
-    }
-    catch(error){
+    } catch (error) {
       toast.error("Some Error Occurred");
-      console.log(error,'add to favorites error');
     }
   }
 
-  const addToCart = async () =>{
-    try{
-      const response = await axios.post('/users/add-cart',{
+  const NextArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div className={`${className} custom-arrow next-arrow`} onClick={onClick} style={{ ...style }}>
+        <i className="fas fa-arrow-right"></i>
+      </div>
+    );
+  };
+  
+  const PrevArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div className={`${className} custom-arrow prev-arrow`} onClick={onClick} style={{ ...style }}>
+        <i className="fas fa-arrow-left"></i>
+      </div>
+    );
+  };
+
+  const addToCart = async () => {
+    try {
+      const response = await axios.post('/users/add-cart', {
         productId,
-        quantity:1,
+        quantity: 1,
         size
-      })
-      
+      });
       toast.success("Added to cart");
-      console.log(response.data);
-    }
-    catch(error){
-      toast.error("Some Error Occurred");
-      console.log(error);
+    } catch (error) {
+      toast.error("Please Login first! ");
     }
   }
 
   const plusHandle = () => {
     const description = document.querySelector('.description-info-2');
-
-    if (clicked == false) {
+    if (!clicked) {
       description.style.display = "flex";
-      setclicked(true);
-    }
-    else if (clicked == true) {
+      setClicked(true);
+    } else {
       description.style.display = "none";
-      setclicked(false);
+      setClicked(false);
     }
-
   }
+
+  // Settings for the image slider
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    
+  };
 
   return (
     <>
       <Poster />
       <div className="product-details">
+        {/* Regular Image Gallery for large screens */}
         <div className="image-gallery">
-          {productData.images && productData.images.map((image,index)=>(
-             <div key={index}>
-               <img src={image} alt="T-shirt back" className="product-image" />
-             </div>
+          {productData.images && productData.images.map((image, index) => (
+            <div key={index}>
+              <img src={image} alt={`Product ${index}`} className="product-image" />
+            </div>
           ))}
         </div>
+
+        {/* Slider for small screens */}
+        <div className="image-slider">
+          <Slider {...settings}>
+            {productData.images && productData.images.map((image, index) => (
+              <div key={index}>
+                <img src={image} alt={`Product ${index}`} className="product-image" />
+              </div>
+            ))}
+          </Slider>
+        </div>
+
         <div className="product-info">
           <div className='prod'>
             <div className='prod-name'>
@@ -110,11 +133,9 @@ const ProductDetails = () => {
             </div>
           </div>
 
-
-          <p>CHOOSE SIZE:{size}</p>
+          <p>CHOOSE SIZE: {size}</p>
           <div className="size-selector">
-
-            <div className="sizes" >
+            <div className="sizes">
               {sizes.map(s => (
                 <button
                   key={s}
@@ -126,11 +147,13 @@ const ProductDetails = () => {
               ))}
             </div>
           </div>
+
           <button className="add-to-cart" onClick={addToCart}>ADD TO CART - RS {productData.price}</button>
           <div className='butto'>
             <button className='size-chart'>Size Chart</button>
             <button className="add-to-wishlist" onClick={addToFavorites}> <FaRegHeart className='heart' />ADD TO WISHLIST</button>
           </div>
+
           <div className="product-details-text">
             <h2>PRODUCT DETAILS</h2>
             <p>Composition: 100% cotton</p>
@@ -141,6 +164,7 @@ const ProductDetails = () => {
             <p>Sizing: Garment measurement in inches</p>
             <p>Estimated order processing time: 48 hours</p>
           </div>
+
           <div className="additional-info">
             <div className="description-single">
               <h2>DESCRIPTION <FaPlus className='plus-icon' onClick={plusHandle} /></h2>
@@ -151,12 +175,10 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-     
-      <TestimonialSlider id={productId}/>
+
+      <TestimonialSlider id={productId} />
     </>
   );
 };
 
 export default ProductDetails;
-
-

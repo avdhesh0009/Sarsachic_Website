@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import useAxiosPublic from '../hooks/useAxios';
 
+import toast from "react-hot-toast";
+
 const ManageUsers = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(4); // Adjust the number of users per page here
@@ -23,6 +25,7 @@ const ManageUsers = () => {
       setUsers(userData);
     }
     catch(error){
+      toast.error("An error is occurred during getting the info of users")
       console.log('An error is occurred during getting the info of users');
     }
   }
@@ -36,12 +39,15 @@ const ManageUsers = () => {
             userId
         })
         if(response.data && response.data.success){
+          toast.success("User deleted successfully");
           fetchAllUsers();
         }else{
           console.log("An error is occurred while fetching the users");
         }
+        
      }
      catch(error){
+      toast.error("An error is occurred while deleting the user");
       console.log("An error is occurred while deleting the user");
      }
   }

@@ -1,86 +1,164 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './CartNew.css';
 import toast from "react-hot-toast";
-import img1 from '../../images/full-sweater.png';
-import img2 from '../../images/white-shirt.png';
 import { MdDelete } from "react-icons/md";
 import CheckoutSteps from './CheckoutSteps';
-import { OrderContext } from "../../providers/OrderProvider.jsx";
-import CashCard from '../CashCard';
 import ProductBar from '../../components/ProductBar/ProductBar.jsx';
+import useAxiosPublic from '../../hooks/useAxios.jsx';
+import emptyCartImage from '../../images/emptyCart.jpg'; 
+import { useNavigate } from 'react-router-dom';
 
 const CartNew = () => {
- 
-  const [items, setItems] = useState([
-    { id: 1, name: 'Never fear Oversized T-Shirt', size: 'MEDIUM', price: 699, quantity: 1, image: img1 },
-    { id: 2, name: 'Never fear Oversized T-Shirt', size: 'MEDIUM', price: 699, quantity: 1, image: img2 },
-    { id: 3, name: 'Never fear Oversized T-Shirt', size: 'MEDIUM', price: 699, quantity: 1, image: img2 },
-    { id: 4, name: 'Never fear Oversized T-Shirt', size: 'MEDIUM', price: 699, quantity: 1, image: img2 },
-  ]);
+  const axios = useAxiosPublic();
+  const [items, setItems] = useState([]);
+  const navigate=useNavigate();
 
-  // Handle increment quantity
-  const handleIncrement = (id) => {
-    setItems(items.map(item => item.id === id ? { ...item, quantity: item.quantity + 1 } : item));
-    toast.success("Item Quantity Increased");
-  };
+  // Fetch cart data on component mount
+  useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        const response = await axios.get("/users/get-cart");
+        const cartData = response.data.data;
+        console.log("Initial cart data:", cartData); // Add this to check data
+        setItems(cartData);
+      } catch (error) {
+        console.error("Error fetching cart data:", error);
+      }
+    };
 
-  // Handle decrement quantity
-  const handleDecrement = (id) => {
-    setItems(items.map(item => item.id === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item));
-    toast.error("Item Quantity Deccreased");
+    fetchCart();
+  }, []);
+
+  // Products
+  const goToShop=()=>{
+    navigate("/");
+  }
+
+  // Handle quantity change
+  const handleQuantityChange = async (productId, sizeId, change) => {
+    const updatedCart = items.map((item) => {
+      if (item.product._id === productId) {
+        const updatedSizes = item.sizes.map((size) =>
+          size._id === sizeId
+            ? { ...size, quantity: Math.max(1, size.quantity + change) }
+            : size
+        );
+        return { ...item, sizes: updatedSizes };
+      }
+      return item;
+    });
+
+    setItems(updatedCart);
+
+    try {
+      const updatedItem = updatedCart.find((item) => item.product._id === productId);
+      const updatedSize = updatedItem.sizes.find((size) => size._id === sizeId);
+
+      await axios.post(`/users/update-cart`, {
+        productId,
+        sizeId,
+        quantity: updatedSize.quantity,
+      });
+      toast.success("Item Quantity Changed");
+    } catch (error) {
+      toast.error("Error updating quantity:");
+      console.error("Error updating quantity:", error);
+    }
   };
 
   // Handle deleting an item
-  const handleDelete = (id) => {
-    setItems(items.filter(item => item.id !== id));
-    toast.error("Item Deleted");
+  const handleDelete = async (productId) => {
+    try {
+      const response = await axios.post(`/users/remove-from-cart`, { productId });
+      console.log("Remaining items after deletion:", response.data.data); // Add log to check
+      setItems([...response.data.data]); // Ensure re-render
+      toast.error("Item Deleted");
+    } catch (error) {
+      console.error("Error deleting item:", error);
+      toast.error("Some error occurred!");
+    }
   };
 
-  const subTotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  // Calculate subtotal, shipping, and total
+  const subTotal = items.reduce((sum, item) => {
+    const itemTotal = item.sizes.reduce((sizeSum, sizeObj) => {
+      return sizeSum + item.product.price * sizeObj.quantity;
+    }, 0);
+    return sum + itemTotal;
+  }, 0);
+
   const shipping = 50;
   const totalPrice = subTotal + shipping;
-  const discount=totalPrice*.10;
-  const dicountedPrice=totalPrice-discount;
-
- 
-
+  const discount = totalPrice * 0.10;
+  const discountedPrice = totalPrice - discount;
 
   return (
     <>
-     <ProductBar/>
-    <CheckoutSteps/>
-   
+      <ProductBar />
+      <CheckoutSteps />
       <div className="cart-container">
         <div className="cart-items">
-          {items.map(item => (
-            <div key={item.id} className="cart-item">
-              <img src={item.image} alt={item.name} />
-              <div className="item-details">
-                <h3>{item.name}</h3>
-                <p>SIZE: {item.size}</p>
-                <p>PRICE: {item.price}</p>
-                <div className="quantity-control">
-                  <button onClick={() => handleDecrement(item.id)}>-</button>
-                  <span>{item.quantity}</span>
-                  <button onClick={() => handleIncrement(item.id)}>+</button>
-                  <button className="delete-button" onClick={() => handleDelete(item.id)}><MdDelete /></button>
-                </div>
+          {items.length === 0 ? (
+            <div className="empty-cart">
+              <img src={emptyCartImage} alt="Empty Cart" className="empimg" onClick={goToShop} />
+              <p>Your cart is empty.</p>
               
-              </div>
             </div>
-          ))}
+            
+          ) : (
+            items.map((item) => (
+              <div key={item.product._id} className="cart-item">
+                <img
+                  src={item.product.images && item.product.images.length > 0 ? item.product.images[0] : 'default-image-url'}
+                  alt={item.product.name}
+                />
+                <div className="item-details">
+                  <h3>{item.product.name}</h3>
+                  <p>PRICE: {item.product.price}</p>
+
+                  {item.sizes.map((sizeObj) => (
+                    <div className="size-controls" key={`${item.product._id}-${sizeObj._id}`}>
+                      <p>Size: {sizeObj.size}</p>
+                      <div className="quantity-control">
+                        <button
+                          className="quant"
+                          onClick={() => handleQuantityChange(item.product._id, sizeObj._id, -1)}
+                        >
+                          -
+                        </button>
+                        <span className="quant">{sizeObj.quantity}</span>
+                        <button
+                          className="quant"
+                          onClick={() => handleQuantityChange(item.product._id, sizeObj._id, 1)}
+                        >
+                          +
+                        </button>
+                        <button
+                          className="delete-button"
+                          onClick={() => handleDelete(item.product._id)}
+                        >
+                          <MdDelete />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))
+          )}
         </div>
 
-        <div className="cart-summary">
-          <p>SUB TOTAL: {subTotal}</p>
-          <p>SHIPPING CHARGE: {shipping}</p> <hr />
-          <p id='total'>TOTAL: {totalPrice}</p>
-          <button className="checkout-button">CHECKOUT</button>
-        </div>
-        
+        {items.length > 0 && (
+          <div className="cart-summary">
+            <p>SUB TOTAL: {subTotal}</p>
+            <p>SHIPPING CHARGE: {shipping}</p>
+            <hr />
+            <p id="total">TOTAL: {totalPrice}</p>
+            <button className="checkout-button">CHECKOUT</button>
+          </div>
+        )}
       </div>
-      
-     
+   
     </>
   );
 };
