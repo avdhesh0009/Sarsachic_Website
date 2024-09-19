@@ -18,33 +18,55 @@ function Shipping() {
     const [state, setState] = useState('');
     const [postalCode, setPostalCode] = useState('');
     const [country, setCountry] = useState('');
-
+    const [defaultAddress, setDefaultAddress] = useState(false); // New state for default address checkbox
+    const [isSubmitting, setIsSubmitting] = useState(false); // For loading state during form submission
     const [addresses, setAddresses] = useState([]);
 
     const submitAddress = async () => {
+       
+        if (!name || !mobileNumber || !flat || !city || !state || !postalCode || !country) {
+            alert("Please fill all fields or Reselect City, State options");
+            return;
+        }
+
         try {
+            setIsSubmitting(true);
             const response = await axios.post('/shipping/save-address', {
-                name,
-                mobileNumber, flat, street,
-                city, state, postalCode,
-                country
+                name, mobileNumber, flat, street, city, state, postalCode, country, defaultAddress
             });
             console.log(response.data);
+
+            // Clear form after successful submission
+            setName('');
+            setMobileNumber('');
+            setFlat('');
+            setStreet('');
+            setCity('');
+            setState('');
+            setPostalCode('');
+            setCountry('');
+            setDefaultAddress(false);
+
+            // Reload saved addresses after submission
+            getAddress();
         } catch (error) {
-            console.log(error);
+            console.error(error);
+        } finally {
+            setIsSubmitting(false);
         }
-    }
+    };
+
+    const getAddress = async () => {
+        try {
+            const response = await axios.get('/shipping/get-all-addresses');
+            console.log(response.data.data);
+            setAddresses(response.data.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     useEffect(() => {
-        const getAddress = async () => {
-            try {
-                const response = await axios.get('/shipping/get-all-addresses');
-                console.log(response.data.data);
-                setAddresses(response.data.data);
-            } catch (error) {
-                console.log(error);
-            }
-        }
         getAddress();
     }, [axios]);
 
@@ -71,7 +93,7 @@ function Shipping() {
             </div>
             <form className="paymentform">
                 <h3>Select delivery address</h3>
-                <p id="delopt">If the address you'd like to use is listed below, click the "Deliver to this address" button. Otherwise, you can enter a new delivery address.</p>
+                <p id="delopt">If the address you'd like to use is listed above, click the "Deliver to this address" button. Otherwise, you can enter a new delivery address.</p>
                 <div className="newadd">
                     <h2>Add a new Address</h2>
                     <div className="nametop">
@@ -143,12 +165,14 @@ function Shipping() {
                         </select>
                     </div>
                     <div className="newdefaultcheckbox">
-                       Use as my default address  <input type="checkbox" className='chkbox'/> 
+                        Use as my default address <input type="checkbox" className='chkbox' checked={defaultAddress} onChange={(e) => setDefaultAddress(e.target.checked)} />
                     </div>
                     <div className="btn">
-                    <button className="continue" type="button" onClick={submitAddress}>Save Address</button>
-                    <button className="continuebt"><Link to='/payment'><span>Continue</span></Link></button>
-                </div>
+                        <button className="continue" type="button" onClick={submitAddress} disabled={isSubmitting}>
+                            {isSubmitting ? 'Saving...' : 'Save Address'}
+                        </button>
+                        <button className="continuebt"><Link to='/payment'><span>Continue</span></Link></button>
+                    </div>
                 </div>
             </form>
         </div>
