@@ -50,13 +50,9 @@ const MyWishlist = () => {
       }
     };
     getFavourites();
-  }, []);
+  }, [removeFromFavourites]);
   return (
     <div className="profile-container">
-      <div className="profile-box">
-       <Sidebar/>
-      </div>
-      
         <h1 className="heading">Welcome Tushar!</h1>
         {/* <div className="profileboard">
           <img src={wishlistImg} alt="Wishlist" />

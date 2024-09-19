@@ -103,7 +103,7 @@ const ProductDetails = () => {
         {/* Regular Image Gallery for large screens */}
         <div className="image-gallery">
           {productData.images && productData.images.map((image, index) => (
-            <div key={index}>
+            <div key={index} className='gall-img'>
               <img src={image} alt={`Product ${index}`} className="product-image" />
             </div>
           ))}

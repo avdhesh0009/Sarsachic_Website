@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './CartNew.css';
 import toast from "react-hot-toast";
 import { MdDelete } from "react-icons/md";
@@ -7,10 +7,12 @@ import ProductBar from '../../components/ProductBar/ProductBar.jsx';
 import useAxiosPublic from '../../hooks/useAxios.jsx';
 import emptyCartImage from '../../images/emptyCart.jpg'; 
 import { useNavigate } from 'react-router-dom';
+import { OrderContext } from "../../providers/OrderProvider.jsx";
 
 const CartNew = () => {
   const axios = useAxiosPublic();
   const [items, setItems] = useState([]);
+  const { total, deliveryCharge, discount } = useContext(OrderContext);
   const navigate=useNavigate();
 
   // Fetch cart data on component mount
@@ -69,28 +71,41 @@ const CartNew = () => {
   // Handle deleting an item
   const handleDelete = async (productId) => {
     try {
-      const response = await axios.post(`/users/remove-from-cart`, { productId });
-      console.log("Remaining items after deletion:", response.data.data); // Add log to check
-      setItems([...response.data.data]); // Ensure re-render
+      const response = await axios.post(`users/remove-from-cart`, { productId,sizeId });
+      setItems(response.data.data);
       toast.error("Item Deleted");
     } catch (error) {
-      console.error("Error deleting item:", error);
-      toast.error("Some error occurred!");
+      toast.error("Some error occured");
+      console.log(error);
     }
   };
+  
+  // Fetch cart data on component mount
+  useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        const response = await axios.get("/users/get-cart");
+        const cartData = response.data.data;
+        //console.log(cartData);
+        setItems(cartData);
+      } catch (error) {
+        console.error("Error fetching cart data:", error);
+      }
+    };
 
-  // Calculate subtotal, shipping, and total
+    fetchCart();
+  }, [handleDelete]);
+
+
   const subTotal = items.reduce((sum, item) => {
-    const itemTotal = item.sizes.reduce((sizeSum, sizeObj) => {
-      return sizeSum + item.product.price * sizeObj.quantity;
-    }, 0);
+    const itemTotal = item.sizes.reduce((acc, sizeObj) => acc + item.product.price * sizeObj.quantity, 0);
     return sum + itemTotal;
   }, 0);
 
-  const shipping = 50;
-  const totalPrice = subTotal + shipping;
-  const discount = totalPrice * 0.10;
-  const discountedPrice = totalPrice - discount;
+  const shipping = 50;  // Assuming shipping is static
+  const totalPrice = (subTotal + shipping).toFixed(2);
+  const discountAmount = (totalPrice * 0.10).toFixed(2);
+  const discountedPrice = (totalPrice - discountAmount).toFixed(2);
 
   return (
     <>
@@ -164,3 +179,6 @@ const CartNew = () => {
 };
 
 export default CartNew;
+
+
+ 

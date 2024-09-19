@@ -39,15 +39,35 @@ const addToCart = asyncHandler(async (req, res) => {
 
 
 const removeFromCart = asyncHandler(async (req, res) => {
-  const { productId } = req.body;
+  const { productId, sizeId } = req.body;
 
+  // Find the user
   const user = await User.findById(req.user._id);
 
-  user.cart = user.cart.filter(item => String(item.product) !== productId);
+  if (!user) {
+    return res.status(404).json(new ApiError(404, 'User not found'));
+  }
+
+  // Update the cart by removing the specific size of the product
+  user.cart = user.cart.map(item => {
+    if (item.product._id.toString() === productId) {
+      // Filter out the size that matches the given sizeId
+      item.sizes = item.sizes.filter(size => size._id.toString() !== sizeId);
+
+      // If no sizes are left, remove the product from the cart
+      if (item.sizes.length === 0) {
+        return null; // Mark this item for removal
+      }
+    }
+    return item;
+  }).filter(item => item !== null); // Filter out null values (products with no sizes left)
+
+  // Save the updated user document
   await user.save();
+
+  // Send the updated cart in the response
   res.status(200).json(new ApiResponse(200, user.cart));
 });
-
 
 const getCart = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id).populate('cart.product');

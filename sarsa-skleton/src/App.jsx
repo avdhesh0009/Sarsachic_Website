@@ -48,8 +48,8 @@ export default function App() {
         <Route element={<MensSection />} path="/mens-section" />
         <Route element={<WomensSection />} path="/womens-section" />
         <Route element={<ProductDetails />} path="/product-section/:productId" />
-        <Route element={<Cart />} path="/cart1" />
         <Route element={<CartNew />} path="/cart" />
+        {/* <Route element={<CartNew />} path="/cart1" /> */}
         <Route element={<Payment />} path="/payment" />
         <Route element={<Shipping />} path="/shipping" />
         <Route element={<Summary />} path="/summary" />
@@ -58,7 +58,7 @@ export default function App() {
         <Route element={<Profile />} path="/userProfile" />
         <Route element={<Delivery />} path="/adddeliveryaddress" />
         <Route element={<MyOrders />} path="/myOrders" />
-        <Route element={<MyWishlist />} path="/mywishlist" />
+        <Route element={<Wishlist />} path="/mywishlist" />
         <Route element={<MembershipBenefits />} path="/membership" />
         <Route element={<UpdatePassword />} path="/updatepassword" />
       </Routes>

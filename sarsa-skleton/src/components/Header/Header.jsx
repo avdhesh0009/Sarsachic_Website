@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { FaBars, FaTimes, FaRegUser, FaTimes as FaTimesIcon } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { TfiSearch } from "react-icons/tfi";
@@ -11,6 +11,8 @@ import assesories from '../../images/assesories.png';
 import caps from '../../images/caps.png';
 import coords from '../../images/coords.png';
 import './Header.css';
+import { WebContext } from "../../providers/WebProvider";
+
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,21 +21,14 @@ const Header = () => {
   const [selectedCurrency, setSelectedCurrency] = useState('Currency');
   const [searchTerm, setSearchTerm] = useState('');
   const [searchOpen, setSearchOpen] = useState(false);
-  const navigate = useNavigate();
+
 
   const selectorRef = useRef(null);
 
-  const products = [
-    { name: 'Regular Tshirt', category: 'Men' },
-    { name: 'Oversized Tshirt', category: 'Men' },
-    { name: 'Bottoms', category: 'Men' },
-    { name: 'Accessories', category: 'Men' },
-    { name: 'Caps', category: 'Men' },
-    { name: 'Co Ords', category: 'Men' },
-    { name: 'Shorts', category: 'Women' },
-    { name: 'Dresses', category: 'Women' },
-    { name: 'Skirts', category: 'Women' }
-  ];
+  const navigate  = useNavigate();
+
+  const {user} = useContext(WebContext);
+  console.log(user);
 
   const handleClickOutside = (event) => {
     if (selectorRef.current && !selectorRef.current.contains(event.target)) {
@@ -81,6 +76,14 @@ const Header = () => {
     setSearchOpen(!searchOpen);
   };
 
+  const handleProfile = (data) => {
+    if (!user) {
+      navigate('/login'); // Programmatically navigate to the login page
+    } else {
+      navigate(data); // Programmatically navigate to the user profile page
+    }
+  };
+
   return (
     <header className="header">
       <div className="header-left">
@@ -113,9 +116,14 @@ const Header = () => {
       </div>
 
       <div className="header-right">
-        <Link to="/mywishlist"><GoHeart className="icon" /></Link>
-        <Link to="/cart"><BsCart className="icon" /></Link>
-        <Link to="/userProfile"><FaRegUser className="icon" /></Link>
+        {/* Links visible only on larger screens */}
+        <div className="desktop-links">
+         <Link to="/contact">Contact Us</Link>
+        </div>
+       <GoHeart className="icon" onClick={()=>handleProfile('/mywishlist')}/>
+       <BsCart className="icon" onClick={()=>handleProfile('/cart')} />
+        {/* <Link to="/userProfile">  <FaRegUser className="icon" /></Link> */}
+      <FaRegUser className="icon" onClick={()=>handleProfile('/userProfile')} />
       </div>
 
       {menuOpen && (
