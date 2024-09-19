@@ -47,6 +47,15 @@ function MensSection() {
   return (
     <div className="mens-frame">
       <div className="mens-section">
+      <div className="scroll-bar">
+                    <ul>
+                        <li><button className='section-btn active'>Mens Fashion</button></li>
+                        <li><button className='section-btn'>Womens Fashion</button></li>
+                        <li><button className='section-btn' >Womens Accessories</button></li>
+                        <li><button className='section-btn'>Mens Accessories</button></li>
+                        <li><button className='section-btn'>Discount Deals</button></li>
+                    </ul>
+                </div>
         <div className="mens-banner">
           <img src={pageData?.themeImage || Men} alt="" />
         </div>

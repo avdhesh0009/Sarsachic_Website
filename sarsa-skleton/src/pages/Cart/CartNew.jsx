@@ -13,7 +13,7 @@ const CartNew = () => {
   const axios = useAxiosPublic();
   const [items, setItems] = useState([]);
   const { total, deliveryCharge, discount } = useContext(OrderContext);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   // Fetch cart data on component mount
   useEffect(() => {
@@ -32,7 +32,7 @@ const CartNew = () => {
   }, []);
 
   // Products
-  const goToShop=()=>{
+  const goToShop = () => {
     navigate("/");
   }
 
@@ -69,33 +69,16 @@ const CartNew = () => {
   };
 
   // Handle deleting an item
-  const handleDelete = async (productId) => {
+  const handleDelete = async (productId, sizeId) => {
     try {
-      const response = await axios.post(`users/remove-from-cart`, { productId,sizeId });
+      const response = await axios.post(`users/remove-from-cart`, { productId, sizeId });
       setItems(response.data.data);
       toast.error("Item Deleted");
     } catch (error) {
-      toast.error("Some error occured");
+      toast.error("Some error occurred");
       console.log(error);
     }
   };
-  
-  // Fetch cart data on component mount
-  useEffect(() => {
-    const fetchCart = async () => {
-      try {
-        const response = await axios.get("/users/get-cart");
-        const cartData = response.data.data;
-        //console.log(cartData);
-        setItems(cartData);
-      } catch (error) {
-        console.error("Error fetching cart data:", error);
-      }
-    };
-
-    fetchCart();
-  }, [handleDelete]);
-
 
   const subTotal = items.reduce((sum, item) => {
     const itemTotal = item.sizes.reduce((acc, sizeObj) => acc + item.product.price * sizeObj.quantity, 0);
@@ -117,9 +100,7 @@ const CartNew = () => {
             <div className="empty-cart">
               <img src={emptyCartImage} alt="Empty Cart" className="empimg" onClick={goToShop} />
               <p>Your cart is empty.</p>
-              
             </div>
-            
           ) : (
             items.map((item) => (
               <div key={item.product._id} className="cart-item">
@@ -150,7 +131,7 @@ const CartNew = () => {
                         </button>
                         <button
                           className="delete-button"
-                          onClick={() => handleDelete(item.product._id)}
+                          onClick={() => handleDelete(item.product._id, sizeObj._id)} // Ensure sizeId is passed
                         >
                           <MdDelete />
                         </button>
@@ -173,12 +154,8 @@ const CartNew = () => {
           </div>
         )}
       </div>
-   
     </>
   );
 };
 
 export default CartNew;
-
-
- 
