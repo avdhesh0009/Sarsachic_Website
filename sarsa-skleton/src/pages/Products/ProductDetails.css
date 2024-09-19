@@ -3,6 +3,9 @@
   grid-template-columns: 50% 50%;
   padding: 20px;
 }
+.image-slider{
+  display: none;
+}
 
 .description-info-2 {
   display: none;
@@ -96,7 +99,7 @@
 
 .butto {
   display: flex;
-  gap: 85px;
+  gap: 15px;
 }
 
 .size-chart {
@@ -142,8 +145,15 @@
   font-size: large;
 }
 
+@media (max-width: 1200px){
+  .gall-img img{
+    width: 200px;
+    height: 200px;
+  }
+}
 @media (max-width: 768px) {
   .product-details {
+    display: block;
     flex-direction: column;
     align-items: center;
   }
@@ -155,5 +165,23 @@
 
   .product-info {
     padding: 0 20px;
+  }
+  
+
+  .image-gallery {
+    display: none; /* Hide the default image gallery */
+  }
+
+  .image-slider {
+    display: flex;
+    flex-direction: column; /* Show the slider on smaller screens */
+  }
+  .product-image{
+    max-width: 200px;
+  }
+
+  .product-info {
+    padding: 20px;
+    text-align: center;
   }
 }

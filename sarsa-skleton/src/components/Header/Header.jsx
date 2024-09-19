@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
-import { FaBars, FaTimes, FaRegUser } from "react-icons/fa";
-import { Link} from "react-router-dom";
+import { FaBars, FaTimes, FaRegUser, FaTimes as FaTimesIcon } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 import { TfiSearch } from "react-icons/tfi";
 import { GoHeart, GoArrowUpRight } from "react-icons/go";
 import { BsCart } from "react-icons/bs";
@@ -12,13 +12,17 @@ import caps from '../../images/caps.png';
 import coords from '../../images/coords.png';
 import './Header.css';
 import { WebContext } from "../../providers/WebProvider";
-import { useNavigate } from "react-router-dom";
+
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState('men');
   const [selectedCurrency, setSelectedCurrency] = useState('Currency');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchOpen, setSearchOpen] = useState(false);
+
+
   const selectorRef = useRef(null);
 
   const navigate  = useNavigate();
@@ -56,6 +60,22 @@ const Header = () => {
     setIsOpen(false);
   };
 
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSearchSubmit = () => {
+    if (searchTerm.trim() !== '') {
+      navigate(`/search?query=${searchTerm}`);
+      setSearchTerm('');
+      setSearchOpen(false);
+    }
+  };
+
+  const toggleSearch = () => {
+    setSearchOpen(!searchOpen);
+  };
+
   const handleProfile = (data) => {
     if (!user) {
       navigate('/login'); // Programmatically navigate to the login page
@@ -67,7 +87,6 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-left">
-        {/* Menu icon visible only on small screens */}
         <button className="menu-icon" onClick={toggleMenu}>
           <FaBars />
         </button>
@@ -85,15 +104,15 @@ const Header = () => {
             )}
           </div>
           <Link to="/mens-section">Accessories</Link>
-            <Link to="/about">About Us</Link>
-        </div>
-        <div className="header-right">
-          <TfiSearch className="icon" />
+          <Link to="/about">About Us</Link>
+
+          {/* Search Icon */}
+          <TfiSearch className="icon" onClick={toggleSearch} />
         </div>
       </div>
 
       <div className="header-center">
-         <Link to="/"> <h1>SARSACHIC</h1> </Link>
+        <Link to="/"> <h1>SARSACHIC</h1> </Link>
       </div>
 
       <div className="header-right">
@@ -101,10 +120,10 @@ const Header = () => {
         <div className="desktop-links">
          <Link to="/contact">Contact Us</Link>
         </div>
-        <button onClick={()=>handleProfile('/mywishlist')}>  <GoHeart className="icon" /></button>
-        <button onClick={()=>handleProfile('/cart')}>  <BsCart className="icon" /></button>
+       <GoHeart className="icon" onClick={()=>handleProfile('/mywishlist')}/>
+       <BsCart className="icon" onClick={()=>handleProfile('/cart')} />
         {/* <Link to="/userProfile">  <FaRegUser className="icon" /></Link> */}
-        <button onClick={()=>handleProfile('/userProfile')}>  <FaRegUser className="icon" /></button>
+      <FaRegUser className="icon" onClick={()=>handleProfile('/userProfile')} />
       </div>
 
       {menuOpen && (
@@ -163,8 +182,7 @@ const Header = () => {
                   <span>Contact Us <GoArrowUpRight /></span>
                 </a>
               </div>
-              
-              {/* Currency Selector */}
+
               <div className="currency-selector">
                 <h4>Select Currency</h4>
                 <button
@@ -180,7 +198,6 @@ const Header = () => {
                   USD
                 </button>
               </div>
-
             </div>
           </div>
 
@@ -188,6 +205,23 @@ const Header = () => {
             <FaTimes />
           </button>
         </nav>
+      )}
+
+      {/* Search Popup */}
+      {searchOpen && (
+        <div className="search-popup">
+          <button className="search-popup-close" onClick={toggleSearch}>
+            <FaTimesIcon />
+          </button>
+          <input
+            type="text"
+            placeholder="Search for products..."
+            value={searchTerm}
+            onChange={handleSearch}
+            onKeyDown={(e) => e.key === 'Enter' && handleSearchSubmit()} // Handle 'Enter' key
+          />
+          <button onClick={handleSearchSubmit}>Search</button>
+        </div>
       )}
     </header>
   );

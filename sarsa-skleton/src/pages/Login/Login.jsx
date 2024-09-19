@@ -76,7 +76,7 @@ function Login() {
           </Link>
         </div>
 
-        <div className="button">
+        <div className="buttonlogin">
           <button class="sign-in-button" onClick={handleSubmit}>Sign in</button>
           <OAuth/>
         </div>

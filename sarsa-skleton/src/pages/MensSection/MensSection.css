@@ -4,7 +4,7 @@
     overflow-x: auto; /* Allows horizontal scrolling if necessary */
     overflow-y: hidden; /* Prevents vertical scrolling */
     white-space: nowrap; /* Ensures buttons are in a single line */
-    width: 100%; /* Full width to ensure responsiveness */
+    /* Full width to ensure responsiveness */
     padding: 0 10px; /* Adds padding to avoid content touching edges */
   }
   
@@ -48,9 +48,7 @@
     width: 100%;
    
 }
-.mens-banner{
-    margin: 20px;
-}
+
 .mens-category {
     display: flex;
     justify-content: space-between;
@@ -61,7 +59,7 @@
 }
 
 .mens-banner img {
-    max-width: 100%;
+    width: 100%;
 }
 
 .active {

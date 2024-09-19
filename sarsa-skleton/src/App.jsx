@@ -25,7 +25,7 @@ import MyWishlist from "./pages/UserDashboard/MyWishlist.jsx";
 import UpdatePassword from "./pages/UserDashboard/UpdatePassword.jsx";
 
 import Wishlist from "./pages/Products/Wishlist.jsx";
-
+import SearchResults from './components/Header/SearchResults';
 import VerifyForgotPasswordLink from "./pages/VerifyForgotPasswordLink.jsx";
 import CartNew from "./pages/Cart/CartNew.jsx";
 
@@ -37,6 +37,7 @@ export default function App() {
       <Header />
       <Routes>
         <Route element={<Home />} index />
+        <Route path="/search" element={<SearchResults />} /> {/* For search results */}
         <Route path="/user/verify/:userId/:uniqueString" element={<VerifyUser/>} />
         <Route path="/user/reset-password/:userId/:token" element={<VerifyForgotPasswordLink/>}/>
         <Route element={<Login />} path="/login" />
@@ -57,7 +58,7 @@ export default function App() {
         <Route element={<Profile />} path="/userProfile" />
         <Route element={<Delivery />} path="/adddeliveryaddress" />
         <Route element={<MyOrders />} path="/myOrders" />
-        <Route element={<MyWishlist />} path="/mywishlist" />
+        <Route element={<Wishlist />} path="/mywishlist" />
         <Route element={<MembershipBenefits />} path="/membership" />
         <Route element={<UpdatePassword />} path="/updatepassword" />
       </Routes>

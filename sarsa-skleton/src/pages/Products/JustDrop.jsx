@@ -35,7 +35,7 @@ const JustDrop = () => {
       <div className="follow-us-container">
        
         <div className="social-icons">
-        <h2 className="follow-us">FOLLOW US</h2>
+        <h2 className="follow-us">FOLLOW US  ------</h2>
     
           <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
             

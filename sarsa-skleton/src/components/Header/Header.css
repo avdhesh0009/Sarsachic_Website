@@ -14,7 +14,7 @@ header {
 }
 
 .header-center {
-  margin: 0 85px 0 0;
+  margin: 0 110px 0 0;
 }
 
 .header-center h1 {
@@ -33,7 +33,7 @@ header {
 }
 
 .icon {
-  margin: 0 20px;
+  margin: 0 15px;
   font-size: 30px;
   cursor: pointer;
 }
@@ -89,6 +89,49 @@ header {
   padding: 0 0 ;
 
 }
+/* Popup styles... */
+
+.search-popup {
+  position: fixed; /* Use fixed positioning to make it appear in the center of the page */
+  top: 150px;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the popup */
+  background-color: rgb(197, 198, 194);
+  border: 1px solid #000000;
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 300px; /* Adjust width as needed */
+}
+.search-popup-close {
+  position: absolute;
+  top: 17px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.search-popup input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.search-popup button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: none;
+  background-color: #333;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 
 /* Responsiveness */
 
@@ -97,7 +140,7 @@ header {
    font-size: 15px; /* Hide desktop links on small screens */
   }
   .header-center{
-    margin: 0 55px 0 0;
+    margin: 0 60px 0 0;
   }
   .header-center h1{
     font-size: 30px;
@@ -272,7 +315,7 @@ h3 {
   }
 
   .header-center {
-    margin: 0 0 0 40px;
+    margin: 0 0 0 70px;
   }
 
   .header-center h1 {
@@ -302,7 +345,7 @@ h3 {
     font-size: 25px;
   }
   .header-center{
-    margin: 0 0 0 50px;
+    margin: 0 0 0 90px;
   }
 
   .header-right .icon {
@@ -318,3 +361,4 @@ h3 {
     font-size: 20px;
   }
 }
+
